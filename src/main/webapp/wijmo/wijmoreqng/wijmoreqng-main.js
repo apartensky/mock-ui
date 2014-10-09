@@ -42,6 +42,7 @@
 	}    
 	
 	requirejs.config({
+			baseUrl: "/wijmo/wijmoreqng",
             paths: paths,
             shim: {
             	ng: {
@@ -54,7 +55,12 @@
             	"wijmo-ng": {
             		deps: ["ng"].concat(wijmoRefs)
             	}
-            }
+            },
+            packages: [{
+            		name: "home",
+            		location: "home/",
+            		main: "home.package"	
+            }]
     });
 	
 	requirejs(["ng", "wijmoreqng-app"], function (ng, app) {
