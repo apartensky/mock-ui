@@ -39,31 +39,7 @@
 	var addWijmoRef = createWijmoAmdRef.bind(paths);
 	for(var i=0;i<wijmoRefs.length;i++){
 		addWijmoRef(wijmoRefs[i]);
-	}
-//	addWijmoRef("wijmo.wijgrid");
-//	addWijmoRef("wijmo.widget");
-//	addWijmoRef("wijmo.wijutil");
-//	addWijmoRef("wijmo.data");
-//	addWijmoRef("wijmo.wijpager");
-//	addWijmoRef("wijmo.wijinputdate");
-//	addWijmoRef("wijmo.wijinputnumber");
-//	addWijmoRef("wijmo.wijsuperpanel");
-//	addWijmoRef("wijmo.wijinputtext");
-//	addWijmoRef("wijmo.wijlist");
-//	addWijmoRef("wijmo.wijtouchutil");
-//	addWijmoRef("wijmo.wijinputcore");
-//	addWijmoRef("wijmo.wijstringinfo");
-//	addWijmoRef("wijmo.wijinputnumberformat");
-//	addWijmoRef("wijmo.wijinputdateformat");
-//	addWijmoRef("wijmo.wijcalendar");
-//	addWijmoRef("wijmo.wijtabs");
-//	addWijmoRef("wijmo.wijinputdateroller");
-//	addWijmoRef("wijmo.wijinpututility");
-//	addWijmoRef("wijmo.wijpopup");
-//	addWijmoRef("wijmo.wijcharex");
-//	addWijmoRef("wijmo.wijinputtextformat");
-//	addWijmoRef("wijmo.wijtooltip");	
-    
+	}    
 	
 	requirejs.config({
             paths: paths,
@@ -82,27 +58,6 @@
     });
 	
 	requirejs(["ng", "wijmoreqng-app"], function (ng, app) {
-//	requirejs(["wijmo.wijgrid"], function () {	    
-//	    $(document).ready(function () {
-//	        $("#demo-grid").wijgrid({
-//	            allowSorting: true,
-//	            allowPaging: true,
-//	            pageSize: 3,
-//	            data: [
-//	                [27, 'Canada', 'Adams, Craig', 'RW'],
-//	                [43, 'Canada', 'Boucher, Philippe', 'D', 'R'],
-//	                [24, 'Canada', 'Cooke, Matt', 'LW', 'L'],
-//	                [87, 'Canada', 'Crosby, Sidney (C)', 'C', 'L'],
-//	                [1, 'United States', 'Curry, John', 'G', 'L'],
-//	            ],
-//	            columns: [
-//	                {headerText: "Number"},
-//	                {headerText: "Nationality"},
-//	                {headerText: "Player"},
-//	                {headerText: "Position"}
-//	            ]
-//	        });
-//	    });
 		
 		ng.element(document).ready(function(){
 			console.debug("app", app);

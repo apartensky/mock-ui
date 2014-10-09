@@ -22,6 +22,4 @@ define(['ng', 'ng-ui-router', 'wijmo-ng', './home/controllers/HomeCtrl'], functi
             	$scope.gridWithKitQuantityData = $scope.report.ItemsWithKitQuantity.Items;
             };
         });       
-
-	;
 });
