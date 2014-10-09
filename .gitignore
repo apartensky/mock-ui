@@ -1,0 +1,41 @@
+# Compiled source #
+**.class
+
+# Package Files #
+**.war
+**.ear
+**.zip
+
+# Test Third-Party Javascript Libraries #
+src/**/html/**/lib/*
+src/**/html/app/data/*
+# Others #
+
+.Rhistory
+
+**.eclipse
+=======
+
+# IDE Generated Files
+.project
+.classpath
+.settings/
+**.swp
+**.orig
+.springBeans
+.tern-project
+
+# Maven target
+target/
+/target
+
+#HSQL
+mem.log
+mem.properties
+mem.script
+
+
+#Backuped files
+bkp/
+/bkp
+
