@@ -1,3 +1,27 @@
-<div>
-hi
-</div>
+<wij-grid id="gridWithKitQuantity" data="gridWithKitQuantityData"
+				          options='{ columnsAutogenerationMode: "none", allowEditing: false, allowSorting: true, allowColSizing: true, allowColMoving: true,
+					allowVirtualScrolling: true, scrollMode: "auto", highlightCurrentCell: true, selectionMode: "multiRange", showFilter: true,
+						allowPaging: true, pageSize: 50, pagerSettings: { pageButtonCount : 40, mode: "numericFirstLast", firstPageText: "<<", lastPageText: ">>"  },
+					columns: [
+						{ dataKey: "Code", headerText: "Code", dataType: "string", filterOperator: "Contains" },
+						{ dataKey: "Sku", headerText: "Sku", dataType: "string", filterOperator: "Contains" },
+						{ dataKey: "Description", headerText: "Description", dataType: "string", filterOperator: "Contains" },
+						{ dataKey: "Cost", headerText: "Cost", dataType: "string", filterOperator: "Contains" },
+
+						{ dataKey: "QuantityOnHand", headerText: "Quantity <br>On Hand", dataType: "string", filterOperator: "Contains" },
+						{ dataKey: "PendingQuantity", headerText: "Pending <br>Quantity", dataType: "string", filterOperator: "Contains" },
+						{ dataKey: "AvailableQuantity", headerText: "Available <br>Quantity", dataType: "string", filterOperator: "Contains" },
+
+						{ dataKey: "TotalProductQty", headerText: "Total Sold <br>Products <br>Quantity", dataType: "string", filterOperator: "Contains" },
+						{ dataKey: "TotalKitQty", headerText: "Total Sold <br> in Kits <br>Quantity", dataType: "string", filterOperator: "Contains" },
+						{ dataKey: "TotalQuantity", headerText: "Total Sold <br>Quantity", dataType: "string", filterOperator: "Contains" },
+
+						{ dataKey: "TotalSalePrice", headerText: "Total Sold <br>Price", dataType: "string", filterOperator: "Contains" },
+						{ dataKey: "AveragePrice", headerText: "Average <br>Price", dataType: "string", filterOperator: "Contains" },
+						{ dataKey: "TotalCost", headerText: "Total <br>Cost", dataType: "string", filterOperator: "Contains" },
+						{ dataKey: "Profit", headerText: "Total <br>Profit", dataType: "string", filterOperator: "Contains" },
+						{ dataKey: "AverageProfit", headerText: "Average <br>Profit", dataType: "string", filterOperator: "Contains" },
+						{ dataKey: "Markup", headerText: "Markup <br>%", dataType: "string", filterOperator: "Contains" }
+					]}'>
+</wij-grid>
+<button ng-click="setData();">Set Data</button>
