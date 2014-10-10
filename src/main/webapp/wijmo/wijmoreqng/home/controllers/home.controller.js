@@ -1,6 +1,6 @@
-define(['ng', '../home.module'], function(ng, ngmod){
-	ngmod.controller("HomeController", 
-	function ($scope) {
+define(['ng'], function(ng){
+	console.debug("init home.controller");	 
+	return ['$scope', function ($scope) {
         $scope.val = 50;
         $scope.min = 0;
         $scope.max = 100;
@@ -9,5 +9,5 @@ define(['ng', '../home.module'], function(ng, ngmod){
         $scope.setData = function(){
         	$scope.gridWithKitQuantityData = $scope.report.ItemsWithKitQuantity.Items;
         };
-     });
+     }];
 });

@@ -59,7 +59,7 @@
             packages: [{
             		name: "home",
             		location: "home/",
-            		main: "home.package"	
+            		main: "home.module"	
             }]
     });
 	

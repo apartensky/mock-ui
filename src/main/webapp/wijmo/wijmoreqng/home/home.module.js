@@ -1,3 +1,4 @@
-define(['ng'], function(ng){		
-	return ng.module('home', []);	
+define(['ng', './controllers/home.controller'], function(ng, HomeController){		
+	return ng.module('home', [])
+	.controller("HomeController", HomeController);
 });
