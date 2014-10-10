@@ -1,6 +1,6 @@
-define(['ng', 'ng-ui-router', 'wijmo-ng', 'home'], function(ng){
+define(['ng', 'ng-ui-router', 'wijmo-ng'], function(ng){
 	var appRoot="/wijmo/wijmoreqng";
-	return ng.module('wijmoreqng-app', ['ui.router', 'wijmo', 'home', function(){}])
+	return ng.module('wijmoreqng-app', ['ui.router', 'wijmo', function(){}])
 	.config(['$stateProvider', '$urlRouterProvider',
 	function($stateProvider, $urlRouterProvider){
 		$urlRouterProvider.otherwise("/home");

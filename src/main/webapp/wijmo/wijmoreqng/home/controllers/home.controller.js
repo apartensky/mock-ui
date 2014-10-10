@@ -1,5 +1,6 @@
 define(['ng'], function(ng){
-	console.debug("init home.controller");	 
+	console.debug("init home.controller");
+	
 	return ['$scope', function ($scope) {
         $scope.val = 50;
         $scope.min = 0;
@@ -10,4 +11,6 @@ define(['ng'], function(ng){
         	$scope.gridWithKitQuantityData = $scope.report.ItemsWithKitQuantity.Items;
         };
      }];
+     
+	
 });
