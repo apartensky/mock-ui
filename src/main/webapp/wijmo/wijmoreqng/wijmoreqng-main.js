@@ -64,7 +64,7 @@
             }]
     });
 	
-	requirejs(["ng", "app", "home"], function (ng, app) {
+	requirejs(["ng", "app"], function (ng, app) {
 		
 		ng.element(document).ready(function(){
 			console.debug("app", app);
