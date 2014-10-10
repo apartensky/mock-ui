@@ -1,4 +1,5 @@
-define(['ng', '../home.module'], function(ng, ngmod){
+define(['require', 'ng', '../home.module'], function(require, ng, ngmod){
+	console.debug("init home.controller");
 	ngmod.controller("HomeController", 
 	function ($scope) {
         $scope.val = 50;

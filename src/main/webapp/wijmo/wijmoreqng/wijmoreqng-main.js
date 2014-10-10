@@ -32,7 +32,8 @@
 	    "globalize": createWijmoCdnPath("globalize.min"),
 	    "ng": "//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular",
 	    "ng-ui-router" :  "//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router",
-	    "wijmo-ng": "//cdn.wijmo.com/interop/angular.wijmo.3.20142.45"
+	    "wijmo-ng": "//cdn.wijmo.com/interop/angular.wijmo.3.20142.45",
+	    "app": "wijmoreqng-app"
 	};
 	
 	var wijmoRefs = ["wijmo.wijgrid","wijmo.widget","wijmo.wijutil","wijmo.data","wijmo.wijpager","wijmo.wijinputdate","wijmo.wijinputnumber","wijmo.wijsuperpanel","wijmo.wijinputtext","wijmo.wijlist","wijmo.wijtouchutil","wijmo.wijinputcore","wijmo.wijstringinfo","wijmo.wijinputnumberformat","wijmo.wijinputdateformat","wijmo.wijcalendar","wijmo.wijtabs","wijmo.wijinputdateroller","wijmo.wijinpututility","wijmo.wijpopup","wijmo.wijcharex","wijmo.wijinputtextformat","wijmo.wijtooltip"];
@@ -59,11 +60,11 @@
             packages: [{
             		name: "home",
             		location: "home/",
-            		main: "home.package"	
+            		main: "home.module"	
             }]
     });
 	
-	requirejs(["ng", "wijmoreqng-app"], function (ng, app) {
+	requirejs(["ng", "app", "home"], function (ng, app) {
 		
 		ng.element(document).ready(function(){
 			console.debug("app", app);

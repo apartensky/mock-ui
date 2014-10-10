@@ -1,2 +1,2 @@
-define(['./controllers/home.controller'], function(){	
+define(['./controllers/home.controller'], function(ngmod){	
 });
