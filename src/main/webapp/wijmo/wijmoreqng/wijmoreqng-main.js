@@ -38,7 +38,7 @@
 	    	
 	};
 	
-	var wijmoRefs = ["wijmo.wijgrid","wijmo.wijmenu","wijmo.wijtree","wijmo.widget","wijmo.wijutil","wijmo.data","wijmo.wijpager","wijmo.wijinputdate","wijmo.wijinputnumber","wijmo.wijsuperpanel","wijmo.wijinputtext","wijmo.wijlist","wijmo.wijtouchutil","wijmo.wijinputcore","wijmo.wijstringinfo","wijmo.wijinputnumberformat","wijmo.wijinputdateformat","wijmo.wijcalendar","wijmo.wijtabs","wijmo.wijinputdateroller","wijmo.wijinpututility","wijmo.wijpopup","wijmo.wijcharex","wijmo.wijinputtextformat","wijmo.wijtooltip", "wijmo.wijtextbox"];
+	var wijmoRefs = ["wijmo.wijgrid","wijmo.wijmenu","wijmo.wijtree","wijmo.wijsplitter","wijmo.widget","wijmo.wijutil","wijmo.data","wijmo.wijpager","wijmo.wijinputdate","wijmo.wijinputnumber","wijmo.wijsuperpanel","wijmo.wijinputtext","wijmo.wijlist","wijmo.wijtouchutil","wijmo.wijinputcore","wijmo.wijstringinfo","wijmo.wijinputnumberformat","wijmo.wijinputdateformat","wijmo.wijcalendar","wijmo.wijtabs","wijmo.wijinputdateroller","wijmo.wijinpututility","wijmo.wijpopup","wijmo.wijcharex","wijmo.wijinputtextformat","wijmo.wijtooltip", "wijmo.wijtextbox"];
 	var addWijmoRef = createWijmoAmdRef.bind(paths);
 	for(var i=0;i<wijmoRefs.length;i++){
 		addWijmoRef(wijmoRefs[i]);

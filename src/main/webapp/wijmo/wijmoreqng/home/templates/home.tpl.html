@@ -1,7 +1,12 @@
 <style>
 .wijmo-wijtree{
-	width: 100%;
+/* 	width: 100%; */
 }
+#splitter {
+   height: 100%; 
+  width: 100%;
+}
+
 </style>
 
 
@@ -15,11 +20,16 @@
     <li><a>menuitem2</a></li>
     <li><a>menuitem3</a></li>
 </wij-menu>
-
-<div style="float: left; width: 30%">
- <wij-tree style="width: 100%" id="wijtree" nodes="nodes1">
-</div>
-<div style="float: right; width: 70%">
-<wij-grid id="gridWithKitQuantity" data="list">
-</wij-grid>
+<div>
+<wij-splitter orientation="vertical" id="splitter">
+	
+	<panel1 id="panel1">
+	 	<wij-tree style="width: 100%" id="wijtree" nodes="nodes1">
+	</panel1>
+	
+	<panel2 id="panel2">
+		<wij-grid id="gridWithKitQuantity" data="list"></wij-grid>	
+	</panel2>
+	
+</wijsplitter>
 </div>
