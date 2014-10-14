@@ -2,14 +2,29 @@ define(['ng'], function(ng){
 	console.debug("init home.controller");
 	
 	return ['$scope', function ($scope) {
-        $scope.val = 50;
-        $scope.min = 0;
-        $scope.max = 100;
-        $scope.report = {"ItemsWithKitQuantity":{"Items":[{"Id":"15","Code":"70","Sku":"testSku2","Description":"test product 2tstsrt lrt-lrt -lsrt nsh tnsuh insoetuh inseouthinseuothisneouh ineuoh ieunothi onshti oes\nh nh \nh\n-h \nh","Cost":"$35.50","ReorderQuantity":0,"AvailableQuantity":5,"QuantityOnHand":13,"PendingQuantity":8,"Attributes":[],"TotalSalePrice":"$0.00","TotalCost":"$0.00","AveragePrice":"$0.00","Profit":"$0.00","AverageProfit":"$0.00","Markup":0,"IsKit":false},{"Id":"17","Code":"34","Sku":"testSku4","Description":"test product 4","Cost":"$55.50","ReorderQuantity":0,"AvailableQuantity":86,"QuantityOnHand":100,"PendingQuantity":14,"Attributes":[],"TotalSalePrice":"$0.00","TotalCost":"$0.00","AveragePrice":"$0.00","Profit":"$0.00","AverageProfit":"$0.00","Markup":0,"IsKit":false}],"Errors":[],"TotalPrice":"$0.00","TotalProfit":"$0.00","TotalCost":"$0.00","AverageMarkup":0},"ItemsWithKitSku":{"Items":[],"Errors":[],"TotalPrice":"$0.00","TotalProfit":"$0.00","TotalCost":"$0.00","AverageMarkup":0}};
         
-        $scope.setData = function(){
-        	$scope.gridWithKitQuantityData = $scope.report.ItemsWithKitQuantity.Items;
-        };
+		//Person class
+        function Person(data) {
+            this.ID = data.ID;
+            this.Company = data.Company;
+            this.Name = data.Name;
+            this.Sales = data.Sales;
+        };		
+		$scope.list = [
+          new Person({ ID: "ANATR", Company: "Ana Trujillo Emparedados y helados", Name: "Ana Trujillo", Sales: 8900 }),
+          new Person({ ID: "ANTON", Company: "Antonio Moreno Taqueria", Name: "Antonio Moreno", Sales: 4500 }),
+          new Person({ ID: "AROUT", Company: "Around the Horn", Name: "Thomas Hardy", Sales: 7600 }),
+          new Person({ ID: "BERGS", Company: "Berglunds snabbkop", Name: "Christina Berglund", Sales: 3200 }),
+          new Person({ ID: "BLONP", Company: "Blondel père et fils", Name: "Frédérique Citeaux", Sales: 4100 }),
+          new Person({ ID: "BOLID", Company: "Bólido Comidas preparadas", Name: "Martín Sommer", Sales: 3000 }),
+          new Person({ ID: "DUMON", Company: "Du monde entier", Name: "Janine Labrune", Sales: 4710 }),
+          new Person({ ID: "EASTC", Company: "Eastern Connection", Name: "Ann Devon", Sales: 2900 }),
+          new Person({ ID: "ERNSH", Company: "Ernst Handel", Name: "Roland Mendel", Sales: 7020 }),
+          new Person({ ID: "FISSA", Company: "Familia Arquibaldo", Name: "Salchichas", Sales: 4280 }),
+          new Person({ ID: "BONAP", Company: "Bon app", Name: "Pedro Afonso", Sales: 1900 })
+        ];
+		
+
      }];
      
 	

@@ -27,6 +27,7 @@
 //	    "jquery.ui": createWijmoCdnPath("jquery-ui"),
 		"jquery-ui": createWijmoCdnPath("jquery-ui-1.11.0.custom.min"),
 		"jquery.ui": "//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui",
+		"jquery.bgiframe": createWijmoCdnPath("jquery.bgiframe"),
 //	    "jquery.mousewheel": createWijmoCdnPath("jquery.mousewheel.min"),
 		"jquery.mousewheel": "//cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.11/jquery.mousewheel",
 	    "globalize": createWijmoCdnPath("globalize.min"),
@@ -37,7 +38,7 @@
 	    	
 	};
 	
-	var wijmoRefs = ["wijmo.wijgrid","wijmo.widget","wijmo.wijutil","wijmo.data","wijmo.wijpager","wijmo.wijinputdate","wijmo.wijinputnumber","wijmo.wijsuperpanel","wijmo.wijinputtext","wijmo.wijlist","wijmo.wijtouchutil","wijmo.wijinputcore","wijmo.wijstringinfo","wijmo.wijinputnumberformat","wijmo.wijinputdateformat","wijmo.wijcalendar","wijmo.wijtabs","wijmo.wijinputdateroller","wijmo.wijinpututility","wijmo.wijpopup","wijmo.wijcharex","wijmo.wijinputtextformat","wijmo.wijtooltip"];
+	var wijmoRefs = ["wijmo.wijgrid","wijmo.wijmenu","wijmo.widget","wijmo.wijutil","wijmo.data","wijmo.wijpager","wijmo.wijinputdate","wijmo.wijinputnumber","wijmo.wijsuperpanel","wijmo.wijinputtext","wijmo.wijlist","wijmo.wijtouchutil","wijmo.wijinputcore","wijmo.wijstringinfo","wijmo.wijinputnumberformat","wijmo.wijinputdateformat","wijmo.wijcalendar","wijmo.wijtabs","wijmo.wijinputdateroller","wijmo.wijinpututility","wijmo.wijpopup","wijmo.wijcharex","wijmo.wijinputtextformat","wijmo.wijtooltip"];
 	var addWijmoRef = createWijmoAmdRef.bind(paths);
 	for(var i=0;i<wijmoRefs.length;i++){
 		addWijmoRef(wijmoRefs[i]);
