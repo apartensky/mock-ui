@@ -24,6 +24,22 @@ define(['ng'], function(ng){
           new Person({ ID: "BONAP", Company: "Bon app", Name: "Pedro Afonso", Sales: 1900 })
         ];
 		
+		$scope.nodes1 = [
+         {
+             text: "Data node 1",
+             expanded: true,
+             selected: true,
+             nodes: [{
+                 text: 'Folder 1.1',
+                 nodes: [{
+                     text: 'File 1.1.1'
+                 }, {
+                     text: 'File 1.1.2'
+                 }]
+             }, {
+                 text: 'File 1.2'
+             }]
+         }];
 
      }];
      
