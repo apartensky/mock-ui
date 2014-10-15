@@ -1,15 +1,22 @@
 <style>
 .wijmo-wijtree{
-/* 	width: 100%; */
+ 	width: 100%; 
 }
 #splitter {
-   height: 100%; 
-  width: 100%;
+    height: 100%;  
+    width: 100%; 
 }
 
+html, body{
+	height: 100%;
+}
+
+#grid{
+ 	width: 100% 
+}
 </style>
 
-
+<!-- <button ng-click="debugClick()">debug</button> -->
 <wij-menu checkable="true">
     <li><a>menuitem1</a>
         <ul>
@@ -20,16 +27,17 @@
     <li><a>menuitem2</a></li>
     <li><a>menuitem3</a></li>
 </wij-menu>
-<div>
-<wij-splitter orientation="vertical" id="splitter">
+
+<wij-splitter orientation="vertical" id="splitter" load="splitterLoaded" splitterDistance="{{initSplitterOffset}}">
 	
 	<panel1 id="panel1">
-	 	<wij-tree style="width: 100%" id="wijtree" nodes="nodes1">
+	 	<wij-tree id="tree" nodes="nodes1" loaded="treeLoaded">
 	</panel1>
 	
 	<panel2 id="panel2">
-		<wij-grid id="gridWithKitQuantity" data="list"></wij-grid>	
+		<wij-grid id="grid" data="list" dataLoaded="gridLoaded" pageSize="8" allowPaging="true"></wij-grid>	
 	</panel2>
 	
-</wijsplitter>
-</div>
+</wij-splitter>
+
+<!-- <jqui-slider range="max" min="0" max="50" value="25" orientation="vertical"></jqui-slider> -->

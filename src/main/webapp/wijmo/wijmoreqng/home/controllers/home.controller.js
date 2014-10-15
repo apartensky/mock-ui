@@ -40,8 +40,57 @@ define(['ng'], function(ng){
                  text: 'File 1.2'
              }]
          }];
-
+		
+		$scope.initSplitterOffset=ng.element("body").width()*0.25;
+//		ng.element("#grid").resize();
+		
+		$scope.gridOptions={
+				pageSize: 4
+		}
+		
+		$scope.gridLoaded=function (e) {	        
+	        console.debug("gridLoaded - grid: ", ng.element("#grid"), ng.element("#grid").width());
+//	        ng.element("#grid").wijgrid().setSize(ng.element("#grid").width(). ng.element("#grid").height());
+	        console.debug("gridLoaded - splitter",ng.element("#splitter").width());
+	    }
+		$scope.splitterLoaded=function (e) {	        
+	        console.debug("splitterLoaded - grid: ", ng.element("#grid"), ng.element("#grid").width());
+//	        ng.element("#grid").wijgrid().setSize(ng.element("#grid").width(). ng.element("#grid").height());
+	        
+	        console.debug("splitterLoaded - tree",ng.element("#tree").width());
+//	        $scope.initSplitterOffset=ng.element("#tree").width();
+	        
+	        console.debug("splitterLoaded - splitter",ng.element("#splitter").width());
+	        ng.element("#splitter").wijsplitter('refresh', true, true);
+	        
+	        	        
+	    }		
+		$scope.treeLoaded=function(e){
+			console.debug("treeLoaded - grid: ", ng.element("#grid"), ng.element("#grid").width());
+//	        ng.element("#grid").wijgrid().setSize(ng.element("#grid").width(). ng.element("#grid").height());
+	        console.debug("treeLoaded - splitter",ng.element("#splitter").width());
+	        ng.element("#splitter").wijsplitter('refresh', true, true);
+	        
+	        console.debug("treeLoaded - tree",ng.element("#tree").width());
+	        
+	        $scope.initSplitterOffset=ng.element("#tree").width();
+	        
+		}
+		function log(name, clazz, id){
+			console.debug(name+":", "id:", id, clazz+"");
+		}
+		$scope.debugClick=function(){
+			console.debug("click - grid: ", ng.element("#grid"), ng.element("#grid").width());
+//	        ng.element("#grid").wijgrid().setSize(ng.element("#grid").width(). ng.element("#grid").height());
+	        console.debug("click - splitter",ng.element("#splitter"), ng.element("#splitter").width());
+	        ng.element("#splitter").wijsplitter('refresh', true, true);
+	        
+	        $.each($.ui, function(name, clazz) {
+	        	log(name, clazz, "jqui" + name);
+	        });
+		}
      }];
+	
      
 	
 });
