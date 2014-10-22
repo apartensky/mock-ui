@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+@media (min-width: 768px) {
+	.redIfDeficeGreater768 {
+		color: red;
+	}
+}
+
+@media (max-width: 767px) {
+	.redIfDeficeGreater768 {
+		color: blue;
+	}
+}
