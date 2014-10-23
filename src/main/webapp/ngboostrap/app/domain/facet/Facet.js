@@ -1,19 +1,16 @@
-define(["q"], function(q){
-	var Facet = function(spec){
+define([], function(){
+	var Facet = function(promise){
 		var self=this;
-		var _raw;		
-		//resolve
-		q.when(spec).then(function(){
-			_raw=spec;
+		
+		//unwrap
+		var _data;		
+		promise.then(function(raw){
+			_data=raw;
 		});
 		
 		//public
 		self.getType=function(){
-			return _raw.type;
-		};
-		//public
-		self.getType=function(){
-			return _raw.type;
+			return _data.type;
 		};
 	};
 	return Facet;

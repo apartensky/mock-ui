@@ -1,4 +1,4 @@
-define(["ng"], function(ng){
+define(["ng", "../controllers/annotationListCtrl"], function(ng){
 	var AnnotationListDirective = 
 		["AnnotationSetRepository",
 		 "DashboardRepository",
@@ -9,16 +9,9 @@ define(["ng"], function(ng){
 			restrict: "AE",
 //			template:"<div>Annotation List</div>",
 			templateUrl:"app/views/home/annotationList/directives/annotationListTable.tpl.html",
+			controller: "AnnotationListCtrl",
 			link: function(scope, attr, elems, ctrl){
-				console.debug("link AnnotationListDirective");
-				scope.vm={
-						all: AnnotationSetRepository.getAll(),
-						dashs: DashboardRepository.getAll(),
-						addDash: function(ann){
-							DashboardRepository.create(ann);
-							console.debug("DashboardRepository.getAll()", DashboardRepository.getAll());
-						}
-				};
+				
 			}
 		};
 	}];

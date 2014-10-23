@@ -1,22 +1,22 @@
-define(["q"], function(q){
+define([], function(){
 	"use strict";
-	var Dashboard = function(spec){
+	var Dashboard = function(promise){
 		var self=this;
 		
-		//resolve
-		var _raw;
-		console.debug("Before q", _raw);
-		spec.then(function(raw){
+		//unwrap
+		var _data={};		
+		console.debug("promise", promise);
+		promise.then(function(raw){
 			console.debug("Dashbaord raw", raw);
-			_raw=raw;			
+			_data=raw;			
 		});
 		
 		//public
 		self.getFacets=function(){
-			return _raw.facets;
+			return _data.facets;
 		};		
 		self.getName=function(){
-			return _raw.annotationSet.meta.getName();
+			return _data.annotationSet.meta.getName();
 		};		
 	};
 	return Dashboard;
