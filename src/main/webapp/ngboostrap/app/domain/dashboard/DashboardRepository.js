@@ -7,7 +7,9 @@ function(q, Dashboard, AnnotationSet){
 		var self=this;
 		//public		
 		self.create=function(annotationSet){
-			self.put(new Dashboard($q.when({"annotationSet": annotationSet, "facets": [1, 2, 3]})));
+			var dashboard=new Dashboard($q.when({"annotationSet": annotationSet, "facets": [1, 2, 3]})); 
+			self.put(dashboard);
+			return dashboard;
 		};
 		self.put=function(dashboard){
 			console.debug("put dashboard", dashboard);
@@ -19,12 +21,31 @@ function(q, Dashboard, AnnotationSet){
 //			}else{
 			
 //				dashboards[dashboard.name]=dashboard;
-			dashboards.push(dashboard);
-				
+			dashboards.push(dashboard);			
 //			}
 		};
 		self.get=function(name){
-			return dashboards[name];
+			var dashboard;
+			Arrays.some(dashboards, function(cur){
+				if(cur.name===name){
+					console.debug("found dashboard", cur);
+					dashboard=cur;
+					return true;
+				}
+			});
+			return dashboard;
+		};
+		self.exists=function(name){
+			console.debug("exists?", name);
+			for(var i=0;i<=dashbaords.length;i++){
+				console.debug("cur dashbaord", dashboard[i]);
+				if(dashbaord[i].name===name){
+					console.debug("exists?true", name);
+					return true;
+				}
+			}
+			console.debug("exists?false", name);
+			return false;
 		};
 		self.getAll=function(){
 //			console.debug("Object.keys(dashboards)", Object.keys(dashboards));

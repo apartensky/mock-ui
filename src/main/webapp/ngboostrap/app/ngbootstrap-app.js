@@ -1,11 +1,12 @@
-define(["ng", "nguirouter", "uibootstrap", 
-        "app/views/home/home.module",
-        "app/domain/domain.module"], function(ng){
+define(["ng", "nguirouter", "uibootstrap",        
+        "app/domain/domain.module",
+        "app/views/views.module"], function(ng){
 	return ng.module("ngbootstrap-app", ["ui.bootstrap", 
 	                                     "ui.router", 
 	                                     "mui.domain",
-	                                     "mui.mainmenu",
-	                                     "mui.home"])
+	                                     "mui.views",
+	                                     "mui.mainmenu"
+	                                     ])
 	.config(['$stateProvider', '$urlRouterProvider', 
 	function($stateProvider, $urlRouterProvider){
 		
@@ -15,9 +16,23 @@ define(["ng", "nguirouter", "uibootstrap",
 			url: "/home",
 			templateUrl: "app/views/home/templates/home.tpl.html"				
 		})
-		$stateProvider.state("dashboard", {
-			url: "/dashboard",
-			templateUrl: "app/views/dashboard/templates/dashboard.tpl.html"				
+		.state("dashboard", {
+			url: "/dashboard/:id",
+			templateUrl: "app/views/dashboard/templates/dashboard.tpl.html",
+			controller: "DashboardCtrl",
+			resolve: {
+				DashboardRepository: "DashboardRepository",
+				"dashboard": function($stateParams, DashboardRepository){
+					console.debug("resolving....", DashboardRepository);
+//					var dashboard = DashboardRepository.exists($stateParams.id);
+//					console.debug("exists", $stateParams.id, dashboard);
+//					if(!dashboard){
+						dashboard = DashboardRepository.create($stateParams.id);
+//					}
+					console.debug("resolve", dashboard);
+					return dashboard;
+				}
+			}
 		})
 		.state("about", {
 			url: "/about",

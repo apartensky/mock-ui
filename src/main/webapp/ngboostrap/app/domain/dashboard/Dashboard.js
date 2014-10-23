@@ -4,7 +4,7 @@ define([], function(){
 		var self=this;
 		
 		//unwrap
-		var _data={};		
+		var _data;		
 		console.debug("promise", promise);
 		promise.then(function(raw){
 			console.debug("Dashbaord raw", raw);

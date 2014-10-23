@@ -4,7 +4,7 @@ define([], function(){
 		$scope.vm={
 				all: AnnotationSetRepository.getAll(),
 				dashs: DashboardRepository.getAll(),
-				addDash: function(ann){
+				newDashboard: function(ann){
 					DashboardRepository.create(ann);
 					console.debug("DashboardRepository.getAll()", DashboardRepository.getAll());
 				}
