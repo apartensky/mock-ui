@@ -15,6 +15,10 @@ define(["ng", "nguirouter", "uibootstrap",
 			url: "/home",
 			templateUrl: "app/views/home/templates/home.tpl.html"				
 		})
+		$stateProvider.state("dashboard", {
+			url: "/dashboard",
+			templateUrl: "app/views/dashboard/templates/dashboard.tpl.html"				
+		})
 		.state("about", {
 			url: "/about",
 			templateUrl: "app/views/about/templates/about.tpl.html"

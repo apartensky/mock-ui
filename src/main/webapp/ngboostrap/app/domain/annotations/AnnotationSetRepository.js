@@ -1,16 +1,18 @@
-define(["ng", "./AnnotationSetMeta"], function(ng, AnnotationSetMeta){
+define(["ng", "./AnnotationSet"], function(ng, AnnotationSet){
 	 return function($q){
 		var that = {};
 		
 		//private
-		var metas=[];
+		var annotations=[];
 		function _init(){			
 			for(var i=0;i<10;i++){
-				metas.push(AnnotationSetMeta(
-					$q.when({
-						name: "name"+i,
-						description: "just a '"+i+"'",
-						numberOfSamples: i*10
+				annotations.push(new AnnotationSet(
+					$q.when({meta: {
+								name: "name"+i,
+								description: "just a '"+i+"'",
+								numberOfSamples: i*10
+							},
+							data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 						})
 					));
 			}
@@ -18,8 +20,7 @@ define(["ng", "./AnnotationSetMeta"], function(ng, AnnotationSetMeta){
 		
 		//public
 		that.getAll=function(){
-			console.debug("metas", metas);
-			return metas;
+			return annotations;
 		};
 		
 		//construct		
