@@ -37,9 +37,9 @@ function(q, Dashboard, AnnotationSet){
 		};
 		self.exists=function(name){
 			console.debug("exists?", name);
-			for(var i=0;i<=dashbaords.length;i++){
-				console.debug("cur dashbaord", dashboard[i]);
-				if(dashbaord[i].name===name){
+			for(var i=0;i<dashboards.length;i++){
+				console.debug("cur dashbaord", dashboards[i]);
+				if(dashboards[i].name===name){
 					console.debug("exists?true", name);
 					return true;
 				}

@@ -1,6 +1,7 @@
 define(["ng", "nguirouter", "uibootstrap",        
         "app/domain/domain.module",
         "app/views/views.module"], function(ng){
+	"use strict";
 	return ng.module("ngbootstrap-app", ["ui.bootstrap", 
 	                                     "ui.router", 
 	                                     "mui.domain",
@@ -17,21 +18,21 @@ define(["ng", "nguirouter", "uibootstrap",
 			templateUrl: "app/views/home/templates/home.tpl.html"				
 		})
 		.state("dashboard", {
-			url: "/dashboard/:id",
+			url: "/dashboard/:annotationSet",
 			templateUrl: "app/views/dashboard/templates/dashboard.tpl.html",
 			controller: "DashboardCtrl",
-			resolve: {
+			resolve: {				
 				DashboardRepository: "DashboardRepository",
-				"dashboard": function($stateParams, DashboardRepository){
-					console.debug("resolving....", DashboardRepository);
-//					var dashboard = DashboardRepository.exists($stateParams.id);
-//					console.debug("exists", $stateParams.id, dashboard);
-//					if(!dashboard){
-						dashboard = DashboardRepository.create($stateParams.id);
-//					}
+				dashboard: ["$stateParams", "DashboardRepository", function($stateParams, DashboardRepository){
+					console.debug("resolving....", $stateParams);
+					var dashboard = DashboardRepository.exists($stateParams.annotationSet.meta.getName());
+					console.debug("exists", $stateParams.id, dashboard);
+					if(!dashboard){
+						dashboard = DashboardRepository.create($stateParams.annotationSet);
+					}
 					console.debug("resolve", dashboard);
 					return dashboard;
-				}
+				}]
 			}
 		})
 		.state("about", {

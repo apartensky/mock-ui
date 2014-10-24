@@ -7,7 +7,7 @@
 		<th>number of samples</th>
   </th>
 	<tr ng-repeat="ann in vm.all">
-	<td ng-click="vm.addDash(ann)">{{ann.meta.getName()}}<td>
+	<td ng-click="vm.gotoDashboard(ann)">{{ann.meta.getName()}}<td>
 		<td>{{ann.meta.getDescription()}}</td>
 		<td>{{ann.meta.getNumberOfSamples()}}</td>
   </tr>
