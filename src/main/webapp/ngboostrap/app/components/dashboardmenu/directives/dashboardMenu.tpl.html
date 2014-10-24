@@ -1,0 +1,8 @@
+<li ui-sref-active="active" class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dashboards <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li ng-repeat="dashboard in vm.dashboards"><a ui-sref="dashboard({spec: {dashboardName: dashboard.getName()}})">{{dashboard.getName()}}</a></li>         
+<!-- 						<li ng-repeat="dashboard in vm.dashboards">{{$index}}</li> -->
+<!-- 				<li>aaaaaaaaaaa</li> -->
+       </ul>
+</li>

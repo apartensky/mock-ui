@@ -7,7 +7,7 @@ define([], function(){
 				gotoDashboard: function(ann){
 //					DashboardRepository.create(ann);
 //					console.debug("DashboardRepository.getAll()", DashboardRepository.getAll());
-					$state.go("dashboard", {annotationSet: ann}, {location: false});
+					$state.go("dashboard", {spec:{annotationSet: ann}}, {location: true});
 				}
 		};		
 	};

@@ -39,9 +39,9 @@ function(q, Dashboard, AnnotationSet){
 			console.debug("exists?", name);
 			for(var i=0;i<dashboards.length;i++){
 				console.debug("cur dashbaord", dashboards[i]);
-				if(dashboards[i].name===name){
+				if(dashboards[i].getName()===name){
 					console.debug("exists?true", name);
-					return true;
+					return dashboards[i];
 				}
 			}
 			console.debug("exists?false", name);
