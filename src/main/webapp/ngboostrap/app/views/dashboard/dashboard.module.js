@@ -1,5 +1,22 @@
-define(["ng", "./controllers/DashboardCtrl", "app/domain/dashboard/dashboard.module", "nguirouter"], function(ng, DashboardCtrl){
+define(["ng", "./templates/DashboardVM", "./resolvers/DashboardResolver", "app/domain/dashboard/dashboard.module", "nguirouter"], 
+function(ng, DashboardVM, DashboardResolver){
 	var module = ng.module("mui.views.dashboard", ["ui.router", "mui.dashboard"]);
-	module.controller("DashboardCtrl", ["$scope", "$stateParams", "dashboard", DashboardCtrl]);
+	module.controller("DashboardVM", ["$scope", "$stateParams", "dashboard", DashboardVM]);
+	module.config(['$stateProvider', function($stateProvider){
+		
+		$stateProvider.state("dashboard", {
+			url: "/dashboard/:spec",
+			templateUrl: "app/views/dashboard/templates/dashboard.tpl.html",
+			controller: "DashboardVM",
+			controllerAs: "DashboardVM",
+			resolve: {				
+				dashboard: DashboardResolver
+	//			dashboard: ["DashboardResolver", function(DashboardResolver){
+	//				return DashboardResolver.resolve();
+	//			}]
+			}
+		});
+		
+	}]);
 	return module;
 });
