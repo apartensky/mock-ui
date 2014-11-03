@@ -1,13 +1,18 @@
-define(["ng", "nguirouter", "uibootstrap",        
+define(["ng",
+        "app/resolvers/DashboardResolver",
+        "nguirouter", "uibootstrap",        
         "app/domain/domain.module",
         "app/views/views.module",
-        "app/components/components.module"], function(ng){
+        "app/components/components.module",
+        "app/resolvers/resolvers.module"
+        ], function(ng, DashboardResolver){
 	"use strict";
 	return ng.module("ngbootstrap-app", ["ui.bootstrap", 
 	                                     "ui.router", 
 	                                     "mui.domain",
 	                                     "mui.views",
-	                                     "mui.components"
+	                                     "mui.components",
+	                                     "mui.resolvers"
 	                                     ])
 	.config(['$stateProvider', '$urlRouterProvider', 
 	function($stateProvider, $urlRouterProvider){
@@ -23,27 +28,10 @@ define(["ng", "nguirouter", "uibootstrap",
 			templateUrl: "app/views/dashboard/templates/dashboard.tpl.html",
 			controller: "DashboardCtrl",
 			resolve: {				
-				DashboardRepository: "DashboardRepository",
-				dashboard: ["$stateParams", "DashboardRepository", function($stateParams, DashboardRepository){
-					console.debug("resolving....", $stateParams);
-					var dashboard;
-					if($stateParams.spec.annotationSet){
-						dashboard = DashboardRepository.exists($stateParams.spec.annotationSet.meta.getName());
-						if(!dashboard){
-							dashboard = DashboardRepository.create($stateParams.spec.annotationSet);
-						}
-					}else if($stateParams.spec.dashboardName){
-						dashboard = DashboardRepository.exists($stateParams.spec.dashboardName);
-					}
-					
-					if(!dashboard){
-						console.error("Cannot resolve dashboard from spec", spec);
-					}
-						
-					console.debug("exists", $stateParams, dashboard);									
-					console.debug("resolve", dashboard);
-					return dashboard;
-				}]
+				dashboard: DashboardResolver
+//				dashboard: ["DashboardResolver", function(DashboardResolver){
+//					return DashboardResolver.resolve();
+//				}]
 			}
 		})
 		.state("about", {
