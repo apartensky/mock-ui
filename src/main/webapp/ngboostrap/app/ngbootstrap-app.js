@@ -28,5 +28,8 @@ define(["ng",
 			url: "/contact",
 			templateUrl: "app/views/contact/templates/contact.tpl.html"
 		});
-	}]);
+	}]).run(function ($rootScope, $state, $stateParams) {
+	    $rootScope.$state = $state;
+	    $rootScope.$stateParams = $stateParams;
+	});
 });
