@@ -1,6 +1,11 @@
 define(["q", "./AnnotationSetMeta"], function($q, AnnotationSetMeta){
 	function AnnotationSet(promise){
 		var self=this;
+		//public properties
+		self.meta=undefined;
+		self.name=undefined;
+		self.data=undefined;
+		
 		//resolve
 		var _raw={};		
 		promise.then(function(raw){
@@ -11,7 +16,9 @@ define(["q", "./AnnotationSetMeta"], function($q, AnnotationSetMeta){
 				self.meta=raw.meta;
 			}
 			self.data=raw.data;
+			self.name=self.meta.getName;
 		});		
+		
 	};
 	return AnnotationSet;
 });

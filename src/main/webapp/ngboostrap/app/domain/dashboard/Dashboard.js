@@ -16,7 +16,7 @@ define([], function(){
 			return _data.facets;
 		};		
 		self.getName=function(){
-			return _data.annotationSet.meta.getName();
+			return _data.annotationSet.name();
 		};
 		self.getFacetCount=function(){
 			return _data.facets.length;

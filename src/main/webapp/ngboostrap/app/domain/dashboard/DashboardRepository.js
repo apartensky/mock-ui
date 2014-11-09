@@ -1,12 +1,14 @@
-define(["q", "./Dashboard", "../annotations/AnnotationSet"], 
-function(q, Dashboard, AnnotationSet){
-	var DashboardRepository = function($q){
+define(["q", "./Dashboard", "../annotations/AnnotationSet", "../annotations/AnnotationSetRepository"], 
+function(q, Dashboard, AnnotationSet, AnnotationSetRepository){
+	var DashboardRepository = function($q, AnnotationSetRepository){
 		//private
 		var dashboards = [];
 		
 		var self=this;
 		//public		
-		self.create=function(annotationSet){
+		self.create=function(dashboardName){
+			var annotationSet = AnnotationSetRepository.get(dashboardName);
+			console.debug("Dashbaord.create->annotationSet", annotationSet );
 			var dashboard=new Dashboard($q.when({"annotationSet": annotationSet, "facets": [1, 2, 3]})); 
 			self.put(dashboard);
 			return dashboard;

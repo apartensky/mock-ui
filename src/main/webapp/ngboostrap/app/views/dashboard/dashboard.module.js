@@ -5,7 +5,7 @@ function(ng, DashboardVM, DashboardResolver){
 	module.config(['$stateProvider', function($stateProvider){
 		
 		$stateProvider.state("dashboard", {
-			url: "/dashboard/:spec",
+			url: "/dashboard/:id",
 			templateUrl: "app/views/dashboard/templates/dashboard.tpl.html",
 			controller: "DashboardVM",
 			controllerAs: "DashboardVM",

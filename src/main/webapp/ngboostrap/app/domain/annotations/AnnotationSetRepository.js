@@ -4,7 +4,8 @@ define(["ng", "./AnnotationSet"], function(ng, AnnotationSet){
 		
 		//private
 		var annotations=[];
-		function _init(){			
+		function _init(){	
+			
 			for(var i=0;i<10;i++){
 				annotations.push(new AnnotationSet(
 					$q.when({meta: {
@@ -16,11 +17,18 @@ define(["ng", "./AnnotationSet"], function(ng, AnnotationSet){
 						})
 					));
 			}
+			console.debug("AnnotationSetRepository.init", annotations.length);
 		}
 		
 		//public
 		that.getAll=function(){
 			return annotations;
+		};		
+		that.get=function(name){
+			var results = annotations.filter(function(ann) {
+				  return ann.name() === name;
+			});			
+			return results? results[0] : undefined; // or null
 		};
 		
 		//construct		
