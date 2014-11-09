@@ -1,8 +1,6 @@
-<li ui-sref-active="active" class="dropdown">
+<li ng-class="{active: $state.includes('dashboard')}" class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dashboards <b class="caret"></b></a>
        <ul class="dropdown-menu">
-         <li ng-repeat="dashboard in vm.dashboards"><a ui-sref="dashboard({spec: {dashboardName: dashboard.getName()}})">{{dashboard.getName()}}</a></li>         
-<!-- 						<li ng-repeat="dashboard in vm.dashboards">{{$index}}</li> -->
-<!-- 				<li>aaaaaaaaaaa</li> -->
+         <li ui-sref-active="active" ng-repeat="dashboard in vm.dashboards"><a ui-sref="dashboard({id: dashboard.getName()})">{{dashboard.getName()}}</a></li>         
        </ul>
 </li>

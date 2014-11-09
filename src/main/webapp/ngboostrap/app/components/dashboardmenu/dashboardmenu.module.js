@@ -6,7 +6,7 @@ function(ng, DashboardMenuCtrl, DashboardMenuDirective){
 	module.constant(modConfigName, {
 		path: "app/components/dashboardmenu"
 	})
-	.controller("DashboardMenuCtrl", ["$scope", "DashboardRepository", DashboardMenuCtrl])
+	.controller("DashboardMenuCtrl", ["$scope", "$state", "DashboardRepository", DashboardMenuCtrl])
 	.directive("dashboardMenu", [modConfigName, DashboardMenuDirective]);
 	return module;
 });
