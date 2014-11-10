@@ -19,11 +19,12 @@ function(Dashboard, AnnotationSet, AnnotationSetRepository){
 		
 		//public		
 		self.create=function(dashboardName){
-			var annotationSet = AnnotationSetRepository.get(dashboardName);
-			console.debug("Dashbaord.create->annotationSet", annotationSet );
-			var dashboard=new Dashboard($q.when({"annotationSet": annotationSet, "facets": [1, 2, 3]})); 
-			self.put(dashboard);
-			return makeapromise(dashboard);				        
+			return AnnotationSetRepository.get(dashboardName).then(function(annotationSet){
+				console.debug("Dashbaord.create->annotationSet", annotationSet );
+				var dashboard=new Dashboard($q.when({"annotationSet": annotationSet, "facets": [1, 2, 3]})); 
+				self.put(dashboard);
+				return dashboard;
+			});
 		};
 //		self.create = $timeout(create, 1000);
 				
