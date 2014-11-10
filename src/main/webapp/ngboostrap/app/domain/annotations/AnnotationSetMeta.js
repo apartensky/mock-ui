@@ -1,14 +1,14 @@
 define([], function(){
 	"use strict";
-	var AnnotationSetMeta = function(promise){
+	var AnnotationSetMeta = function(raw){
 		
 		//init
 		var that={};
 		var _data = {};	
 		
-		promise.then(function(data){
-			_data=data;
-		});
+		
+		_data=raw;
+		
 		
 		//public
 		that.getName=function(){

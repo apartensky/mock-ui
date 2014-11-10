@@ -1,23 +1,12 @@
 define(["q", "./AnnotationSetMeta"], function($q, AnnotationSetMeta){
-	function AnnotationSet(promise){
+	function AnnotationSet(raw){
 		var self=this;
-		//public properties
-		self.meta=undefined;
-		self.name=undefined;
-		self.data=undefined;
+		var _raw=raw;		
 		
-		//resolve
-		var _raw={};		
-		promise.then(function(raw){
-			_raw=raw;
-			if($q){
-				self.meta=AnnotationSetMeta($q.when(raw.meta));
-			}else{
-				self.meta=raw.meta;
-			}
-			self.data=raw.data;
-			self.name=self.meta.getName;
-		});		
+		//public properties
+		self.meta=AnnotationSetMeta(raw.meta);			
+		self.data=raw.data;
+		self.name=self.meta.getName;
 		
 	};
 	return AnnotationSet;
