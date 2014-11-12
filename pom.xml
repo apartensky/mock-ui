@@ -12,6 +12,8 @@
 		<jetty.port>8080</jetty.port>
 		<jetty.stop.port>18080</jetty.stop.port>
 		<jetty.version>8.1.13.v20130916</jetty.version>
+		<jasmine-maven-plugin.version>1.3.1.5</jasmine-maven-plugin.version>
+		<org.slf4j.version>1.7.2</org.slf4j.version>
 	</properties>
 
 	<dependencies>
@@ -46,6 +48,69 @@
 					
 				</configuration>
 			</plugin>
+			
+			
+			 <plugin>
+          <groupId>com.github.searls</groupId>
+          <artifactId>jasmine-maven-plugin</artifactId>
+          <version>${jasmine-maven-plugin.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>net.sourceforge.htmlunit</groupId>
+              <artifactId>htmlunit</artifactId>
+              <version>2.14</version>
+            </dependency>
+            <dependency>
+              <groupId>org.slf4j</groupId>
+              <artifactId>slf4j-api</artifactId>
+              <version>${org.slf4j.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.slf4j</groupId>
+              <artifactId>slf4j-nop</artifactId>
+              <version>${org.slf4j.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.slf4j</groupId>
+              <artifactId>jul-to-slf4j</artifactId>
+              <version>${org.slf4j.version}</version>
+            </dependency>
+          </dependencies>
+          <executions>
+            <execution>
+              <goals>
+                <goal>test</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <specRunnerTemplate>REQUIRE_JS</specRunnerTemplate>
+            <jsSrcDir>${project.basedir}/src/main/webapp/</jsSrcDir>
+            <sourceIncludes>
+              <include>**/*.js</include>
+            </sourceIncludes>
+      			<sourceExcludes>
+      				<exclude>**/vendor/*.js</exclude>
+      			</sourceExcludes>
+            <jsTestSrcDir>${project.basedir}/src/test/javascript/</jsTestSrcDir>
+            <specIncludes>
+              <include>**/*.js</include>
+            </specIncludes>
+            <preloadSources>
+              <source>ngboostrap/vendor/requirejs/require.js</source>
+            </preloadSources>
+            <keepServerAlive>true</keepServerAlive>
+            <customRunnerConfiguration>${project.basedir}/src/test/resources/require.config.txt</customRunnerConfiguration>
+<!--             <customRunnerTemplate>${project.basedir}/src/test/resources/RequireJsAngularBootstrappedSpecRunner.htmltemplate</customRunnerTemplate> -->				
+						<additionalContexts>
+						  <context>
+						    <contextRoot>src/vendor</contextRoot>
+						    <directory>${project.basedir}/src/main/webapp/ngboostrap/vendor/</directory>
+						  </context>
+						</additionalContexts>
+          </configuration>
+        </plugin>
+			
 		</plugins>
 
 	</build>

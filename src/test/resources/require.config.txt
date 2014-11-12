@@ -1,0 +1,29 @@
+//requirejs.config({		
+		paths: {
+			jquery : ["//code.jquery.com/jquery-2.1.1", "vendor/jquery/jquery-2.1.1"],
+			ng : ["//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular" , "vendor/angularjs/angular"],
+			uibootstrap: ["vendor/uibootstrap/ui-bootstrap-0.11.2.custom"],
+			nguirouter :  ["//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router"],
+			appjs: ["app/ngbootstrap-app"],
+			q: ["vendor/q/q.hack"],
+			underscore: ["vendor/underscore/underscore"]
+		},		
+		shim: {
+			ng: {
+				deps: ["jquery"],
+				exports: "angular"
+			},
+			uibootstrap: {
+				deps: ["ng"]
+			},
+			nguirouter: {
+				deps: ["ng"]
+			},
+			q: {
+				deps: ["ng"],
+				exports: "q"
+			}
+		}
+		
+//	});
+	
