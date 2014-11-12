@@ -8,7 +8,8 @@
 			uibootstrap: ["vendor/uibootstrap/ui-bootstrap-0.11.2.custom"],
 			nguirouter :  ["//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router"],
 			appjs: ["app/ngbootstrap-app"],
-			q: ["vendor/q/q.hack"]
+			q: ["vendor/q/q.hack"],
+			underscore: ["vendor/underscore/underscore"]
 		},
 		shim: {
 			ng: {
