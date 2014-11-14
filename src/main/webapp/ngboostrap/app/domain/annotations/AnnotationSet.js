@@ -4,9 +4,9 @@ define(["q", "./AnnotationSetMeta"], function($q, AnnotationSetMeta){
 		var _raw=raw;		
 		
 		//public properties
-		self.meta=AnnotationSetMeta(raw.meta);			
+		self.meta=new AnnotationSetMeta(raw.meta);			
 		self.data=raw.data;
-		self.name=self.meta.getName;
+		self.name=self.meta.name;
 		
 	};
 	return AnnotationSet;

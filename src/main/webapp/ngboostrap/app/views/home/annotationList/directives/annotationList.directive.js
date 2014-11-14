@@ -8,7 +8,7 @@ define(["ng", "../controllers/annotationListCtrl"], function(ng){
 			scope: {},
 			restrict: "AE",
 //			template:"<div>Annotation List</div>",
-			templateUrl:"app/views/home/annotationList/directives/annotationListTable.tpl.html",
+			templateUrl:"app/views/home/annotationList/directives/annotationListTablePlainJson.tpl.html",
 			controller: "AnnotationListCtrl",
 			link: function(scope, attr, elems, ctrl){
 				

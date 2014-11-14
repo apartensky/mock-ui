@@ -20,8 +20,8 @@ function(Dashboard, AnnotationSet, AnnotationSetRepository){
 		//public		
 		self.create=function(dashboardName){
 			return AnnotationSetRepository.get(dashboardName).then(function(annotationSet){
-				console.debug("Dashbaord.create->annotationSet", annotationSet );
-				var dashboard=new Dashboard($q.when({"annotationSet": annotationSet, "facets": [1, 2, 3]})); 
+				console.debug("Dashbaord.create->annotationSet", dashboardName, annotationSet );
+				var dashboard=new Dashboard({"annotationSet": annotationSet, "facets": [1, 2, 3]}); 
 				self.put(dashboard);
 				return dashboard;
 			});

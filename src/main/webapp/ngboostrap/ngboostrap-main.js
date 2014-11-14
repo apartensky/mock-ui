@@ -9,12 +9,17 @@
 			nguirouter :  ["//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router"],
 			appjs: ["app/ngbootstrap-app"],
 			q: ["vendor/q/q.hack"],
+			ngmocks: ["vendor/angularjs/angular-mocks"],
 			underscore: ["vendor/underscore/underscore"]
+			
 		},
 		shim: {
 			ng: {
 				deps: ["jquery"],
 				exports: "angular"
+			},
+			ngmocks: {
+				deps: ["ng"]
 			},
 			uibootstrap: {
 				deps: ["ng"]
@@ -26,6 +31,7 @@
 				deps: ["ng"],
 				exports: "q"
 			}
+			
 		}
 	});
 	

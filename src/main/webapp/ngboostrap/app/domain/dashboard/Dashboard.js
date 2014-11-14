@@ -1,22 +1,17 @@
 define([], function(){
 	"use strict";
-	var Dashboard = function(promise){
+	var Dashboard = function(raw){
 		var self=this;
 		
 		//unwrap
-		var _data;		
-		console.debug("promise", promise);
-		promise.then(function(raw){
-			console.debug("Dashbaord raw", raw);
-			_data=raw;			
-		});
+		var _data=raw;					
 		
 		//public
 		self.getFacets=function(){
 			return _data.facets;
 		};		
 		self.getName=function(){
-			return _data.annotationSet.name();
+			return _data.annotationSet.meta.name;
 		};
 		self.getFacetCount=function(){
 			return _data.facets.length;

@@ -1,5 +1,5 @@
 define(["ng", "./AnnotationSet"], function(ng, AnnotationSet){
-	 return function($q){
+	 return function($q, $timeout, $http){
 		var that = {};
 		
 		//private
@@ -16,34 +16,43 @@ define(["ng", "./AnnotationSet"], function(ng, AnnotationSet){
 		
 		
 		//private
+		var initPromise;
 		var annotations=[];
 		function _init(){	
-			
-			for(var i=0;i<10;i++){
-				annotations.push(new AnnotationSet(
-						{meta: {
-								name: "name"+i,
-								description: "just a '"+i+"'",
-								numberOfSamples: i*10
-							},
-							data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-						}
-					));
-			}
-			console.debug("AnnotationSetRepository.init", annotations.length);
+//			initPromise=$timeout(function(){
+//				console.debug("timoute!!!");
+//				for(var i=0;i<10;i++){
+//					annotations.push(new AnnotationSet(
+//							{meta: {
+//									name: "name"+i,
+//									description: "just a '"+i+"'",
+//									numberOfSamples: i*10
+//								},
+//								data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+//							}
+//						));
+//				}
+//				console.debug("AnnotationSetRepository.init", annotations.length);
+//			}, 1000);
+			initPromise=$http.get("api/annotations").success(function(data, status, headers, config){
+				console.debug("$http completed", data, status, headers, config);
+				annotations=data;
+			});
 		}
 		
 		//public
 		that.getAll=function(){			
-			return $q.when(annotations);
+			return initPromise.then(function(){
+				return annotations;
+			});
 		};		
 		that.get=function(name){
-			var results = annotations.filter(function(ann) {
-				  return ann.name() === name;
-			});			
-			
-			
-			return results? makeapromise(results[0]) : breakapromise(name); // or null
+			return initPromise.then(function(){
+				var results = annotations.filter(function(ann) {
+					  return ann.meta.name === name;
+				});			
+				return results? makeapromise(results[0]) : breakapromise(name); // or null
+			});
 		};
 		
 		//construct		
