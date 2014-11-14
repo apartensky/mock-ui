@@ -8,6 +8,5 @@ define([], function(){
 			templateUrl: modConfig.path+"/directives/dashboardMenu.tpl.html"
 		};
 	};
-	console.debug("DashboardMenuDirective", DashboardMenuDirective);
 	return DashboardMenuDirective;
 });

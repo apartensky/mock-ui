@@ -107,6 +107,10 @@
 						    <contextRoot>src/vendor</contextRoot>
 						    <directory>${project.basedir}/src/main/webapp/ngboostrap/vendor/</directory>
 						  </context>
+						  <context>
+						    <contextRoot>src/app</contextRoot>
+						    <directory>${project.basedir}/src/main/webapp/ngboostrap/app/</directory>
+						  </context>
 						</additionalContexts>
           </configuration>
         </plugin>
