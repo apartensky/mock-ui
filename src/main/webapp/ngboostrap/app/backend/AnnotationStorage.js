@@ -21,8 +21,8 @@ define(["./ServerStorageMixin"], function(ServerStorageMixin){
 				data: data
 		};	
 		ServerStorageMixin.call(AnnotationStorage, 
-				function(){return this.meta.name}, 
-				function(id){this.meta.name=id});
+				function(){return this.meta.name;}, 
+				function(id){this.meta.name=id;});
 		return AnnotationStorage;
-	}
+	};
 });
