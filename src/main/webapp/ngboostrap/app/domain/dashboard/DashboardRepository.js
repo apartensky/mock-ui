@@ -1,9 +1,8 @@
 define(["./Dashboard", "../annotations/AnnotationSet", "../annotations/AnnotationSetRepository"], 
 function(Dashboard, AnnotationSet, AnnotationSetRepository){
-	var DashboardRepository = function($q, $timeout, AnnotationSetRepository){
+	var DashboardRepository = function($q, $timeout, $http, AnnotationSetRepository){
 		//private
-		var dashboards = [];
-		
+		var dashboards = [];		
 		var self=this;
 		//private
 		var makeapromise=function(value){
@@ -22,7 +21,7 @@ function(Dashboard, AnnotationSet, AnnotationSetRepository){
 			return AnnotationSetRepository.get(dashboardName).then(function(annotationSet){
 				console.debug("Dashbaord.create->annotationSet", dashboardName, annotationSet );
 				var dashboard=new Dashboard({"annotationSet": annotationSet, "facets": [1, 2, 3]}); 
-				self.put(dashboard);
+				self.put(dashboard.toJson());
 				return dashboard;
 			});
 		};
@@ -40,23 +39,36 @@ function(Dashboard, AnnotationSet, AnnotationSetRepository){
 			return makeapromise(dashbaord);
 		};
 		self.exists=function(name){
-			console.debug("exists?", name);
-			for(var i=0;i<dashboards.length;i++){
-				console.debug("cur dashbaord", dashboards[i]);
-				if(dashboards[i].getName()===name){
-					console.debug("exists?true", name);
-					return makeapromise(dashboards[i]);					
+			try{
+				console.debug("exists?", name);
+				for(var i=0;i<dashboards.length;i++){
+					console.debug("cur dashbaord", dashboards[i]);
+					if(dashboards[i].getName()===name){
+						console.debug("exists?true", name);
+						return makeapromise(dashboards[i]);					
+					}
 				}
+				console.debug("exists?false", name);
+				return breakapromise(name);
+			}catch(e){
+				console.error("Unbale to check existance of "+name,"; error:",e)
+				return breakapromise(e.message)
 			}
-			console.debug("exists?false", name);
-			return breakapromise(name);
 		};
 		self.getAll=function(){
 //			console.debug("Object.keys(dashboards)", Object.keys(dashboards));
 //			 return Object.keys(dashboards).map(function (key) {
 //				    return dashboards[key];
-//				});
-			return makeapromise(dashboards);
+//				});			
+//			return makeapromise(dashboards);
+			return $http.get("api/dashboard").success(function(data, status, headers, config){
+				dashboards.splice(0, dashboards.length)
+				data.map(function(dashboard){
+					dashboards.push(new Dashboard(dashboard));
+				});				
+			}).then(function(){ 
+				return dashboards;
+			});
 		};
 		
 		self.put=function(dashboard){
@@ -69,7 +81,10 @@ function(Dashboard, AnnotationSet, AnnotationSetRepository){
 //			}else{
 			
 //				dashboards[dashboard.name]=dashboard;
-			dashboards.push(dashboard);			
+//			dashboards.push(dashboard);
+			$http.put("api/dashboard", dashboard).success(function(data, status, headers, config){
+				dashboards.push(new Dashboard(data));
+			});
 //			}	
 		};		
 	};

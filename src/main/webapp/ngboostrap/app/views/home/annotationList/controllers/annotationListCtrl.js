@@ -13,9 +13,9 @@ define([], function(){
 		AnnotationSetRepository.getAll().then(function(annotationSets){
 			$scope.vm.all=annotationSets;
 		});
-		DashboardRepository.getAll().then(function(dashboards){
-			$scope.vm.dashs=dashboards;
-		});
+//		DashboardRepository.getAll().then(function(dashboards){
+//			$scope.vm.dashs=dashboards;
+//		});
 		 
 		
 	};

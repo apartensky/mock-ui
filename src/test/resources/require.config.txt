@@ -6,7 +6,8 @@
 			nguirouter :  ["//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router"],
 			appjs: ["app/ngbootstrap-app"],
 			q: ["vendor/q/q.hack"],
-			underscore: ["vendor/underscore/underscore"]
+			underscore: ["vendor/underscore/underscore"],
+			lodash: ["vendor/lodash/lodash"]
 		},		
 		shim: {
 			ng: {

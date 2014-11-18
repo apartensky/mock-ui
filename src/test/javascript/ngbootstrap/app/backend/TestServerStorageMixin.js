@@ -18,11 +18,13 @@ define(["ng", "underscore", "app/backend/ServerStorageMixin"], function(ng, _, S
 		};
 		
 		var SomeServerStorage;
+		function SomeServerStorageClass(){
+			this.data=testData();
+		};
+		ServerStorageMixin.call(SomeServerStorageClass.prototype);
+		
 		beforeEach(function(){
-			SomeServerStorage={
-				data: testData()
-			};
-			ServerStorageMixin.call(SomeServerStorage);
+			SomeServerStorage=new SomeServerStorageClass(); 			
 		});
 		
 		it("should find the element by id", function(){
@@ -42,8 +44,8 @@ define(["ng", "underscore", "app/backend/ServerStorageMixin"], function(ng, _, S
 		
 		it("should add object to the array", function(){
 			var added={id: 4, description: '3+', note: 'added'};
-			expect(SomeServerStorage.put(added)).toBe(added);
-			expect(SomeServerStorage.findById(added.id)).toBe(added);
+			expect(SomeServerStorage.put(added)).toEqual(added);
+			expect(SomeServerStorage.findById(added.id)).toEqual(added);
 		});
 		
 		it("should return the maximum id+1", function(){
@@ -81,7 +83,7 @@ define(["ng", "underscore", "app/backend/ServerStorageMixin"], function(ng, _, S
 		
 		it("should delete object", function(){
 			var toBeDeleted = SomeServerStorage.findById(2); 
-			expect(SomeServerStorage.deleteById(2)).toBe(toBeDeleted);
+			expect(SomeServerStorage.deleteById(2)).toEqual(toBeDeleted);
 		});
 		
 		it("should try to delete a nonexistant object, returns undefined", function(){

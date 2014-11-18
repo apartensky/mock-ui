@@ -15,7 +15,10 @@ define([], function(){
 		};
 		self.getFacetCount=function(){
 			return _data.facets.length;
-		};		
+		};
+		self.toJson=function(){
+			return _data;
+		};
 	};
 	return Dashboard;
 });

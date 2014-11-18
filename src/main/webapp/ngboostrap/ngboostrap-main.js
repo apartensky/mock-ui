@@ -10,8 +10,8 @@
 			appjs: ["app/ngbootstrap-app"],
 			q: ["vendor/q/q.hack"],
 			ngmocks: ["vendor/angularjs/angular-mocks"],
-			underscore: ["vendor/underscore/underscore"]
-			
+			underscore: ["vendor/underscore/underscore"],
+			lodash: ["vendor/lodash/lodash"]
 		},
 		shim: {
 			ng: {

@@ -32,13 +32,34 @@ define(["ng",
 			templateUrl: "app/views/contact/templates/contact.tpl.html"
 		});
 	}])
-//	.config(['$provide',function($provide){
-//        $provide.decorator('$httpBackend',ng.mock.e2e.$httpBackendDecorator); 
-//    }])
+	.config(function($provide) {
+	    $provide.decorator('$httpBackend', function($delegate) {
+	        var proxy = function(method, url, data, callback, headers) {
+	            var interceptor = function(status, data, headers) {
+	                var _this = this,
+	                    _arguments = arguments;
+	                
+	                //most likely returning a template, no delay
+	                if(typeof data==='string' && data.charAt(0)==="<"){		                
+		                callback.apply(_this, arguments);		                
+	                }else{
+	                	setTimeout(function() {
+		                    callback.apply(_this, _arguments);
+		                }, 700);	
+	                }	                
+	            };
+	            return $delegate.call(this, method, url, data, interceptor, headers);
+	        };
+	        for(var key in $delegate) {
+	            proxy[key] = $delegate[key];
+	        }
+	        return proxy;
+	    });
+	})	
 	.run(["$rootScope", "$state", "$stateParams",
-	       "$httpBackend", "AnnotationStorage",
+	       "$httpBackend", "AnnotationStorage", "DashboardStorage",
 	function ($rootScope, $state, $stateParams
-			, $httpBackend, AnnotationStorage
+			, $httpBackend, AnnotationStorage, DashboardStorage
 			) {
 		
 		$httpBackend.when("GET", /app\//).passThrough();
@@ -48,6 +69,17 @@ define(["ng",
 	        var data = AnnotationStorage.getAll();
 	        return [200, data, {}];
 	    });
+	    
+	    $httpBackend.whenGET('api/dashboard').respond(function(method, url, data) {
+	    	var respnose = DashboardStorage.getAll();
+	        return [200, respnose, {}];
+	    });
+	    
+	    $httpBackend.whenPUT('api/dashboard').respond(function(method, url, data) {
+	        var response = DashboardStorage.put(JSON.parse(data));
+	        return [200, response, {}];
+	    });
+	    
 	    
 	    $rootScope.$state = $state;
 	    $rootScope.$stateParams = $stateParams;

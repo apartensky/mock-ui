@@ -1,4 +1,4 @@
-define(["underscore"], function(_){
+define(["lodash"], function(_){
 	
 	var ServerStorageMixin = function (fnGetId, fnSetId){
 		
@@ -11,16 +11,26 @@ define(["underscore"], function(_){
 			return fn.call(obj, id);
 		};
 		this.getData=function(){
-			return this.data;
+			return _.cloneDeep(this.data);
 		};		
 		this.setData=function(data){
 			this.data=data;
 		};
-		this.findById=function(id){
+		
+		this._read=function(id){
 			var results = this.data.filter(function(item){
 				return this.getId(item)===id;
 			}.bind(this));
 			return results ? results[0] : undefined;
+		};
+		this._write=function(obj){
+			var toWrite = _.cloneDeep(obj);
+			this.data.push(toWrite);
+			return toWrite;
+		};
+		
+		this.findById=function(id){
+			return _.cloneDeep(this._read.call(this, id));
 		};
 		this.getAll=function(){
 			return this.getData();
@@ -37,25 +47,23 @@ define(["underscore"], function(_){
 			}else{
 				this.setId(obj, this.newId());
 			}
-			this.data.push(obj);
-			return obj;
+			return this._write(obj);					
 		};
 		this.put=function(obj){
-			var target=this.findById(this.getId(obj));
-			if(!target){
-				this.data.push(obj);
-				return obj;
+			var target=this._read(this.getId(obj));
+			if(!target){				
+				return this._write(obj);
 			}else{
-				_.extend(target, obj);
+				_.merge(target, obj);
+				return _.cloneDeep(target);
 			}
-			return target;			
 		};
 		this.deleteById=function(id){
-			var toBeDeleted = this.findById(id);
+			var toBeDeleted = this._read(id);
 			if(toBeDeleted){
 				this.data.splice(this.data.indexOf(toBeDeleted), 1);
 			}			
-			return toBeDeleted; 
+			return _.cloneDeep(toBeDeleted); 
 		};
 	};
 //	console.debug("ServerStorageMixin init", ServerStorageMixin);
