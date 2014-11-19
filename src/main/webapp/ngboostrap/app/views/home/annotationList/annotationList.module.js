@@ -2,6 +2,7 @@ define(["ng", "./directives/annotationList.directive", "./controllers/annotation
 function(ng, AnnotationListDirective, AnnotationListCtrl){
 	var module = ng.module("mui.annotationList", ["ui.router", "mui.annotations"]);
 	module.directive("annotationList", AnnotationListDirective);
-	module.controller("AnnotationListCtrl", ["$scope", "$state", "AnnotationSetRepository", "DashboardRepository", AnnotationListCtrl]);
+	module.controller("AnnotationListCtrl", ["$scope", "$state"
+	     , "AnnotationSetRepository", "DashboardRepository", "ProjectRepository", AnnotationListCtrl]);
 	return module;
 });

@@ -20,7 +20,15 @@
         This is just some content to illustrate fancy headings.
     </accordion-group>
   </accordion>
-  
+  	<p class="input-group">
+              <input type="text" class="form-control" ng-model="HomeVM.projectName" />
+              <span class="input-group-btn">
+              	<button type="button" class="btn btn-primary" ng-click="HomeVM.createProject()" >Add Project</button>                
+              </span>
+            </p>
+  	
+  	
+    
   </div>
   <div class="col-md-9">
   	<annotation-list></annotation-list>

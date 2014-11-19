@@ -1,6 +1,6 @@
 define([], function(){
-	return function($scope, $state, AnnotationSetRepository, DashboardRepository){
-		console.debug("ctrl AnnotationListDirective", $scope, $state, AnnotationSetRepository, DashboardRepository);		
+	return function($scope, $state, AnnotationSetRepository, DashboardRepository, ProjectRepository){
+		console.debug("ctrl AnnotationListDirective", $scope, $state, AnnotationSetRepository, DashboardRepository, ProjectRepository);		
 		$scope.vm={
 			gotoDashboard: function(ann){
 //					DashboardRepository.create(ann);
@@ -16,7 +16,9 @@ define([], function(){
 //		DashboardRepository.getAll().then(function(dashboards){
 //			$scope.vm.dashs=dashboards;
 //		});
-		 
+		ProjectRepository.getAll().then(function(data){
+			$scope.vm.projects=data;
+		});	 
 		
 	};
 });

@@ -19,11 +19,7 @@ define(["ng",
 	function($stateProvider, $urlRouterProvider){
 				
 		$urlRouterProvider.otherwise("/home");		
-		$stateProvider.state("home", {
-			url: "/home",
-			templateUrl: "app/views/home/templates/home.tpl.html"				
-		})		
-		.state("about", {
+		$stateProvider.state("about", {
 			url: "/about",
 			templateUrl: "app/views/about/templates/about.tpl.html"
 		})
@@ -57,9 +53,9 @@ define(["ng",
 	    });
 	})	
 	.run(["$rootScope", "$state", "$stateParams",
-	       "$httpBackend", "AnnotationStorage", "DashboardStorage",
+	       "$httpBackend", "AnnotationStorage", "DashboardStorage", "ProjectStorage",
 	function ($rootScope, $state, $stateParams
-			, $httpBackend, AnnotationStorage, DashboardStorage
+			, $httpBackend, AnnotationStorage, DashboardStorage, ProjectStorage
 			) {
 		
 		$httpBackend.when("GET", /app\//).passThrough();
@@ -73,10 +69,18 @@ define(["ng",
 	    $httpBackend.whenGET('api/dashboard').respond(function(method, url, data) {
 	    	var respnose = DashboardStorage.getAll();
 	        return [200, respnose, {}];
-	    });
-	    
+	    });	    
 	    $httpBackend.whenPUT('api/dashboard').respond(function(method, url, data) {
 	        var response = DashboardStorage.put(JSON.parse(data));
+	        return [200, response, {}];
+	    });
+	    
+	    $httpBackend.whenGET('api/project').respond(function(method, url, data) {
+	    	var respnose = ProjectStorage.getAll();
+	        return [200, respnose, {}];
+	    });	    
+	    $httpBackend.whenPUT('api/project').respond(function(method, url, data) {
+	        var response = ProjectStorage.put(JSON.parse(data));
 	        return [200, response, {}];
 	    });
 	    

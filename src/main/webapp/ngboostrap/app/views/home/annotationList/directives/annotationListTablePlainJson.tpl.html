@@ -29,5 +29,15 @@
 	<div>dash count: {{vm.dashs.length}}</div>
 </div>	
 
-
+<div class="table-responsive">
+<table class="table table-condensed">
+	<th>
+		<th>project name</th>				
+  </th>
+	<tr ng-repeat="item in vm.projects">
+	<td>{{item.name}}<td>		
+  </tr>
+	</table>
+	<div>project count: {{vm.projects.length}}</div>
+</div>	
 
