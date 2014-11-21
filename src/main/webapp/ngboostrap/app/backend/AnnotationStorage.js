@@ -17,12 +17,12 @@ define(["./ServerStorageMixin"], function(ServerStorageMixin){
 		}	
 		
 		//create
-		var AnnotationStorage = {
-				data: data
+		function AnnotationStorage(){
+				this.data=data;
 		};	
-		ServerStorageMixin.call(AnnotationStorage, 
+		ServerStorageMixin.call(AnnotationStorage.prototype, 
 				function(){return this.meta.name;}, 
 				function(id){this.meta.name=id;});
-		return AnnotationStorage;
+		return new AnnotationStorage();
 	};
 });

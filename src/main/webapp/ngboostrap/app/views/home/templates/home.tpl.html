@@ -18,17 +18,19 @@
             I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
         </accordion-heading>
         This is just some content to illustrate fancy headings.
+        <p class="input-group">
+			    <input type="text" class="form-control" ng-model="HomeVM.projectName" />
+			    <span class="input-group-btn">
+			    	<button type="button" class="btn btn-primary" ng-click="HomeVM.createProject()" >Add</button>                
+			    	<button type="button" class="btn btn-primary" ng-click="HomeVM.showProject()" >Show</button>
+			    </span>
+			  </p>	
+			  <p>project selected: {{HomeVM.selectedProject.name}}</p>
     </accordion-group>
   </accordion>
-  	<p class="input-group">
-              <input type="text" class="form-control" ng-model="HomeVM.projectName" />
-              <span class="input-group-btn">
-              	<button type="button" class="btn btn-primary" ng-click="HomeVM.createProject()" >Add Project</button>                
-              </span>
-            </p>
-  	
-  	
-    
+ 	
+
+  
   </div>
   <div class="col-md-9">
   	<annotation-list></annotation-list>

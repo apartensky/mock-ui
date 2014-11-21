@@ -1,9 +1,13 @@
 define(["./ServerStorageMixin"], function(ServerStorageMixin){		
-	return function(){
-		function ProjectStorage(){
+	return function(DatasetStorage, AnalysisStorage, DashboardStorage){
+		function ProjectStorage(DatasetStorage, AnalysisStorage, DashboardStorage){
 			this.data=[];		
 		};
 		ServerStorageMixin.call(ProjectStorage.prototype);
-		return new ProjectStorage();	
+		var projectRepo = new ProjectStorage();
+		projectRepo.datasets = DatasetStorage;
+		projectRepo.analyses = AnalysisStorage;
+		projectRepo.dashboards = DashboardStorage;
+		return projectRepo;
 	}
 });

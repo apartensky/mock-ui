@@ -1,22 +1,33 @@
 define(["lodash"], function(_){
 	
 	function DataRepositoryMixin(spec){
-		var $http=spec.$http;		
-		var url=spec.url;		
-		
+		var $http=spec.$http;
+		var url=spec.url;
+		var fnGetId=spec.getId || function(){return this.name};
+		var fnSetId=spec.setId || function(id){this.name=id};
+				
 		this.get=function(id){
-			return $http.get(url+"/:id", {id: id}).error(function(data){
+			return $http.get(url+"/"+id).error(function(data){
 				console.error("$http.get error", data);
 			}).success(function(data, status, headers, config){
+				_.remove(this.data, function(item){
+					return fnGetId.call(item)===fnGetId.call(data);
+				});
 				this.data.push(data);
 				return data;
-			}.bind(this));
+			}.bind(this))
+			.then(function(response){
+				return response.data;
+			});
 		};
 		
 		this.put=function(obj){
 			return $http.put(url, obj).error(function(data){
 				console.error("$http.put error", data);
 			}).success(function(data, status, headers, config){
+				_.remove(this.data, function(item){
+					return fnGetId.call(item)===fnGetId.call(data);
+				});
 				this.data.push(data);
 				return data;
 			}.bind(this));
