@@ -43,27 +43,12 @@ define(["ng", "lodash", "app/backend/NestedStorageMixin"], function(ng, _, Neste
 			SomeServerStorage=new SomeServerStorageClass(); 			
 		});
 		
-		function urlToObj(url, data){
-			var objPath = Array.isArray(url) ? url : url.split("/");   
-			
-			return _.reduce(objPath, function(result, prop){				
-				return result[prop];
-			}, data);
-		}
-		
-		it("should return the nested object pointed to by the url", function(){
-			var data = testData();
-			expect(urlToObj("datasources/tcga", data)).toBe(data.datasources.tcga);
-			expect(urlToObj("datasources", data)).toBe(data.datasources);
-			
-		});
-		
 		it("should return the single element by the http request", function(){
-			expect(SomeServerStorage.httpRequest("GET", "datasources/tcga")).toEqual(testData().datasources.tcga);
+			expect(SomeServerStorage.httpRequest("GET", "api/datasources/tcga")).toEqual(testData().datasources.tcga);
 		});
 		
 		it("should return an array by the http request", function(){
-			expect(SomeServerStorage.httpRequest("GET", "datasources")).toEqual([{
+			expect(SomeServerStorage.httpRequest("GET", "api/datasources")).toEqual([{
 						name: "1",
 						description: '1'
 					},
@@ -79,36 +64,36 @@ define(["ng", "lodash", "app/backend/NestedStorageMixin"], function(ng, _, Neste
 		
 		it("should add an objects with given id", function(){
 			var added={id: 3, description: '3+', note: 'updated'};
-			expect(SomeServerStorage.httpRequest("PUT", "datasources/testId", added)).toEqual(added);
-			expect(SomeServerStorage.httpRequest("GET", "datasources/testId")).toEqual(added);
+			expect(SomeServerStorage.httpRequest("PUT", "/api/datasources/testId", added)).toEqual(added);
+			expect(SomeServerStorage.httpRequest("GET", "api/datasources/testId")).toEqual(added);
 		});
 		
 		it("should add an object with new generated id", function(){
 			var toAdd={description: '4', note: 'added'};
 			var added={name: "id0", description: '4', note: 'added'};
-			expect(SomeServerStorage.httpRequest("POST", "datasources", toAdd)).toEqual(added);
-			expect(SomeServerStorage.httpRequest("GET", "datasources/"+added.name)).toEqual(added);
+			expect(SomeServerStorage.httpRequest("POST", "api/datasources", toAdd)).toEqual(added);
+			expect(SomeServerStorage.httpRequest("GET", "api/datasources/"+added.name)).toEqual(added);
 		});
 		
 		it("should update an objects", function(){
 			//make sure object is clean before update
-			expect(SomeServerStorage.httpRequest("GET", "datasources/tcga")).toEqual({
+			expect(SomeServerStorage.httpRequest("GET", "api/datasources/tcga")).toEqual({
 				name: "1",
 				description: '1'
 			});
 			//now update
 			var updated={name: 1, description: '1+', note: 'updated'};
-			expect(SomeServerStorage.httpRequest("PUT", "datasources/tcga", updated)).toEqual(updated);
+			expect(SomeServerStorage.httpRequest("PUT", "api/datasources/tcga", updated)).toEqual(updated);
 			//make sure get updated object back
-			expect(SomeServerStorage.httpRequest("GET", "datasources/tcga")).toEqual(updated);
+			expect(SomeServerStorage.httpRequest("GET", "api/datasources/tcga")).toEqual(updated);
 		});
 		
 		it("should delete object", function(){
-			expect(SomeServerStorage.httpRequest("DELETE", "datasources/tcga")).toEqual({
+			expect(SomeServerStorage.httpRequest("DELETE", "api/datasources/tcga")).toEqual({
 				name: "1",
 				description: '1'
 			});
-			expect(SomeServerStorage.httpRequest("GET", "datasources")).toEqual([{
+			expect(SomeServerStorage.httpRequest("GET", "api/datasources")).toEqual([{
 				name: "2",
 				description: '2'
 			},
