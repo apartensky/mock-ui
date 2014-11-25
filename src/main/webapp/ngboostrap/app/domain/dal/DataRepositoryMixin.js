@@ -22,7 +22,7 @@ define(["lodash"], function(_){
 		};
 		
 		this.put=function(obj){
-			return $http.put(url, obj).error(function(data){
+			return $http.put(url+"/"+fnGetId.call(obj), obj).error(function(data){
 				console.error("$http.put error", data);
 			}).success(function(data, status, headers, config){
 				_.remove(this.data, function(item){
@@ -42,7 +42,7 @@ define(["lodash"], function(_){
 				}
 				data.map(function(item){
 					this.data.push(item);
-				});				
+				}.bind(this));				
 			}.bind(this))
 			.then(function(response){
 				return this.data;

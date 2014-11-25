@@ -1,5 +1,5 @@
 define(["ng", "lodash", "app/backend/NestedStorageMixin"], function(ng, _, NestedStorageMixin){
-	console.debug("NestedStorageMixin Test init", ng, NestedStorageMixin);
+//	console.debug("NestedStorageMixin Test init", ng, NestedStorageMixin);
 	describe("NestedStorageMixin Test", function(){
 		
 		function testData(){
@@ -101,6 +101,13 @@ define(["ng", "lodash", "app/backend/NestedStorageMixin"], function(ng, _, Neste
 				name: "3",
 				description: '3'
 			}]);
+		});
+		
+		it("should return url regex's for GET, PUT, and POST mapping", function(){
+			console.log("***registerRoute", SomeServerStorage.registerRoute("datasource/:name"));
+//			console.log("***registerRoute2", SomeServerStorage.registerRoute("project/:name/analysis/:name/result/:name"));
+			console.log("***registerRoute2", SomeServerStorage.registerRoute("project/:name"));
+			
 		});
 		
 //		it("should return the maximum id+1", function(){

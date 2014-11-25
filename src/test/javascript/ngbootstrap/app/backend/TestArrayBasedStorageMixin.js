@@ -1,5 +1,5 @@
 define(["ng", "underscore", "app/backend/ServerStorageMixin"], function(ng, _, ServerStorageMixin){
-	console.debug("ServerStorageMixin Test init", ng, ServerStorageMixin);
+//	console.debug("ServerStorageMixin Test init", ng, ServerStorageMixin);
 	describe("ServerStorageMixin Test", function(){
 		
 		function testData(){

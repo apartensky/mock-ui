@@ -21,7 +21,7 @@ function(Dashboard, AnnotationSet, AnnotationSetRepository){
 			return AnnotationSetRepository.get(dashboardName).then(function(annotationSet){
 				console.debug("Dashbaord.create->annotationSet", dashboardName, annotationSet );
 				var dashboard=new Dashboard({"annotationSet": annotationSet, "facets": [1, 2, 3]}); 
-				self.put(dashboard.toJson());
+				self.put(dashboard);
 				return dashboard;
 			});
 		};
@@ -82,7 +82,7 @@ function(Dashboard, AnnotationSet, AnnotationSetRepository){
 			
 //				dashboards[dashboard.name]=dashboard;
 //			dashboards.push(dashboard);
-			$http.put("api/dashboard", dashboard).success(function(data, status, headers, config){
+			$http.put("api/dashboard/"+dashboard.getName(), dashboard.toJson()).success(function(data, status, headers, config){
 				dashboards.push(new Dashboard(data));
 			});
 //			}	
