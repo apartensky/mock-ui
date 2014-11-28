@@ -6,7 +6,7 @@ function(ng, HomeVM){
 	     		$urlRouterProvider.otherwise("/home");		
 	     		$stateProvider.state("home", {
 	     			url: "/home",
-	     			templateUrl: "app/views/home/templates/home.tpl.html",
+	     			templateUrl: "app/views/home/templates/workspace.tpl.html",
 	     			controller: "HomeVM",
 	     			controllerAs: "HomeVM"	     				
 	     		})		
