@@ -1,6 +1,6 @@
 define(["lodash"], function(_){
 	
-	return function($httpBackend, RootStorage){
+	return function($httpBackend, RootStorage, Endpoint){
 		return function(){
 			try{
 				$httpBackend.when("GET", /app\//).passThrough();
@@ -10,14 +10,16 @@ define(["lodash"], function(_){
 						"For unit testing use the ngMocks module, for backendless development use ngMocksE2E");
 			}
 			
-			processRequest=function(method, url, data){
-				return [200, RootStorage.httpRequest(method, url, data), {}];
-			}			
+//			processRequest=function(method, url, data){
+//				return [200, RootStorage.httpRequest(method, url, data), {}];
+//			}			
 			
-			RootStorage.registerRoute("annotations/:name", processRequest, $httpBackend);
-			RootStorage.registerRoute("dashboard/:name", processRequest, $httpBackend);
-			RootStorage.registerRoute("project/:name/analysis/:name", processRequest, $httpBackend);
-			RootStorage.registerRoute("datasource/:name/dataset/:name", processRequest, $httpBackend);
+//			RootStorage.registerRoute("annotations/:name", processRequest, $httpBackend);
+//			RootStorage.registerRoute("dashboard/:name", processRequest, $httpBackend);
+//			RootStorage.registerRoute("project/:name/analysis/:name", processRequest, $httpBackend);
+//			RootStorage.registerRoute("datasource/:name/dataset/:name", processRequest, $httpBackend);
+			
+			Endpoint.parseSchema(RootStorage.schema);
 			
 		}
 	};

@@ -1,24 +1,24 @@
-define(["./NestedStorageMixin"], function(NestedStorageMixin){		
+define(["./NestedArrayStorageMixin"], function(NestedStorageMixin){		
 	return function(){
 
 		var data={
-			datasource: {
-				"tcga": {
-					name: "1",
+			datasource: [
+				{
+					name: "tcga",
 					description: '1'
 				},
-				"geods": {
-					name: "2",
+				{
+					name: "geods",
 					description: '2'
 				},
-				"user": {
-					name: "3",
+				{
+					name: "user",
 					description: '3'
 				}
-			},
-			dashboard: {},
-			project: {},
-			annotations: {}
+			],
+			dashboard: [],
+			project: [],
+			annotations: []
 		};
 		
 		for(var i=0;i<10;i++){
@@ -31,7 +31,7 @@ define(["./NestedStorageMixin"], function(NestedStorageMixin){
 					data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 				}
 //			data.project[dummy.meta.name]=dummy;
-			data.annotations[dummy.meta.name]=dummy;
+			data.annotations.push(dummy);
 		}
 		
 		var schema={

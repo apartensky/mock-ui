@@ -53,9 +53,9 @@ define(["ng",
 	    });
 	})	
 	.run(["$rootScope", "$state", "$stateParams",
-	       "EndpointConfig", "AnnotationStorage", "DashboardStorage", "ProjectStorage",
+	       "EndpointConfig", 
 	function ($rootScope, $state, $stateParams
-			, EndpointConfig, AnnotationStorage, DashboardStorage, ProjectStorage
+			, EndpointConfig
 			) {
 		
 		EndpointConfig();    
@@ -63,53 +63,6 @@ define(["ng",
 	    $rootScope.$state = $state;
 	    $rootScope.$stateParams = $stateParams;
 	    
-	    
-	    /*
-	    $httpBackend.whenGET(/\/games\/\d+/).respond(function(method, url, data) {
-	        // parse the matching URL to pull out the id (/games/:id)
-	        var gameid = url.split('/')[2];
-	        
-	        var game = ServerDataModel.findOne(gameid);
-
-	        return [200, game, {}];
-	    });
-
-	    // this is the creation of a new resource
-	    $httpBackend.whenPOST('/games').respond(function(method, url, data) {
-	        var params = angular.fromJson(data);
-
-	        var game = ServerDataModel.addOne(params);
-	        
-	        // get the id of the new resource to populate the Location field
-	        var gameid = game.gameid;
-	        
-	        return [201, game, { Location: '/games/' + gameid }];
-	    });
-
-	    // this is the update of an existing resource (ngResource does not send PUT for update)
-	    $httpBackend.whenPOST(/\/games\/\d+/).respond(function(method, url, data) {
-	        var params = angular.fromJson(data);
-
-	        // parse the matching URL to pull out the id (/games/:id)
-	        var gameid = url.split('/')[2];
-	        
-	        var game = ServerDataModel.updateOne(gameid, params);
-	        
-	        return [201, game, { Location: '/games/' + gameid }];
-	    });
-	    
-	    // this is the update of an existing resource (ngResource does not send PUT for update)
-	    $httpBackend.whenDELETE(/\/games\/\d+/).respond(function(method, url, data) {
-	        // parse the matching URL to pull out the id (/games/:id)
-	        var gameid = url.split('/')[2];
-	        
-	        ServerDataModel.deleteOne(gameid);
-	        
-	        return [204, {}, {}];
-	    });    
-	    
-	    $httpBackend.whenGET(/templates\//).passThrough();
-	   */
 	}]);
 	
 });

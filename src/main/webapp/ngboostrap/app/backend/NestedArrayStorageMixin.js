@@ -1,4 +1,4 @@
-define(["lodash"], function(_){
+define(["lodash", "app/utils/utils"], function(_, utils){
 	
 	var NestedStorageMixin = function (spec){
 		if(!spec) spec={};
@@ -32,58 +32,57 @@ define(["lodash"], function(_){
 			return toWrite;
 		};
 		
-		function urlToObj(url, data){
-			var objPath = Array.isArray(url) ? url : spec.parseUrl(url);
-			return _.reduce(objPath, function(result, prop){				
-				return result[prop];
-			}, data);
-		};
+		var urlToObj=utils.urlToArray;
 		
 		this.get=function(url){
 			var urlParts = spec.parseUrl(url);
-			if(urlParts.length % 2 === 0){
+//			if(urlParts.length % 2 === 0){
 				//in our siplified world, urls with even number of parts 
 				//are always for specific resources by id (ex: datasets/id)
 				return _.cloneDeep(urlToObj(urlParts, this.data));
-			}else{
+//			}else{
 				//in our siplified world, urls with odd number of parts 
 				//are always for collection of resources (ex: datasets/dataset_id/analyses)
-				var collectionObj = _.cloneDeep(urlToObj(urlParts, this.data));
-				return _.values(collectionObj); 
-			}
+//				var collectionObj = _.cloneDeep(urlToObj(urlParts, this.data));
+//				return _.values(collectionObj); 
+//			}
 		}
 		this.put=function(url, obj){
 			try{
 				var urlParts = spec.parseUrl(url);
 				var id = urlParts.pop();
 				var collection = urlToObj(urlParts, this.data);			
-				if(collection[id]){
-					_.merge(collection[id], obj);				
+				var item=urlToObj([id], collection);
+				if(item){
+					_.merge(item, obj);				
 				}else{
-					collection[id]=_.isObject(obj) ? obj : JSON.parse(obj);
+					item=_.isObject(obj) ? obj : JSON.parse(obj);
+					collection.push(item);
 				}		
-				return _.cloneDeep(collection[id]);
+				return _.cloneDeep(item);
 			}catch(e){
 				throw new Error("Error while put:" + url + "; obj: " + obj + "; cause: "+e);
 			}
 		};
 		this.add=function(url, obj){			
-			var collection = urlToObj(url, this.data);
+			var collection = urlToObj(spec.parseUrl(url), this.data);
 			obj.name = this._generateNextId();
-			collection[obj.name]=obj;					
+			collection.push(obj);					
 			return _.cloneDeep(obj);
 		};
 		this.remove=function(url){
 			var urlParts = spec.parseUrl(url);
 			var id = urlParts.pop();
 			var collection = urlToObj(urlParts, this.data);
-			var target = collection[id];
-			if(!target){
-				throw new Error("Entry with id "+id+" does not exist at the url "+url)
+//			var target=urlToObj([id], collection);
+//			if(!target){
+//				throw new Error("Entry with id "+id+" does not exist at the url "+url)
+//			}
+			var removed=_.remove(collection, function(obj){return obj.name===id});
+			if(removed.length<=0){
+				throw new Error("Entry with id "+id+" does not exist at the url "+url+" in list " + JSON.stringify(collection));
 			}
-			
-			delete collection[id];				
-			return target;
+			return removed[0];
 		};
 		this.httpRequest=function(method, url, data) {			
 			switch(method){
