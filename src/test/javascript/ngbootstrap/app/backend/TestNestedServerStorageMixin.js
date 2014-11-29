@@ -71,7 +71,7 @@ define(["ng", "lodash", "app/backend/NestedStorageMixin"], function(ng, _, Neste
 		it("should add an object with new generated id", function(){
 			var toAdd={description: '4', note: 'added'};
 			var added={name: "id0", description: '4', note: 'added'};
-			expect(SomeServerStorage.httpRequest("POST", "api/datasources", toAdd)).toEqual(added);
+			expect(SomeServerStorage.httpRequest("POST", "api/datasources", toAdd)).toEqual(added);			
 			expect(SomeServerStorage.httpRequest("GET", "api/datasources/"+added.name)).toEqual(added);
 		});
 		

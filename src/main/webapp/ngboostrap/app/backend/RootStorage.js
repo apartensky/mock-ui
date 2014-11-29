@@ -61,7 +61,12 @@ define(["./NestedArrayStorageMixin"], function(NestedStorageMixin){
 			this.data=data;
 		};
 		
-		NestedStorageMixin.call(RootStorage.prototype, {getId: function(obj){return obj.id}});
+		NestedStorageMixin.call(RootStorage.prototype, {
+			getId: function(obj){return obj.id;}, 
+			setId: function(id){
+				this.id=id;
+				}			
+			});
 		return new RootStorage(schema, data);
 	}
 });

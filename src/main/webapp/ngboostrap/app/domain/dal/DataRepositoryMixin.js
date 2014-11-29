@@ -47,21 +47,31 @@ define(["lodash"], function(_){
 		
 		this.put=function(obj){
 			if(!fnGetId.call(obj)){
-				fnSetId.call(obj, this._generateNextId());
-				obj.name="Undefined "+obj.id;
-			}
-			return $http.put(url+"/"+fnGetId.call(obj), obj).error(function(data){
-				console.error("$http.put error", data);
-			}).success(function(data, status, headers, config){
-				_.remove(this.data, function(item){
-					return fnGetId.call(item)===fnGetId.call(data);
+//				fnSetId.call(obj, this._generateNextId());				
+				return $http.post(url, obj).error(function(data){
+					console.error("$http.put error", data);
+				}).success(function(data, status, headers, config){
+//					obj.name="Undefined "+ this._generateNextId();
+					this.data.push(data);
+					return data;
+				}.bind(this)
+				).then(function(response){
+					return response.data;
 				});
-				this.data.push(data);
-				return data;
-			}.bind(this)
-			).then(function(response){
-				return response.data;
-			});
+			}else{
+				return $http.put(url+"/"+fnGetId.call(obj), obj).error(function(data){
+					console.error("$http.put error", data);
+				}).success(function(data, status, headers, config){
+					_.remove(this.data, function(item){
+						return fnGetId.call(item)===fnGetId.call(data);
+					});
+					this.data.push(data);
+					return data;
+				}.bind(this)
+				).then(function(response){
+					return response.data;
+				});
+			}
 		};		
 		
 		this.getAll=function(){

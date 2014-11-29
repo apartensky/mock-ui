@@ -13,10 +13,14 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 				return url.split("/");
 			};
 		spec.getId=spec.getId || function(obj){return obj.name}
+		spec.setId=spec.setId || function(id){this.name=id}
 		this._nextId=0;
-		this._generateNextId=function(){
-			return "id"+this._nextId++;
+		
+		this._generateNextId=function(data){
+			var max= spec.getId(_.max(data, spec.getId))+1;
+			return max;
 		};
+		
 		this.setData=function(data){
 			this.data=data;
 		}
@@ -65,9 +69,11 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 				throw new Error("Error while put:" + url + "; obj: " + obj + "; cause: "+e);
 			}
 		};
-		this.add=function(url, obj){			
+		this.add=function(url, obj){
+			obj = _.isObject(obj) ? obj : JSON.parse(obj);
 			var collection = urlToObj(spec.parseUrl(url), this.data, spec.getId);
-			obj.name = this._generateNextId();
+			spec.setId.call(obj, this._generateNextId(collection));
+			obj.name="Undefined " + obj.id;
 			collection.push(obj);					
 			return _.cloneDeep(obj);
 		};
@@ -79,7 +85,7 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 //			if(!target){
 //				throw new Error("Entry with id "+id+" does not exist at the url "+url)
 //			}
-			var removed=_.remove(collection, function(obj){return obj.name===id});
+			var removed=_.remove(collection, function(obj){return spec.getId(obj)==id});
 			if(removed.length<=0){
 				throw new Error("Entry with id "+id+" does not exist at the url "+url+" in list " + JSON.stringify(collection));
 			}
