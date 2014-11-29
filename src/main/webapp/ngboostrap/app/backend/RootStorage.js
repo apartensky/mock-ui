@@ -17,13 +17,21 @@ define(["./NestedArrayStorageMixin"], function(NestedStorageMixin){
 				}
 			],
 			dashboard: [],
-			project: [],
+			project: [{
+				id: 1,
+				name: "project1"
+			},
+			{
+				id: 2,
+				name: "project2"
+			}],
 			annotations: []
 		};
 		
 		for(var i=0;i<10;i++){
 			var dummy={
 					meta: {
+						id: "name"+i*10,
 						name: "name"+i*10,
 						description: "just a '"+i+"'",
 						numberOfSamples: i*10
@@ -53,7 +61,7 @@ define(["./NestedArrayStorageMixin"], function(NestedStorageMixin){
 			this.data=data;
 		};
 		
-		NestedStorageMixin.call(RootStorage.prototype);
+		NestedStorageMixin.call(RootStorage.prototype, {getId: function(obj){return obj.id}});
 		return new RootStorage(schema, data);
 	}
 });

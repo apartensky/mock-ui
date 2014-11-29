@@ -3,7 +3,7 @@ define(["ng",
         "ngmocks",
         "app/domain/domain.module",
         "app/views/views.module",
-        "app/components/components.module",
+        "app/widgets/components.module",
         "app/backend/storageMock.module"
         ], function(ng){
 	"use strict";

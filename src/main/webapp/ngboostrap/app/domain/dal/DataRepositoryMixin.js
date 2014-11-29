@@ -1,11 +1,35 @@
 define(["lodash"], function(_){
 	
 	function DataRepositoryMixin(spec){
+		
 		var $http=spec.$http;
 		var url=spec.url;
-		var fnGetId=spec.getId || function(){return this.name};
-		var fnSetId=spec.setId || function(id){this.name=id};
-				
+		var fnGetId=initFnGetId(spec.getId);
+		var fnSetId=initFnSetId(spec.setId);
+		function initFnGetId(fn){
+			if(_.isFunction(spec.getId)){
+				return fn;				
+			}else if(typeof fn === "string"){
+				return function(){return this[fn];}
+			}else{
+				return function(){return this.name;};
+			}
+		}
+		function initFnSetId(fn){
+			if(_.isFunction(fn)){
+				return fn;
+			}else if(typeof fn === "string"){
+				return function(id){this[fn]=id;}
+			}else{
+				return function(id){this.name=id;};
+			}
+		}
+		
+		this._nextId=0;
+		this._generateNextId=function(){
+			return this._nextId++;
+		};
+		
 		this.get=function(id){
 			return $http.get(url+"/"+id).error(function(data){
 				console.error("$http.get error", data);
@@ -22,6 +46,10 @@ define(["lodash"], function(_){
 		};
 		
 		this.put=function(obj){
+			if(!fnGetId.call(obj)){
+				fnSetId.call(obj, this._generateNextId());
+				obj.name="Undefined "+obj.id;
+			}
 			return $http.put(url+"/"+fnGetId.call(obj), obj).error(function(data){
 				console.error("$http.put error", data);
 			}).success(function(data, status, headers, config){
@@ -30,7 +58,10 @@ define(["lodash"], function(_){
 				});
 				this.data.push(data);
 				return data;
-			}.bind(this));
+			}.bind(this)
+			).then(function(response){
+				return response.data;
+			});
 		};		
 		
 		this.getAll=function(){

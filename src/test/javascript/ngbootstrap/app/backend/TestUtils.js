@@ -159,5 +159,12 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 			expect(utils.urlToArray("nodes/node1/subnodes/x".split("/"),  arrayDummy)).toBe(undefined);			
 		})
 		
+		
+		it("should test the lodash assign", function(){
+			var obj1 = {name: "1"};
+			var obj2 = {name: "2"};
+			_.merge(obj1, obj2);
+			expect(obj1).toEqual({name: "2"});
+		});
 	});
 });

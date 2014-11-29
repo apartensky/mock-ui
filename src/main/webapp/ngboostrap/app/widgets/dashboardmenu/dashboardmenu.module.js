@@ -4,7 +4,7 @@ function(ng, DashboardMenuCtrl, DashboardMenuDirective){
 	
 	var modConfigName=module.name+".config";
 	module.constant(modConfigName, {
-		path: "app/components/dashboardmenu"
+		path: "app/widgets/dashboardmenu"
 	})
 	.controller("DashboardMenuCtrl", ["$scope", "$state", "DashboardRepository", DashboardMenuCtrl])
 	.directive("dashboardMenu", [modConfigName, DashboardMenuDirective]);

@@ -12,7 +12,7 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 				url=url.replace(spec.getUrlPrefix(), "")
 				return url.split("/");
 			};
-		
+		spec.getId=spec.getId || function(obj){return obj.name}
 		this._nextId=0;
 		this._generateNextId=function(){
 			return "id"+this._nextId++;
@@ -39,7 +39,7 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 //			if(urlParts.length % 2 === 0){
 				//in our siplified world, urls with even number of parts 
 				//are always for specific resources by id (ex: datasets/id)
-				return _.cloneDeep(urlToObj(urlParts, this.data));
+				return _.cloneDeep(urlToObj(urlParts, this.data, spec.getId));
 //			}else{
 				//in our siplified world, urls with odd number of parts 
 				//are always for collection of resources (ex: datasets/dataset_id/analyses)
@@ -49,14 +49,15 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 		}
 		this.put=function(url, obj){
 			try{
+				obj = _.isObject(obj) ? obj : JSON.parse(obj);
 				var urlParts = spec.parseUrl(url);
 				var id = urlParts.pop();
-				var collection = urlToObj(urlParts, this.data);			
-				var item=urlToObj([id], collection);
+				var collection = urlToObj(urlParts, this.data, spec.getId);			
+				var item=urlToObj([id], collection, spec.getId);
 				if(item){
-					_.merge(item, obj);				
+					_.assign(item, obj);				
 				}else{
-					item=_.isObject(obj) ? obj : JSON.parse(obj);
+					item=obj;
 					collection.push(item);
 				}		
 				return _.cloneDeep(item);
@@ -65,7 +66,7 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 			}
 		};
 		this.add=function(url, obj){			
-			var collection = urlToObj(spec.parseUrl(url), this.data);
+			var collection = urlToObj(spec.parseUrl(url), this.data, spec.getId);
 			obj.name = this._generateNextId();
 			collection.push(obj);					
 			return _.cloneDeep(obj);
@@ -73,7 +74,7 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 		this.remove=function(url){
 			var urlParts = spec.parseUrl(url);
 			var id = urlParts.pop();
-			var collection = urlToObj(urlParts, this.data);
+			var collection = urlToObj(urlParts, this.data, spec.getId);
 //			var target=urlToObj([id], collection);
 //			if(!target){
 //				throw new Error("Entry with id "+id+" does not exist at the url "+url)

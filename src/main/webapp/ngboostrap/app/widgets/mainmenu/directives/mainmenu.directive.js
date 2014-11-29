@@ -4,7 +4,7 @@ define([], function(){
 			scope: {},
 			restrict: "AE",
 			replace: true,
-			templateUrl: "app/components/mainmenu/directives/mainmenu.tpl.html", 
+			templateUrl: "app/widgets/mainmenu/directives/mainmenu.tpl.html", 
 			link: function(scope, elm, attrs, ctrl){
 				
 			}

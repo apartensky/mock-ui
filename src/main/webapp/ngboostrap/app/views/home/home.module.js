@@ -1,4 +1,4 @@
-define(["ng", "./controllers/HomeVM", "app/components/mainmenu/mainmenu.module", "./annotationList/annotationList.module"], 
+define(["ng", "./controllers/HomeVM", "app/widgets/mainmenu/mainmenu.module", "./annotationList/annotationList.module"], 
 function(ng, HomeVM){
 	var module = ng.module("mui.views.home", ["mui.annotationList"]);
 	module.config(['$stateProvider', '$urlRouterProvider',
@@ -6,7 +6,7 @@ function(ng, HomeVM){
 	     		$urlRouterProvider.otherwise("/home");		
 	     		$stateProvider.state("home", {
 	     			url: "/home",
-	     			templateUrl: "app/views/home/templates/workspace.tpl.html",
+	     			templateUrl: "app/views/home/templates/workspace.v2.tpl.html",
 	     			controller: "HomeVM",
 	     			controllerAs: "HomeVM"	     				
 	     		})		

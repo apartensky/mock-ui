@@ -1,0 +1,9 @@
+<ul>
+<li ng-repeat="project in ProjectListVM.getProjectList()">
+	<a ng-click="ProjectListVM.openProject(project)" >{{project.name}}</a>
+	(<a ng-click="ProjectListVM.editListItem(project)">edit</a>)
+</li>
+<li>
+<a ng-click="ProjectListVM.newProject()" >add new</a>
+</li> 
+</ul>

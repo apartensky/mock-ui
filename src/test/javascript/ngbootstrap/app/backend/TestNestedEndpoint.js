@@ -64,14 +64,14 @@ define(["ng", "appjs", "app/utils/utils", "ngmocks"], function(ng, app, utils){
 			_.mapValues(schema, function(value, path, node){				
 				var collectionUrl="api/"+path;
 				var entityUrl=collectionUrl+"/"+counter;
-				var tmp = {"name": counter};
+				var tmp = {"id": counter};
 				var childPrp = _.keys(schema[path])[0];
 				if(childPrp)
 					tmp[childPrp]=[];
 				
 				doHttp("put", entityUrl, tmp).then(function(response){
 					expect(response.data).toEqual(tmp);					
-					acc.push({prop: path, name: counter});
+					acc.push({prop: path, id: counter});
 				});
 				$httpBackend.flush();
 				
@@ -87,15 +87,15 @@ define(["ng", "appjs", "app/utils/utils", "ngmocks"], function(ng, app, utils){
 			//ex: acc[{prop: datasource, name: 2}]
 			_.map(acc, function(obj){
 				_.mapValues(schema[obj.prop], function(value, path, node){				
-					var collectionUrl="api/"+obj.prop+"/"+obj.name+"/"+path;
+					var collectionUrl="api/"+obj.prop+"/"+obj.id+"/"+path;
 					var entityUrl=collectionUrl+"/"+counter;
-					doHttp("put", entityUrl, {name: counter}).then(function(response){
-						expect(response.data).toEqual({"name":counter});									
+					doHttp("put", entityUrl, {id: counter}).then(function(response){
+						expect(response.data).toEqual({"id":counter});									
 					});
 					$httpBackend.flush();
 					
 					doHttp("get", collectionUrl).then(function(response){
-						expect(response.data).toEqual([{"name":counter}]);					
+						expect(response.data).toEqual([{"id":counter}]);					
 					});
 					$httpBackend.flush();
 					counter++;
@@ -103,12 +103,12 @@ define(["ng", "appjs", "app/utils/utils", "ngmocks"], function(ng, app, utils){
 			});
 			
 			var entityUrl="datasource/2/dataset/"+counter;
-			doHttp("put", entityUrl, {name: counter}).then(function(response){
-				expect(response.data).toEqual({name: counter});
+			doHttp("put", entityUrl, {id: counter}).then(function(response){
+				expect(response.data).toEqual({id: counter});
 			});
 			$httpBackend.flush();			
 			doHttp("get", entityUrl).then(function(response){
-				expect(response.data).toEqual({name: counter});
+				expect(response.data).toEqual({id: counter});
 			});
 			$httpBackend.flush();
 			counter++;
