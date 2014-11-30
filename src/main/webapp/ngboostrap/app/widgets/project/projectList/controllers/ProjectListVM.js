@@ -23,39 +23,12 @@ define([], function(){
 		this.updateProject=function(project, newName){
 			project.name=newName;
 			console.log("updating project .. ",project);
-			ProjectRepository.put(project).$promise.then(function(data){
-				console.log("updated project",data);
-			});
-		};
-		
-		this.editListItem=function(project){			
-			var modal=$modal.open({
-				template: "<div><input type='text' ng-model='RenameProjectCtrl.newName'></div><div><a ng-click='RenameProjectCtrl.ok()'>OK</a> <a ng-click='RenameProjectCtrl.cancel()'>Cancel</a></div>",
-				windowClass: "modal-vertical-centered",
-				resolve: {
-					project: function () {
-						return project;
-					}
-			    },
-			    controllerAs: "RenameProjectCtrl",
-				controller: function($scope, $modalInstance, project){
-					this.newName=project.name;
-					this.project=project;
-					this.ok=function(){
-						$modalInstance.close(this.newName);
-					}
-					this.cancel=function(){
-						$modalInstance.dismiss("cancel");
-					}
-				}
-			});
+			project.$update();
 			
-			modal.result.then(function(msg){
-				self.updateProject(project, msg);
-			}, function(msg){
-				//cancel - do nothing
-			})
-		}
+//			ProjectRepository.put(project).$promise.then(function(data){
+//			console.log("updated project",data);
+//			});
+		};
 		
 	};	
 });

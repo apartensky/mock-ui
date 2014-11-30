@@ -3,6 +3,9 @@ define(["ng"], function(ng){
 		var project=project;
 		this.getProjectName=function(){
 			return project.name;
-		}
+		};
+		this.getProject=function(){
+			return project;
+		};
 	};
 });

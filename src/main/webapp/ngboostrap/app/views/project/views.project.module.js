@@ -7,7 +7,7 @@ function(ng, ProjectviewVM){
 	   	     		$stateProvider.state("project", {
 	   	     			url: "/project/:id/",
 			   	     	params: {
-			   	     	   id: { value: null }
+			   	     	   id: null
 			   	     	},
 	   	     			templateUrl: "app/views/project/templates/project.tpl.html",
 	   	     			controller: "ProjectViewVM",
