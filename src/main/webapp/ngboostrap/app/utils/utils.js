@@ -94,6 +94,7 @@ define(["lodash"], function(_){
 	function urlToArray(objPath, data, fnGetId){
 		fnGetId = fnGetId || function(obj){return obj.name};
 		return _.reduce(objPath, function(result, prop){
+			if(prop==="") return result;
 			try{
 				if(_.isArray(result)){
 					var found = _.find(result, function(item){

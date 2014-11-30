@@ -22,7 +22,11 @@ define(["ng"], function(ng){
 		
 		return {
 			getAll: function(){
-				return source.getAll();
+				return source.getAll(function(response){
+					console.log("Project.getAll success", response);
+				}, function(response){
+					console.error("Project.getAll failed", response);
+				});
 			},
 			get: function(id){
 				return source.get({projectId: id});

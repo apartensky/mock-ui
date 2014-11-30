@@ -3,8 +3,8 @@ define([], function(){
 		var self=this;
 		var projects=[];
 		
-		ProjectRepository.getAll().then(function(data){
-			projects=data;
+		ProjectRepository.getAll().$promise.then(function(response){
+			projects=response;
 		});
 		
 		this.getProjectList=function(){
@@ -23,7 +23,7 @@ define([], function(){
 		this.updateProject=function(project, newName){
 			project.name=newName;
 			console.log("updating project .. ",project);
-			ProjectRepository.put(project).then(function(data){
+			ProjectRepository.put(project).$promise.then(function(data){
 				console.log("updated project",data);
 			});
 		};

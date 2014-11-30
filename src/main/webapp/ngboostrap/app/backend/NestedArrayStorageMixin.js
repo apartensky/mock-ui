@@ -10,7 +10,7 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 					url=url.substring(1);
 				}				
 				url=url.replace(spec.getUrlPrefix(), "")
-				return url.split("/");
+				return url.split(/[\/?]/);
 			};
 		spec.getId=spec.getId || function(obj){return obj.name}
 		spec.setId=spec.setId || function(id){this.name=id}

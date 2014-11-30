@@ -10,7 +10,7 @@ define(["lodash"], function(_){
 					url=url.substring(1);
 				}				
 				url=url.replace(spec.getUrlPrefix(), "")
-				return url.split("/");
+				return url.split(/[\/?]/);
 			};
 		
 		this._nextId=0;

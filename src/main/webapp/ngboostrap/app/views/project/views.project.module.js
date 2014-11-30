@@ -17,7 +17,7 @@ function(ng, ProjectviewVM){
 	   	     				function($state, $stateParams, ProjectRepository){
 	   	     					console.info("***resolving project", $stateParams.id);
 	   	     					if($stateParams.id===null){
-	   	     						return ProjectRepository.put({}).then(function(data){
+	   	     						return ProjectRepository.put({}).$promise.then(function(data){
 	   	     							$state.go("project", {id: data.id});
 	   	     						});
 	   	     					}else{
