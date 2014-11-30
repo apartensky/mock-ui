@@ -1,4 +1,5 @@
-define(["ng", "../dal/DataRepositoryMixin"], function(ng, DataRepositoryMixin){
+define(["ng", "../dal/DataRepositoryMixin", "./ProjectResourceRepository"], 
+function(ng, DataRepositoryMixin, ProjectResourceRepository){
 	var module=ng.module("mui.domain.project", []);
 	module.factory("ProjectRepository", ["$http", function($http){
 		function ProjectRepository(){
@@ -10,6 +11,7 @@ define(["ng", "../dal/DataRepositoryMixin"], function(ng, DataRepositoryMixin){
 		
 		return new ProjectRepository();		
 	}]);
-		
+	
+	module.service("ProjectResourceRepository", ["$resource", ProjectResourceRepository]);	
 	return module;
 })

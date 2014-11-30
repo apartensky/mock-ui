@@ -73,7 +73,7 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 			obj = _.isObject(obj) ? obj : JSON.parse(obj);
 			var collection = urlToObj(spec.parseUrl(url), this.data, spec.getId);
 			spec.setId.call(obj, this._generateNextId(collection));
-			obj.name="Undefined " + obj.id;
+			obj.name="Untitled " + obj.id;
 			collection.push(obj);					
 			return _.cloneDeep(obj);
 		};

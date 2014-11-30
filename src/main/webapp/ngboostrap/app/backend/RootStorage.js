@@ -1,5 +1,5 @@
 define(["./NestedArrayStorageMixin"], function(NestedStorageMixin){		
-	return function(){
+	return function(RootStorageSchema){
 
 		var data={
 			datasource: [
@@ -26,8 +26,7 @@ define(["./NestedArrayStorageMixin"], function(NestedStorageMixin){
 				name: "project2"
 			}],
 			annotations: []
-		};
-		
+		};		
 		for(var i=0;i<10;i++){
 			var dummy={
 					meta: {
@@ -42,20 +41,6 @@ define(["./NestedArrayStorageMixin"], function(NestedStorageMixin){
 			data.annotations.push(dummy);
 		}
 		
-		var schema={
-			datasource: {
-				dataset: {}
-			},
-			project: {
-				analysis: {					
-					result: {},					
-				},
-				history: null
-			},
-			dashboard: {},
-			annotations: {}
-		};
-			
 		function RootStorage(schema, data){
 			this.schema=schema;
 			this.data=data;
@@ -67,6 +52,6 @@ define(["./NestedArrayStorageMixin"], function(NestedStorageMixin){
 				this.id=id;
 				}			
 			});
-		return new RootStorage(schema, data);
+		return new RootStorage(RootStorageSchema, data);
 	}
 });
