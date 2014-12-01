@@ -143,7 +143,7 @@ define(["ng", "appjs", "app/utils/utils", "ngmocks", "ngresource"], function(ng)
 			ProjectResourceRepository.get(2).$promise.then(function(response){
 				expect(response).toEqualData(added);
 			});							
-			$httpBackend.flush();
+//			$httpBackend.flush();
 			
 		});
 	});
