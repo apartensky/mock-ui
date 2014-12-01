@@ -1,8 +1,9 @@
-<ul>
+<ul ng-class="isMenu ? 'dropdown-menu' : ''">
 <li ng-repeat="project in ProjectListVM.getProjectList()">	
-<project-label clickable="true" project="project"></project-label>
+<project-label ng-if="!isMenu" clickable="true" editable="{{showEdit}}" project="project"></project-label>
+<a ng-if="isMenu" ng-click="ProjectListVM.openProject(project)">{{project.name}} </a>
 </li>
-<li>
-<a ng-click="ProjectListVM.newProject()" >add new</a>
+<li ng-if="showAdd">
+<a ng-click="ProjectListVM.newProject()" >add new {{showadd}}</a>
 </li> 
 </ul>

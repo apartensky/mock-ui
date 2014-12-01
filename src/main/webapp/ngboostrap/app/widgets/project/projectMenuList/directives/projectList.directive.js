@@ -3,8 +3,7 @@ define(["ng"], function(ng){
 		return {
 			scope: {
 				showAdd: '@',
-				showEdit: '@',
-				isMenu: '@'
+				showEdit: '@'
 			},
 			restrict: "AE",
 			replace: true,
@@ -12,11 +11,8 @@ define(["ng"], function(ng){
 			templateUrl: "app/widgets/project/projectList/templates/projectList.tpl.html",
 			controller: "ProjectListVM",
 			controllerAs: "ProjectListVM",
-			link: function($scope, $elem, $attr){				
-				$scope.attr=$attr;	
-				if($attr.ismenu){
-					$elem.addClass("dropdown-menu");
-				}
+			link: function($scope, $elem, $attr){			
+				$scope.attr=$attr;				
 			}
 		}
 	}

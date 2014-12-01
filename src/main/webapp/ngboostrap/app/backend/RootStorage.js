@@ -16,7 +16,17 @@ define(["./NestedArrayStorageMixin"], function(NestedStorageMixin){
 					description: '3'
 				}
 			],
-			dashboard: [],
+			dashboard: [{
+				annotationSet: {
+					meta: {
+						id: 1,
+						name: "name1",
+						description: "just a '1'",
+						numberOfSamples: 1
+					},
+					data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+				}
+			}],
 			project: [{
 				id: 1,
 				name: "project1"

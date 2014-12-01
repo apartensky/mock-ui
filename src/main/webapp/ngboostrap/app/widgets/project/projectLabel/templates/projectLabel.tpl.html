@@ -4,4 +4,5 @@
 </a>
 <span ng-switch-default>{{project.name}}</span>
 </span>
-(<a ng-click="ProjectLabelVM.editListItem(project)">edit</a>)
+<span ng-if="editable">(<a ng-click="ProjectLabelVM.editListItem(project)">edit</a>)</span>
+</a>

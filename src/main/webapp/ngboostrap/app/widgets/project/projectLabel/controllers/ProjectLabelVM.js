@@ -28,7 +28,8 @@ define([], function(){
 			
 			modal.result.then(function(msg){
 				project.name=msg;				
-				project.$update();
+				project.$update();				
+				
 			}, function(msg){
 				//cancel - do nothing
 			})

@@ -3,8 +3,9 @@ define([], function(){
 		return {
 			scope: {
 				project: '=',
-				clickable: '@'
-			},
+				clickable: '@',
+				editable: '@'
+			},			
 			restrict: "AE",
 			templateUrl: "app/widgets/project/projectLabel/templates/projectLabel.tpl.html",			
 			controller: "ProjectLabelVM",

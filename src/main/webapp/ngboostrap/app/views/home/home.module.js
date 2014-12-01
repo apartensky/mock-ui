@@ -8,7 +8,12 @@ function(ng, HomeVM){
 	     			url: "/home",
 	     			templateUrl: "app/views/home/templates/workspace.v2.tpl.html",
 	     			controller: "HomeVM",
-	     			controllerAs: "HomeVM"	     				
+	     			controllerAs: "HomeVM",
+//	     			resolve: {
+//	     				projects: ["ProjectRepository", function(ProjectRepository){
+//	     					return ProjectRepository.getAll().$promise;
+//	     				}] 
+//	     			}
 	     		})		
 	}]);
 	module.controller("HomeVM", ["ProjectRepository", HomeVM]);
