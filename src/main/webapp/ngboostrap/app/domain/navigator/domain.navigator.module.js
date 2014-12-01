@@ -8,6 +8,18 @@ define(["ng"],function(ng){
 			this.newProject=function(){
 				$state.go("project");
 			}
+			this.importDataset=function(datasource, dataset){
+				$state.go("import", {datasourceId: datasource.id, datasetId: dataset.id});
+			}
+			this.goHome=function(){
+				$state.go("home");
+			}
+			this.openDataset=function(){
+//				$state.go
+			}
+			this.openAnnotations=function(dataset, dimension){
+				$state.go("dataset.annotations", {datasetId: dataset.id, dimension: dimension});
+			}
 		}
 		return new Navigator();
 	}]);

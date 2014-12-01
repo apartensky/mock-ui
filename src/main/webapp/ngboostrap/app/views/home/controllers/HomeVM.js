@@ -1,5 +1,5 @@
 define(["ng"], function(ng){
-	return function HomeVM (ProjectRepository){
+	return function HomeVM (ProjectRepository, DatasourceRepository, Navigator){
 		var self=this;
 		this.projectName="aaa";
 		this.selectedProject={name: "[none]"};
@@ -14,5 +14,10 @@ define(["ng"], function(ng){
 				console.debug("showProject after", self.selectedProject, data);
 			});
 		};
+		
+		this.datasources=DatasourceRepository.getAll();
+		this.importDataset=function(datasource, dataset){
+			Navigator.importDataset(datasource, dataset);
+		}
 	}
 });

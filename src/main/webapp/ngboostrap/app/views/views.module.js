@@ -1,11 +1,15 @@
 define(["ng", "nguirouter", 
         "./home/home.module", 
         "./dashboard/dashboard.module",
-        "./project/views.project.module"], 
-function(ng){
+        "./project/views.project.module",
+        "./import/views.import.module",
+        "./dataset/views.dataset.module"], 
+function(ng, ngrouter, home, dashboard, project, importMod, datasetMod){
 	var module = ng.module("mui.views", ["ui.router",
 	                                     "mui.views.home",
 	                                     "mui.views.dashboard",
-	                                     "mui.views.project"]);
+	                                     "mui.views.project",
+	                                     "mui.views.import",
+	                                     datasetMod.name]);
 	return module;
 });

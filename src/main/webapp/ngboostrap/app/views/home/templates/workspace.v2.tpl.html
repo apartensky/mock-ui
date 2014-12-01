@@ -2,20 +2,29 @@
   <div class="col-md-3">
     <h3>Your Projects</h3>
     <project-list show-add="true" show-edit="true"></project-list>
-    <h3>Your Datasets</h3>    
+    <h3>Your Datasets</h3>
+    <dataset-list show-add="true" show-edit="true"></dataset-list>
   </div>
   <div class="col-md-9">
   		
   			<h3>Import Data</h3>	  	
 	  		<tabset>
-			    <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
-			      
-			    </tab>
-			    <tab select="alertMe()">
-			      <tab-heading>
-			        <i class="glyphicon glyphicon-bell"></i> Alert!
-			      </tab-heading>
-			      I've got an HTML heading, and a select callback. Pretty cool!
+			    <tab ng-repeat="datasource in HomeVM.datasources" heading="{{datasource.name}}" >
+			    	<div class="table-responsive">
+						<table class="table table-condensed">
+							<tr>
+								<th>name</th>
+								<th>desription</th>								
+						  </tr>
+							<tr ng-repeat="dataset in datasource.dataset">
+<!-- 							 -->
+								<td><a ng-click="HomeVM.importDataset(datasource, dataset)">{{dataset.name}}</a></td>
+								<td>{{dataset.description}}</td>								
+						  </tr>
+							</table>
+							<div>Count: {{datasource.dataset.length}}</div>
+<!-- 							<div ui-view="{{datasource.name}}"></div> -->
+						</div>				    	
 			    </tab>
 	  		</tabset>
   		

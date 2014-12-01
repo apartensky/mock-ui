@@ -43,7 +43,8 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 //			if(urlParts.length % 2 === 0){
 				//in our siplified world, urls with even number of parts 
 				//are always for specific resources by id (ex: datasets/id)
-				return _.cloneDeep(urlToObj(urlParts, this.data, spec.getId));
+				var obj = urlToObj(urlParts, this.data, spec.getId);
+				return _.cloneDeep(obj);
 //			}else{
 				//in our siplified world, urls with odd number of parts 
 				//are always for collection of resources (ex: datasets/dataset_id/analyses)
@@ -73,7 +74,8 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 			obj = _.isObject(obj) ? obj : JSON.parse(obj);
 			var collection = urlToObj(spec.parseUrl(url), this.data, spec.getId);
 			spec.setId.call(obj, this._generateNextId(collection));
-			obj.name="Untitled " + obj.id;
+			if(!obj.name)
+				obj.name="Untitled " + obj.id;
 			collection.push(obj);					
 			return _.cloneDeep(obj);
 		};

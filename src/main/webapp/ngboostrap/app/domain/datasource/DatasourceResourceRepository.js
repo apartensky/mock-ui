@@ -1,10 +1,10 @@
 define(["ng", "lodash"], function(ng, _){
-	return function ProjectResourceRepository($resource){
+	return function DatasourceResourceRepository($resource){
 		var root="api";
-		var listUri=root+"/project";
-		var entityUri=listUri+"/:projectId"
+		var listUri=root+"/datasource";
+		var entityUri=listUri+"/:datasourceId"
 		var data=[];
-		var source = $resource(entityUri, {projectId: "@id"},				
+		var source = $resource(entityUri, {datasourceId: "@id"},				
 				{
 					getAll: {
 						url: listUri,
@@ -54,7 +54,7 @@ define(["ng", "lodash"], function(ng, _){
 				if(exists.length>0)
 					return exists[0];
 				
-				return source.get({projectId: id});
+				return source.get({datasourceId: id});
 			},
 			put: function(item){	
 					if(!item.id){

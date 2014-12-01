@@ -19,7 +19,6 @@ define(["ng",
 	.config(['$stateProvider', '$urlRouterProvider',
 	function($stateProvider, $urlRouterProvider){
 				
-		$urlRouterProvider.otherwise("/home");		
 		$stateProvider.state("about", {
 			url: "/about",
 			templateUrl: "app/views/about/templates/about.tpl.html"
