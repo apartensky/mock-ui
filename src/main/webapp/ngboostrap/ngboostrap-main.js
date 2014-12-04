@@ -14,6 +14,9 @@
 			underscore: ["vendor/underscore/underscore"],
 			lodash: ["vendor/lodash/lodash"],
 			classjs: ["vendor/classjs/Class"],
+			angularTreeView: ["vendor/angular-treeview/treeView"],
+			angularData: ["vendor/angular-data/angular-data"],
+			dxTree: ["vendor/dxtree/dxTree"]
 		},
 		shim: {
 			ng: {
@@ -34,6 +37,15 @@
 				exports: "q"
 			},
 			ngresource: {
+				deps: ["ng"]
+			},
+			angularTreeView: {
+				deps: ["ng"]
+			},
+			angularData: {
+				deps: ["ng"]
+			},
+			dxTree: {
 				deps: ["ng"]
 			}
 			

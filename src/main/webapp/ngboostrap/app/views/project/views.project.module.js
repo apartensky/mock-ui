@@ -21,7 +21,12 @@ function(ng, ProjectviewVM){
 	   	     							$state.go("project", {id: data.id});
 	   	     						});
 	   	     					}else{
-	   	     						return ProjectRepository.get($stateParams.id);
+	   	     						var project = ProjectRepository.get($stateParams.id);
+	   	     						console.debug("Project State: got resolve:", project);
+	   	     						if(project.$promise)
+	   	     							return project.$promise;
+	   	     						else
+	   	     							return project;
 	   	     					}
 	   	     				}]
 	   	     			}

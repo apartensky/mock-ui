@@ -23,8 +23,9 @@ define(["ng", "lodash"], function(ng, _){
 					, function(response){
 				_.map(data, function(cur){
 					if(cur.id===response.id)
-						if(cur!==updateSource)
+						if(cur!==updateSource){
 							_.extend(cur, response);
+						}
 				});
 			}
 			);

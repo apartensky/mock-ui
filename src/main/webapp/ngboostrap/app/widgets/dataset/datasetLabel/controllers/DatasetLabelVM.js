@@ -6,7 +6,17 @@ define([], function(){
 		};
 		this.editListItem=function(dataset){			
 			var modal=$modal.open({
-				template: "<div><input type='text' ng-model='RenameDatasetCtrl.newName'></div><div><a ng-click='RenameDatasetCtrl.ok()'>OK</a> <a ng-click='RenameDatasetCtrl.cancel()'>Cancel</a></div>",
+				template: "<div>" +
+				"<div class='modal-header'>"+
+					"<h3 class='modal-title'>Rename</h3>"+
+				"</div>"+
+				"<div class='modal-body'>" +
+						"<input type='text' ng-model='RenameDatasetCtrl.newName'></div>" +
+				"</div>" +
+				"<div class='modal-footer'>"+
+					"<a ng-click='RenameDatasetCtrl.ok()'>OK</a> <a ng-click='RenameDatasetCtrl.cancel()'>Cancel</a>"+
+            	"</div>"+
+				"</div>",
 				windowClass: "modal-vertical-centered",
 				resolve: {
 					dataset: function () {
@@ -37,7 +47,7 @@ define([], function(){
 		this.startNewProject=function(dataset){
 			ProjectRepository.put({
 				name: dataset.name,
-				data: dataset
+				dataset: [dataset]
 			}).$promise.then(function(response){
 				Navigator.openProject(response);
 			});

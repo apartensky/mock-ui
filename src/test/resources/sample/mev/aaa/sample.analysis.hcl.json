@@ -1,0 +1,44 @@
+{
+	"name": "kkk",
+	"timestamp": 
+	{
+		"timeInMillis": 1417506148961,
+		"seconds": 28,
+		"minutes": 42,
+		"hours": 2,
+		"period": "AM"
+	},
+	"type": "Hierarchical Clustering",
+	"root": {
+		"distance": 2.7851566041428764,
+		"children": [{
+				"distance": 1.4996036384195357,
+				"children": 
+				[{
+					"name": "TCGA-E1-5311-01A-01R-1470-07"
+				},
+				{
+					"name": "TCGA-DH-5143-01A-01R-1470-07"
+				}]
+			},
+			{
+				"distance": 2.110057781906958,
+				"children": 
+				[{
+					"name": "TCGA-E1-5303-01A-01R-1470-07"
+				},
+				{
+					"distance": 1.202224475285583,
+					"children": 
+					[{
+						"name": "TCGA-DB-5270-01A-02R-1470-07"
+					},
+
+					{
+						"name": "TCGA-CS-4944-01A-01R-1470-07"
+					}]
+				}]
+			}]
+	},
+	"dimension": "column"
+}

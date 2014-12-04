@@ -6,7 +6,17 @@ define([], function(){
 		};
 		this.editListItem=function(project){			
 			var modal=$modal.open({
-				template: "<div><input type='text' ng-model='RenameProjectCtrl.newName'></div><div><a ng-click='RenameProjectCtrl.ok()'>OK</a> <a ng-click='RenameProjectCtrl.cancel()'>Cancel</a></div>",
+				template: "<div>" +
+				"<div class='modal-header'>"+
+					"<h3 class='modal-title'>Rename</h3>"+
+				"</div>"+
+				"<div class='modal-body'>" +
+						"<input type='text' ng-model='RenameProjectCtrl.newName'></div>" +
+				"</div>" +
+				"<div class='modal-footer'>"+
+					"<a ng-click='RenameProjectCtrl.ok()'>OK</a> <a ng-click='RenameProjectCtrl.cancel()'>Cancel</a>"+
+            	"</div>"+
+				"</div>",
 				windowClass: "modal-vertical-centered",
 				resolve: {
 					project: function () {

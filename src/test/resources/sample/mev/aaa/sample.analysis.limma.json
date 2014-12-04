@@ -1,0 +1,36 @@
+{
+	"name": "limma1",
+	"timestamp": {
+		"timeInMillis": 1417507819662,
+		"seconds": 19,
+		"minutes": 10,
+		"hours": 3,
+		"period": "AM"
+	},
+	"type": "LIMMA Differential Expression Analysis",
+	"results": [],
+	"topGo": [],
+	"control": {
+		"name": "c1",
+		"properties": {
+			"selectionColor": "#2b0fca",
+			"selectionDescription": ""
+		},
+		"keys": [
+			"TCGA-E1-5311-01A-01R-1470-07",
+			"TCGA-DH-5143-01A-01R-1470-07"
+		]
+	},
+	"experiment": {
+		"name": "c2",
+		"properties": {
+			"selectionColor": "#358359",
+			"selectionDescription": ""
+		},
+		"keys": [
+			"TCGA-E1-5303-01A-01R-1470-07",
+			"TCGA-DB-5270-01A-02R-1470-07",
+			"TCGA-CS-4944-01A-01R-1470-07"
+		]
+	}
+}

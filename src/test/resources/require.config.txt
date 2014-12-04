@@ -8,7 +8,9 @@
 			q: ["vendor/q/q.hack"],
 			ngmocks: ["vendor/angularjs/angular-mocks.1.2.25"],
 			underscore: ["vendor/underscore/underscore"],
-			lodash: ["vendor/lodash/lodash"]
+			lodash: ["vendor/lodash/lodash"],
+			angularTreeView: ["vendor/angular-treeview/treeView"],
+			angularData: ["vendor/angular-data/angular-data"]
 		},
 		shim: {
 			ng: {
@@ -29,6 +31,12 @@
 				exports: "q"
 			},
 			ngresource: {
+				deps: ["ng"]
+			},
+			angularTreeView: {
+				deps: ["ng"]
+			},
+			angularData: {
 				deps: ["ng"]
 			}
 			

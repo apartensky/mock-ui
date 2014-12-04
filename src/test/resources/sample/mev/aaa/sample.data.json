@@ -1,0 +1,208 @@
+{
+	"row": 
+	{
+		"type": "row",
+		"keys": 
+		[	
+			"CREB3L1",
+			"ELMO2",
+			"ERCC5",
+			"MMP2",
+			"PNMA1",
+			"RPS11",
+			"ZHX3"],
+		"selections": []
+	},
+	"column": 
+	{
+		"type": "column",
+		"keys": [
+			"TCGA-CS-4944-01A-01R-1470-07",
+			"TCGA-E1-5311-01A-01R-1470-07",
+			"TCGA-DB-5270-01A-02R-1470-07",
+			"TCGA-E1-5303-01A-01R-1470-07",
+			"TCGA-DH-5143-01A-01R-1470-07"
+		],
+		"selections": []
+	},
+	"values": [
+		{
+			"row": "CREB3L1",
+			"column": "TCGA-CS-4944-01A-01R-1470-07",
+			"value": -0.990166666666667
+		},
+		{
+			"row": "CREB3L1",
+			"column": "TCGA-E1-5311-01A-01R-1470-07",
+			"value": -1.70383333333333
+		},
+		{
+			"row": "CREB3L1",
+			"column": "TCGA-DB-5270-01A-02R-1470-07",
+			"value": -0.1735
+		},
+		{
+			"row": "CREB3L1",
+			"column": "TCGA-E1-5303-01A-01R-1470-07",
+			"value": 0.262
+		},
+		{
+			"row": "CREB3L1",
+			"column": "TCGA-DH-5143-01A-01R-1470-07",
+			"value": -1.5475
+		},
+		{
+			"row": "ELMO2",
+			"column": "TCGA-CS-4944-01A-01R-1470-07",
+			"value": 1.880125
+		},
+		{
+			"row": "ELMO2",
+			"column": "TCGA-E1-5311-01A-01R-1470-07",
+			"value": 2.5738125
+		},
+		{
+			"row": "ELMO2",
+			"column": "TCGA-DB-5270-01A-02R-1470-07",
+			"value": 1.3080625
+		},
+		{
+			"row": "ELMO2",
+			"column": "TCGA-E1-5303-01A-01R-1470-07",
+			"value": 0.8185
+		},
+		{
+			"row": "ELMO2",
+			"column": "TCGA-DH-5143-01A-01R-1470-07",
+			"value": 1.3643125
+		},
+		{
+			"row": "ERCC5",
+			"column": "TCGA-CS-4944-01A-01R-1470-07",
+			"value": 0.2414
+		},
+		{
+			"row": "ERCC5",
+			"column": "TCGA-E1-5311-01A-01R-1470-07",
+			"value": 0.2394
+		},
+		{
+			"row": "ERCC5",
+			"column": "TCGA-DB-5270-01A-02R-1470-07",
+			"value": -0.2134
+		},
+		{
+			"row": "ERCC5",
+			"column": "TCGA-E1-5303-01A-01R-1470-07",
+			"value": 0.3646
+		},
+		{
+			"row": "ERCC5",
+			"column": "TCGA-DH-5143-01A-01R-1470-07",
+			"value": 0.5866
+		},
+		{
+			"row": "MMP2",
+			"column": "TCGA-CS-4944-01A-01R-1470-07",
+			"value": -1.36525
+		},
+		{
+			"row": "MMP2",
+			"column": "TCGA-E1-5311-01A-01R-1470-07",
+			"value": -1.066875
+		},
+		{
+			"row": "MMP2",
+			"column": "TCGA-DB-5270-01A-02R-1470-07",
+			"value": -1.31625
+		},
+		{
+			"row": "MMP2",
+			"column": "TCGA-E1-5303-01A-01R-1470-07",
+			"value": -1.469625
+		},
+		{
+			"row": "MMP2",
+			"column": "TCGA-DH-5143-01A-01R-1470-07",
+			"value": -0.54525
+		},
+		{
+			"row": "PNMA1",
+			"column": "TCGA-CS-4944-01A-01R-1470-07",
+			"value": 3.1918
+		},
+		{
+			"row": "PNMA1",
+			"column": "TCGA-E1-5311-01A-01R-1470-07",
+			"value": 3.3446
+		},
+		{
+			"row": "PNMA1",
+			"column": "TCGA-DB-5270-01A-02R-1470-07",
+			"value": 3.0248
+		},
+		{
+			"row": "PNMA1",
+			"column": "TCGA-E1-5303-01A-01R-1470-07",
+			"value": 2.6394
+		},
+		{
+			"row": "PNMA1",
+			"column": "TCGA-DH-5143-01A-01R-1470-07",
+			"value": 2.7474
+		},
+		{
+			"row": "RPS11",
+			"column": "TCGA-CS-4944-01A-01R-1470-07",
+			"value": -0.6999
+		},
+		{
+			"row": "RPS11",
+			"column": "TCGA-E1-5311-01A-01R-1470-07",
+			"value": 0.1297
+		},
+		{
+			"row": "RPS11",
+			"column": "TCGA-DB-5270-01A-02R-1470-07",
+			"value": -0.4983
+		},
+		{
+			"row": "RPS11",
+			"column": "TCGA-E1-5303-01A-01R-1470-07",
+			"value": 0.4767
+		},
+		{
+			"row": "RPS11",
+			"column": "TCGA-DH-5143-01A-01R-1470-07",
+			"value": 0.0287
+		},
+		{
+			"row": "ZHX3",
+			"column": "TCGA-CS-4944-01A-01R-1470-07",
+			"value": 1.45775
+		},
+		{
+			"row": "ZHX3",
+			"column": "TCGA-E1-5311-01A-01R-1470-07",
+			"value": 1.127375
+		},
+		{
+			"row": "ZHX3",
+			"column": "TCGA-DB-5270-01A-02R-1470-07",
+			"value": 1.041375
+		},
+		{
+			"row": "ZHX3",
+			"column": "TCGA-E1-5303-01A-01R-1470-07",
+			"value": 1.253375
+		},
+		{
+			"row": "ZHX3",
+			"column": "TCGA-DH-5143-01A-01R-1470-07",
+			"value": 1.172
+		}
+	],
+	"min": -1.70383333333333,
+	"max": 3.3446,
+	"avg": 0.5623982142857142
+}

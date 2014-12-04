@@ -1,0 +1,14 @@
+<script type="text/ng-template"  id="tree_item_renderer.html">
+	{{data.name}}
+    		<a ng-click="add(data)" ">add</a>
+				<a ng-click="add(data, 'selection')" ">selection</a>
+    		<a ng-click="delete(data)" ng-show="data.nodes.length > 0">delete</a>
+    			<ul>
+        		<li ng-repeat="data in data.nodes" ng-include="'tree_item_renderer.html'"></li>
+    			</ul>
+				<!-- <project-label project="project" clickable="true" editable="true"></project-label> -->
+</script>
+<div ng-transclude></div>
+	<ul ng-controller="ProjectTreeVM">
+	<li ng-repeat="data in tree" ng-include="script_id"></li>
+</ul>

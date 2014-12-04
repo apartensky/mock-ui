@@ -1,16 +1,18 @@
 define(["ng",        
         "nguirouter", "uibootstrap", "ngresource",        
-        "ngmocks",
+        "ngmocks", "angularTreeView", "dxTree",
         "app/domain/domain.module",
         "app/views/views.module",
         "app/widgets/components.module",
-        "app/backend/storageMock.module"
+        "app/backend/storageMock.module",        
         ], function(ng){
 	"use strict";
 	return ng.module("ngbootstrap-app", ["ui.bootstrap",
 	                                     "ngMockE2E",
 	                                     "ngResource",
-	                                     "ui.router",	                                     
+	                                     "ui.router",
+	                                     "AxelSoft",
+	                                     "dotjem.angular.tree",
 	                                     "mui.domain",
 	                                     "mui.views",
 	                                     "mui.components",
