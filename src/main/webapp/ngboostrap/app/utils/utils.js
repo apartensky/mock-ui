@@ -45,6 +45,147 @@ define(["lodash"], function(_){
 		}, path);
 		
 	};
+
+	function walkObjectTree2(obj, callback, path, limit){
+		var path = path || [];
+
+		_.transform(obj, function(acc, value, key, obj){
+			if(_.isObject(value)){
+				acc.push(key);
+				console.debug("push2:", acc.join("."));
+				if(callback(value, acc))
+					walkObjectTree2(value, callback, acc);
+				console.debug("pop2:", acc.join("."));
+				path.pop();	
+				
+			}else if(_.isArray(value)){
+				acc.push(key);
+				console.debug("push2:", acc.join("."));
+				if(callback(value, acc)){
+					_.forEach(value, function(item){				
+						acc.push(item, acc);
+						console.debug("push2:", acc.join("."));
+						var keepGoing=callback(item, acc)
+						if(keepGoing){			
+							walkObjectTree2(item, callback, acc);
+							console.debug("pop2:", acc.join("."));
+							acc.pop();
+						}else{
+							console.debug("aborting ... pop2:", acc.join("."));
+							acc.pop();
+							return false;
+						}
+							
+					});						
+				}
+				acc.pop();
+				console.debug("pop2:", acc.join("."));
+			}else if(!_.isFunction(value) && !_.isUndefined(value) && !_.isEmpty(value) && !_.isNull(value)){
+				acc.push(key);
+				console.debug("push2:", acc.join("."));
+				if(callback(value, acc))
+					walkObjectTree2(value, callback, acc);
+				console.debug("pop2:", acc.join("."));
+				path.pop();	
+				
+			}								
+		}, path);
+		
+	};
+	
+	function buildNodeTree(obj, callback, path, tree, limit){
+		var path = path || [];
+		var tree=tree || {name: "root", nodes: []};		
+		var newNode;
+		_.transform(obj, function(acc, value, key, obj){
+			if(_.isObject(value)){
+				acc.push({key: key, node: tree});				
+				console.debug("push2:", acc.join("."));
+				newNode=callback(value, acc)				
+				if(newNode){
+					tree=newNode;										
+					buildNodeTree(value, callback, acc, tree);					
+				}
+				console.debug("pop2:", acc.join("."));
+				tree=acc.pop().node;	
+				
+			}else if(_.isArray(value)){
+				acc.push({key: key, node: tree});
+				console.debug("push2:", acc.join("."));
+				newNode=callback(value, acc)				
+				if(newNode){
+					tree=newNode;
+					_.forEach(value, function(item){				
+						acc.push({key: item, node: tree});
+						console.debug("push2:", acc.join("."));
+						newNode=callback(value, acc)				
+						if(newNode){
+							tree=newNode;
+							buildNodeTree(item, callback, acc, tree);
+							console.debug("pop2:", acc.join("."));
+							tree=acc.pop().node;
+						}else{
+							console.debug("aborting ... pop2:", acc.join("."));
+							tree=acc.pop().node;
+							return false;
+						}
+					});						
+				}
+				tree=acc.pop().node;
+				console.debug("pop2:", acc.join("."));
+			}else if(!_.isFunction(value) && !_.isUndefined(value) && !_.isEmpty(value) && !_.isNull(value)){
+				acc.push({key: key, node: tree});
+				console.debug("push2:", acc.join("."));
+				newNode=callback(value, acc)				
+				if(newNode){
+					tree=newNode;
+					buildNodeTree(value, callback, acc, tree);
+				}
+				console.debug("pop2:", acc.join("."));
+				tree=acc.pop().node;
+				
+			}								
+		}, path);
+		return tree;
+	};
+
+	
+	function createNodeTree(obj, callback, tree, limit){
+		var tree={node: name, nodes:[]};
+
+		_.transform(obj, function(acc, value, key, obj){
+			if(_.isObject(value)){
+				acc.push(key);
+				console.debug("push:", acc.join("."));
+				callback(value, acc);
+				walkObjectTree(value, callback, acc);
+				console.debug("pop:", acc.join("."));
+				path.pop();	
+				
+			}else if(_.isArray(value)){
+				acc.push(key);
+				console.debug("push:", acc.join("."));				
+				_.forEach(value, function(item){
+						callback(item, acc)					
+						walkObjectTree(item, callback, acc);
+						console.debug("pop:", acc.join("."));
+						path.pop();	
+						
+				});								
+				acc.pop();
+				console.debug("pop:", acc.join("."));
+			}else if(!_.isFunction(value) && !_.isUndefined(value) && !_.isEmpty(value) && !_.isNull(value)){
+				acc.push(key);
+				console.debug("push:", acc.join("."));
+				callback(value, acc);					
+				walkObjectTree(value, callback, acc);
+				console.debug("pop:", acc.join("."));
+				path.pop();	
+				
+			}								
+		}, path);
+		
+	};
 	
 	function traverse1(obj, callback, path){
 		
@@ -166,7 +307,9 @@ define(["lodash"], function(_){
 		urlToObj: urlToObj,
 		urlToArray: urlToArray,
 		sleep: sleep,
-		walkObjectTree: walkObjectTree
+		walkObjectTree: walkObjectTree,
+		walkObjectTree2: walkObjectTree2,
+		buildNodeTree: buildNodeTree
 	};
 	
 });

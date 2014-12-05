@@ -30,6 +30,7 @@ define(["lodash", "app/utils/utils"], function(_,utils){
 					}
 				});	
 			};
+			
 			function traverse(node, acc){
 				if(_.isArray(node)){
 					_.map(node, function(item){

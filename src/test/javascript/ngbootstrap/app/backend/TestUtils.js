@@ -201,7 +201,7 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 				"dataset\.[0\-9]+\.column": {},
 				"dataset\.[0\-9]+\.column.keys": {},
 				"dataset\.[0\-9]+\.row": {},
-				"dataset\.[0\-9]+\.row.keys": {},
+				"dataset\.[0\-9]+\.row.keys": {}
 				
 		}
 		it("tests the regex for matching treenodes", function(){
@@ -222,6 +222,40 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 //				console.info("notp:", path.join("."), obj);
 				return false;
 			})
+		});
+		
+		it("walk the dataset node tree 2", function(){
+			utils.walkObjectTree2(mockDataset, function(obj, path){
+				var nodePath=path.join(".");				
+				var nodeDef = _.find(mockDatasetTree, function(value, key){
+					return (nodePath.match(key+"$")!==null);	
+				});	
+				if(nodeDef){
+					console.info("path2: ", path.join("."), obj);
+					return true;
+				}
+				console.info("notp2:", path.join("."), obj);
+				return false;
+			})
+		});
+		
+		it("assemble the dataset node tree 2", function(){
+			var tree = utils.buildNodeTree(mockDataset, function(obj, path){
+				var nodePath=_.map(path, "key").join(".");	
+				console.debug("nodePath", nodePath)
+				var nodeDef = _.find(mockDatasetTree, function(value, key){
+					return (nodePath.match(key+"$")!==null);	
+				});	
+				if(nodeDef){
+					console.info("path2: ", nodePath, obj);
+					var newNode = {name: path[path.length-1].key, nodes:[]}
+					path[path.length-1].node.nodes.push(newNode);					
+					return newNode;
+				}
+				console.log("notp2:", nodePath, obj);
+				return undefined;
+			});
+			console.info("TREE2", tree);
 		});
 		
 		it("assemble the dataset node tree", function(){
