@@ -166,5 +166,111 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 			_.merge(obj1, obj2);
 			expect(obj1).toEqual({name: "2"});
 		});
+		
+		var mockDataset={
+				id: 1, 
+				dataset:[{
+					id: 11, 
+					column: {
+						keys: ["A", "B", "C"]
+					},
+					row: {
+						keys: ["1", "2", "3"]
+					}
+				},
+				{
+					id: 12,
+					column: {
+						keys: ["X", "Y", "Z"]
+					},
+					row: {
+						keys: ["10", "20", "30"]
+					}
+				}]
+			};
+		it("walks the dataset tree", function(){
+			utils.walkObjectTree(mockDataset, function(obj, path){
+				console.info("path ", path.join("."), obj);
+				return true;
+			});
+		});
+		
+		var mockDatasetTree={
+				"dataset": {},
+				"dataset\.[0\-9]+": {},
+				"dataset\.[0\-9]+\.column": {},
+				"dataset\.[0\-9]+\.column.keys": {},
+				"dataset\.[0\-9]+\.row": {},
+				"dataset\.[0\-9]+\.row.keys": {},
+				
+		}
+		it("tests the regex for matching treenodes", function(){
+			expect(_.isArray("dataset.0".match("dataset\.[0-9]"))).toBe(true);
+			expect(_.isArray("dataset.0.column".match("dataset\.[0-9]\.column"))).toBe(true);
+			expect(_.isArray("dataset.0.column".match("dataset\.[0-9]$"))).toBe(false);
+		})
+		it("print the dataset tree to display", function(){
+			utils.walkObjectTree(mockDataset, function(obj, path){
+				var nodePath=path.join(".");				
+				var nodeDef = _.find(mockDatasetTree, function(value, key){
+					return (nodePath.match(key+"$")!==null);	
+				});
+				if(nodeDef){
+					console.info("path ", path.join("."), obj);
+					return true;
+				}
+//				console.info("notp:", path.join("."), obj);
+				return false;
+			})
+		});
+		
+		it("assemble the dataset node tree", function(){
+			var tree={
+					name: "root",
+					nodes: []
+			};
+			var q=[];			
+			var cur=tree;
+			var prev;
+			var newNode;
+			var prevPathLength=0;
+			utils.walkObjectTree(mockDataset, function(obj, path){
+				var nodePath=path.join(".");				
+				var nodeDef = _.find(mockDatasetTree, function(value, key){
+					return (nodePath.match(key+"$")!==null);	
+				});
+				if(nodeDef){
+					console.info("path ", path.join("."), obj);
+					if(path.length>prevPathLength){
+						newNode={name: path[path.length-1], nodes:[]};
+						cur.nodes.push(newNode);
+						prev=cur;
+						cur=newNode;
+						q.push(newNode);
+					}else if(path.length===prevPathLength){
+						newNode={name: path[path.length-1], nodes:[]};						
+						prev.nodes.push(newNode);
+						cur=newNode;	
+						q.pop();
+					}else{
+						newNode={name: path[path.length-1], nodes:[]};
+						for(i=0;i<=prevPathLength-path.length;i++){							
+							prev=q.pop();
+						}
+						prev.nodes.push(newNode);						
+						cur=newNode;
+						
+						
+					}
+					prevPathLength=path.length;
+					return true;
+				}
+				
+//				console.info("notp:", path.join("."), obj);
+				return false;
+			});
+			console.debug("TREE", tree);
+		});
+		
 	});
 });

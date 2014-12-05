@@ -10,7 +10,8 @@
 			underscore: ["vendor/underscore/underscore"],
 			lodash: ["vendor/lodash/lodash"],
 			angularTreeView: ["vendor/angular-treeview/treeView"],
-			angularData: ["vendor/angular-data/angular-data"]
+			angularData: ["vendor/angular-data/angular-data"],
+			dxTree: ["vendor/dxtree/dxTree"]
 		},
 		shim: {
 			ng: {
@@ -37,6 +38,9 @@
 				deps: ["ng"]
 			},
 			angularData: {
+				deps: ["ng"]
+			},
+			dxTree: {
 				deps: ["ng"]
 			}
 			

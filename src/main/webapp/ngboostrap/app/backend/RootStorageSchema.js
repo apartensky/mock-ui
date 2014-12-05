@@ -4,6 +4,7 @@ define([], function(){
 			dataset: {}
 		},
 		project: {
+			dataset: {},
 			analysis: {					
 				result: {},					
 			},

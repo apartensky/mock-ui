@@ -66,7 +66,7 @@ define(["ng", "appjs", "ngmocks", "angularData"], function(ng){
 //			});
 			
 			$httpBackend.expectGET("api/project/1");
-			$httpBackend.expectGET("api/project/1/dataset/1");
+//			$httpBackend.expectGET("api/project/1/dataset/1");
 			$httpBackend.flush(2);
 			
 			

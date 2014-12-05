@@ -9,6 +9,43 @@ define(["lodash"], function(_){
 		}
 	};
 	
+	function walkObjectTree(obj, callback, path, limit){
+		var path = path || [];
+
+		_.transform(obj, function(acc, value, key, obj){
+			if(_.isObject(value)){
+				acc.push(key);
+				console.debug("push:", acc.join("."));
+				callback(value, acc);
+				walkObjectTree(value, callback, acc);
+				console.debug("pop:", acc.join("."));
+				path.pop();	
+				
+			}else if(_.isArray(value)){
+				acc.push(key);
+				console.debug("push:", acc.join("."));				
+				_.forEach(value, function(item){
+						callback(item, acc)					
+						walkObjectTree(item, callback, acc);
+						console.debug("pop:", acc.join("."));
+						path.pop();	
+						
+				});								
+				acc.pop();
+				console.debug("pop:", acc.join("."));
+			}else if(!_.isFunction(value) && !_.isUndefined(value) && !_.isEmpty(value) && !_.isNull(value)){
+				acc.push(key);
+				console.debug("push:", acc.join("."));
+				callback(value, acc);					
+				walkObjectTree(value, callback, acc);
+				console.debug("pop:", acc.join("."));
+				path.pop();	
+				
+			}								
+		}, path);
+		
+	};
+	
 	function traverse1(obj, callback, path){
 		
 		var path = path || [];
@@ -91,6 +128,8 @@ define(["lodash"], function(_){
 		}, data);
 	};
 	
+	
+	
 	function urlToArray(objPath, data, fnGetId){
 		fnGetId = fnGetId || function(obj){return obj.name};
 		return _.reduce(objPath, function(result, prop){
@@ -126,7 +165,8 @@ define(["lodash"], function(_){
 		traverseRev: traverseRev,
 		urlToObj: urlToObj,
 		urlToArray: urlToArray,
-		sleep: sleep
+		sleep: sleep,
+		walkObjectTree: walkObjectTree
 	};
 	
 });

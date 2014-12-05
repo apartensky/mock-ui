@@ -269,6 +269,7 @@ define(["lodash", "./NestedArrayStorageMixin"], function(_, NestedStorageMixin){
 										"timestamp": {"timeInMillis": 1417506148961,"seconds": 28,"minutes": 42,"hours": 2,"period": "AM"},
 										"type": "Hierarchical Clustering",						
 										"params": [{
+											name: "hcl params",
 											"dimension": "column",
 											"distance": "manhatan",
 											"linkage": "complete",
