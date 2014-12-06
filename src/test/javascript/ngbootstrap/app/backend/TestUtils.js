@@ -239,23 +239,64 @@ define(["lodash", "app/utils/utils"], function(_, utils){
 			})
 		});
 		
-		it("assemble the dataset node tree 2", function(){
-			var tree = utils.buildNodeTree(mockDataset, function(obj, path){
+		it("convert the dataset node tree 2", function(){
+			
+			var tree = utils.objectToNodeTree(mockDataset, function(obj, path){
+				
 				var nodePath=_.map(path, "key").join(".");	
 				console.debug("nodePath", nodePath)
+				
 				var nodeDef = _.find(mockDatasetTree, function(value, key){
 					return (nodePath.match(key+"$")!==null);	
 				});	
+				
 				if(nodeDef){
 					console.info("path2: ", nodePath, obj);
-					var newNode = {name: path[path.length-1].key, nodes:[]}
+					var newNode = {name: path[path.length-1].key, nodes:[]};
+					
 					path[path.length-1].node.nodes.push(newNode);					
 					return newNode;
 				}
 				console.log("notp2:", nodePath, obj);
 				return undefined;
 			});
+			
 			console.info("TREE2", tree);
+		});
+		
+		it("builds node tree from data", function(){
+			var schema={
+					"dataset": {label: "Datasets"},
+					"dataset\.[0\-9]+": {label: "Dataset"},
+					"dataset\.[0\-9]+\.column": {label: "columns"},
+					"dataset\.[0\-9]+\.column.keys": {label: "keys"},
+					"dataset\.[0\-9]+\.row": {label: "rows"},
+					"dataset\.[0\-9]+\.row.keys": {label: "keys"}
+			};
+			var tree = utils.buildNodeTree(mockDataset, schema);
+			expect(tree.nodes.length).toBe(1);
+			
+			expect(tree.nodes[0].nodeName).toBe("Datasets");
+			expect(tree.nodes[0].nodeData).toBe(mockDataset.dataset);			
+			
+			expect(tree.nodes[0].nodes[0].nodeName).toBe("Dataset");
+			expect(tree.nodes[0].nodes[0].nodeData).toBe(mockDataset.dataset[0]);
+			expect(tree.nodes[0].nodes[1].nodeName).toBe("Dataset");
+			expect(tree.nodes[0].nodes[1].nodeData).toBe(mockDataset.dataset[1]);
+			
+			expect(tree.nodes[0].nodes[0].nodes[0].nodeName).toBe("columns");
+			expect(tree.nodes[0].nodes[0].nodes[0].nodeData).toBe(mockDataset.dataset[0].column);			
+			expect(tree.nodes[0].nodes[0].nodes[1].nodeName).toBe("rows");
+			expect(tree.nodes[0].nodes[0].nodes[1].nodeData).toBe(mockDataset.dataset[0].row);
+			
+			expect(tree.nodes[0].nodes[0].nodes[0].nodeName).toBe("columns");
+			expect(tree.nodes[0].nodes[0].nodes[0].nodeData).toBe(mockDataset.dataset[0].column);
+			expect(tree.nodes[0].nodes[0].nodes[0].nodes[0].nodeName).toBe("keys");
+			expect(tree.nodes[0].nodes[0].nodes[1].nodeName).toBe("rows");
+			expect(tree.nodes[0].nodes[0].nodes[1].nodeData).toBe(mockDataset.dataset[0].row);
+			expect(tree.nodes[0].nodes[0].nodes[1].nodes[0].nodeName).toBe("keys");
+			
+			
 		});
 		
 		it("assemble the dataset node tree", function(){

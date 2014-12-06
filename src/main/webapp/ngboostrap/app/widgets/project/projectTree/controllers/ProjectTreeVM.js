@@ -19,7 +19,7 @@ function(ng, RecursiveTreeMixin) {
 //	    			$scope.tree=[ProjectTreeAdaptor(response)];
 //	    		})
 //	    $scope.rootNode={name: "root", dataset:[{name: "node1", result:[{name: "result1.1"}, {name: "result1.2"}]}, {name: "node2", dataset: [{name: "node2.1"}]}]};
-	    $scope.tree=[ProjectTreeAdaptor($scope.project)];
+	    $scope.tree=ProjectTreeAdaptor($scope.project).nodes;
 	    $scope.script_id="tree_item_renderer.html";
 //	    $scope.script_id=$scope.nodeType+".html";
 	}	

@@ -1,5 +1,5 @@
 <script type="text/ng-template"  id="tree_item_renderer.html">
-	{{data.name}}    		
+	{{data.nodeData.name || data.nodeName}}    		
 				<a ng-click="add(data, 'selection')" ">selection</a>
     		<a ng-click="delete(data)" ng-show="data.nodes.length > 0">delete</a>
     			<ul>

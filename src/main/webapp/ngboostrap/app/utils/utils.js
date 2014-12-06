@@ -93,9 +93,9 @@ define(["lodash"], function(_){
 		
 	};
 	
-	function buildNodeTree(obj, callback, path, tree, limit){
+	function objectToNodeTree(obj, callback, path, tree, limit){
 		var path = path || [];
-		var tree=tree || {name: "root", nodes: []};		
+		var tree=tree || {nodeName: "root", nodes: []};		
 		var newNode;
 		_.transform(obj, function(acc, value, key, obj){
 			if(_.isObject(value)){
@@ -104,7 +104,7 @@ define(["lodash"], function(_){
 				newNode=callback(value, acc)				
 				if(newNode){
 					tree=newNode;										
-					buildNodeTree(value, callback, acc, tree);					
+					objectToNodeTree(value, callback, acc, tree);					
 				}
 				console.debug("pop2:", acc.join("."));
 				tree=acc.pop().node;	
@@ -121,7 +121,7 @@ define(["lodash"], function(_){
 						newNode=callback(value, acc)				
 						if(newNode){
 							tree=newNode;
-							buildNodeTree(item, callback, acc, tree);
+							objectToNodeTree(item, callback, acc, tree);
 							console.debug("pop2:", acc.join("."));
 							tree=acc.pop().node;
 						}else{
@@ -139,7 +139,7 @@ define(["lodash"], function(_){
 				newNode=callback(value, acc)				
 				if(newNode){
 					tree=newNode;
-					buildNodeTree(value, callback, acc, tree);
+					objectToNodeTree(value, callback, acc, tree);
 				}
 				console.debug("pop2:", acc.join("."));
 				tree=acc.pop().node;
@@ -149,6 +149,39 @@ define(["lodash"], function(_){
 		return tree;
 	};
 
+	
+	function buildNodeTree(source, schema, fnBuildNode){
+		var tree = objectToNodeTree(source, function(obj, path){
+			
+			var fnBuildNode = fnBuildNode || function(config, data, path){
+				return {
+					nodeName: config.label || path[path.length-1].key,					
+					nodeConfig: config, 
+					nodeData: obj, 
+					nodes:[]};
+			}
+			
+			var nodePath=_.map(path, "key").join(".");	
+			console.debug("nodePath", nodePath)
+			
+			var nodeDef = _.find(schema, function(value, key){
+				return (nodePath.match(key+"$")!==null);	
+			});	
+			
+			if(nodeDef){
+				console.info("path2: ", nodePath, obj);
+				var newNode = fnBuildNode(nodeDef, obj, path);
+//				var newNode = {name: path[path.length-1].key, nodes:[]};
+				
+				path[path.length-1].node.nodes.push(newNode);					
+				return newNode;
+			}
+			console.log("notp2:", nodePath, obj);
+			return undefined;
+		});
+		console.info("NODETREE", tree);
+		return tree;
+	}
 	
 	function createNodeTree(obj, callback, tree, limit){
 		var tree={node: name, nodes:[]};
@@ -309,6 +342,7 @@ define(["lodash"], function(_){
 		sleep: sleep,
 		walkObjectTree: walkObjectTree,
 		walkObjectTree2: walkObjectTree2,
+		objectToNodeTree: objectToNodeTree,
 		buildNodeTree: buildNodeTree
 	};
 	
