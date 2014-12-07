@@ -16,6 +16,14 @@
   -webkit-transform: translate(0, 50%) !important; /* Safari and Chrome */
 }
 
+project-node div {
+	border-style: solid;
+	border-width: 1px;
+	border-color: blue;
+	margin: 2px;
+	padding: 2px;
+}
+
 /* .container-fluid {	 */
 /* 	border-color: blue;		 */
 /* } */
