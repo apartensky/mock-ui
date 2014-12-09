@@ -16,9 +16,14 @@
 			classjs: ["vendor/classjs/Class"],
 			angularTreeView: ["vendor/angular-treeview/treeView"],
 			angularData: ["vendor/angular-data/angular-data"],
-			dxTree: ["vendor/dxtree/dxTree"]
+			dxTree: ["vendor/dxtree/dxTree"],
+			lessjs: ["vendor/lessjs/less.min.js"],
+			bootstrapTree: ["vendor/bootstrap-tree/bootstrap-tree"]
 		},
 		shim: {
+			jquery: {
+				exports: "$"
+			},
 			ng: {
 				deps: ["jquery"],
 				exports: "angular"
@@ -47,6 +52,9 @@
 			},
 			dxTree: {
 				deps: ["ng"]
+			},
+			bootstrapTree: {
+				deps: ["ng", "jquery"]
 			}
 			
 		}

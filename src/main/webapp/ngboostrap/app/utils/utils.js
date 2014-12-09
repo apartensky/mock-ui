@@ -100,48 +100,48 @@ define(["lodash"], function(_){
 		_.transform(obj, function(acc, value, key, obj){
 			if(_.isObject(value)){
 				acc.push({key: key, node: tree});				
-				console.debug("push2:", acc.join("."));
+//				console.debug("push2:", acc.join("."));
 				newNode=callback(value, acc)				
 				if(newNode){
 					tree=newNode;										
 					objectToNodeTree(value, callback, acc, tree);					
 				}
-				console.debug("pop2:", acc.join("."));
+//				console.debug("pop2:", acc.join("."));
 				tree=acc.pop().node;	
 				
 			}else if(_.isArray(value)){
 				acc.push({key: key, node: tree});
-				console.debug("push2:", acc.join("."));
+//				console.debug("push2:", acc.join("."));
 				newNode=callback(value, acc)				
 				if(newNode){
 					tree=newNode;
 					_.forEach(value, function(item){				
 						acc.push({key: item, node: tree});
-						console.debug("push2:", acc.join("."));
+//						console.debug("push2:", acc.join("."));
 						newNode=callback(value, acc)				
 						if(newNode){
 							tree=newNode;
 							objectToNodeTree(item, callback, acc, tree);
-							console.debug("pop2:", acc.join("."));
+//							console.debug("pop2:", acc.join("."));
 							tree=acc.pop().node;
 						}else{
-							console.debug("aborting ... pop2:", acc.join("."));
+//							console.debug("aborting ... pop2:", acc.join("."));
 							tree=acc.pop().node;
 							return false;
 						}
 					});						
 				}
 				tree=acc.pop().node;
-				console.debug("pop2:", acc.join("."));
+//				console.debug("pop2:", acc.join("."));
 			}else if(!_.isFunction(value) && !_.isUndefined(value) && !_.isEmpty(value) && !_.isNull(value)){
 				acc.push({key: key, node: tree});
-				console.debug("push2:", acc.join("."));
+//				console.debug("push2:", acc.join("."));
 				newNode=callback(value, acc)				
 				if(newNode){
 					tree=newNode;
 					objectToNodeTree(value, callback, acc, tree);
 				}
-				console.debug("pop2:", acc.join("."));
+//				console.debug("pop2:", acc.join("."));
 				tree=acc.pop().node;
 				
 			}								
@@ -162,21 +162,21 @@ define(["lodash"], function(_){
 			}
 			
 			var nodePath=_.map(path, "key").join(".");	
-			console.debug("nodePath", nodePath)
+//			console.debug("nodePath", nodePath)
 			
 			var nodeDef = _.find(schema, function(value, key){
 				return (nodePath.match(key+"$")!==null);	
 			});	
 			
 			if(nodeDef){
-				console.info("path2: ", nodePath, obj);
+//				console.info("path2: ", nodePath, obj);
 				var newNode = fnBuildNode(nodeDef, obj, path);
 //				var newNode = {name: path[path.length-1].key, nodes:[]};
 				
 				path[path.length-1].node.nodes.push(newNode);					
 				return newNode;
 			}
-			console.log("notp2:", nodePath, obj);
+//			console.log("notp2:", nodePath, obj);
 			return undefined;
 		});
 		console.info("NODETREE", tree);

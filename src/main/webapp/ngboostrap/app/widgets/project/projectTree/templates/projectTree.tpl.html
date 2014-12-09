@@ -4,6 +4,6 @@
  			<li ng-repeat="data in data.nodes" ng-include="'tree_item_renderer.html'"></li>
 	</ul>					
 </script>
-<div ng-controller="ProjectTreeVM">
-	<div ng-repeat="data in tree" ng-include="script_id"></div>
-</div>
+<ul ng-controller="ProjectTreeVM" class="tree">
+	<li ng-repeat="data in tree" ng-include="script_id"></li>
+</ul>

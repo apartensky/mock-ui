@@ -22,6 +22,10 @@ function(ng, RecursiveTreeMixin) {
 	    $scope.tree=ProjectTreeAdaptor($scope.project).nodes;
 	    $scope.script_id="tree_item_renderer.html";
 //	    $scope.script_id=$scope.nodeType+".html";
+	    
+	    $scope.$on('$includeContentLoaded', function($scope){
+	        console.debug("*$includeContentLoaded", $scope);	        
+	    });
 	}	
 	
 	ProjectTreeVM.$inject=["Navigator", "ProjectTreeAdaptor", "$modal", "$scope", "$element", "$attrs"];

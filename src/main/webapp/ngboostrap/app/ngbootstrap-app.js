@@ -1,6 +1,6 @@
 define(["ng",        
         "nguirouter", "uibootstrap", "ngresource",        
-        "ngmocks", "angularTreeView", "dxTree",
+        "ngmocks", "angularTreeView", "dxTree", "bootstrapTree",
         "app/domain/domain.module",
         "app/views/views.module",
         "app/widgets/components.module",
