@@ -19,8 +19,8 @@ define([], function(){
 		}
 		
 		var templateMap = {
-			Datasets: "<div>{{node.nodeName}} (datasets)</div>",
-			Default: "<i class='icon-minus-sign'></i><project-node-default node='node' ng-click='vm.nodeclick($event)' ng-show='vm.visible'></project-node-default>"
+			Datasets: "<span>{{node.nodeName}} (datasets)</span>",
+			Default: "<project-node-default node='node' ></project-node-default>"
 		};
 		
 		return {
@@ -33,7 +33,7 @@ define([], function(){
 				node: "="
 			},
 			replace: true,
-			template: "<span class='nodeWrapper {{node.nodenode.name || node.nodeName}}'></span>",
+			template: "<span ng-click='vm.nodeclick($event)' ng-show='vm.visible' class='nodeWrapper {{node.nodenode.name || node.nodeName}}'></span>",
 //			templateUrl: "app/widgets/project/projectTree/_projectNode/templates/projectNodeDefault.bootstrapTree.tpl.html",
 //			templateUrl: "app/widgets/project/projectTree/_projectNode/templates/projectNodeDefault.tpl.html",			
 			compile: function(elm, attr){
@@ -63,6 +63,7 @@ define([], function(){
                     	
                     	console.debug("Post LINK: ", scope.node);
                     	var template = templateMap[scope.node.nodeName] || templateMap.Default;
+//                    	template="<i class='icon-minus-sign'></i>"+template;
                     	elm.html(template);                    	
                         $compile(elm.contents())(scope);                        
                     }

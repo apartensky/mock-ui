@@ -16,6 +16,28 @@
   -webkit-transform: translate(0, 50%) !important; /* Safari and Chrome */
 }
 
+/* fix - table overflows penels*/
+.table {
+    table-layout:fixed;
+}
+
+.table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+project-data div{
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+project-data-dimension{
+	display: inline;
+	text-overflow: ellipsis;
+}
+
 /* project-node div { */
 /* 	border-style: solid; */
 /* 	border-width: 1px; */

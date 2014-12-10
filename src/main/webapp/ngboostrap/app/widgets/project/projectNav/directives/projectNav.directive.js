@@ -2,7 +2,9 @@ define(["ng"], function(){
 	
 	var ProjectNavDirective = function ProjectNavDirective(){
 		return {
-			scope: {},
+			scope: {
+				project: "="
+			},
 			restrict: "AE",
 			templateUrl: "app/widgets/project/projectNav/templates/projectNav.tpl.html"
 		}

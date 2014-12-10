@@ -1,5 +1,7 @@
 
 
 {{node.nodenode.name || node.nodeName}} (default)  			
-
+<div ng-click="$event.stopPropagation()">
+<input type="text" /><input type="button" value="send" />
+</div>
 <a ng-click="add(data, 'selection')" ">selection</a>

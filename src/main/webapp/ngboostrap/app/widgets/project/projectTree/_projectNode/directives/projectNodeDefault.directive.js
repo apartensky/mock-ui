@@ -5,7 +5,8 @@ define([], function(){
 			scope: {
 				node: "="
 			},			
-			templateUrl: "app/widgets/project/projectTree/_projectNode/templates/projectNodeDefault.bootstrapTree.tpl.html"
+//			templateUrl: "app/widgets/project/projectTree/_projectNode/templates/projectNodeDefault.bootstrapTree.tpl.html",
+			templateUrl: "app/widgets/project/projectTree/_projectNode/templates/projectNodeDefault.tpl.html"
 		}
 	} 
 	ProjectNodeDefaultDirective.$inject=[];

@@ -65,28 +65,273 @@ define(["lodash", "./NestedArrayStorageMixin"], function(_, NestedStorageMixin){
 									dataset: [{
 												id: 1,
 												name: "dataset 1",
-												row: {
-													"keys": [	
-														"CREB3L1",
-														"ELMO2",
-														"ERCC5",
-														"MMP2",
-														"PNMA1",
-														"RPS11",
-														"ZHX3"]
-												},
-												column: {
-													"keys": [
-														"TCGA-CS-4944-01A-01R-1470-07",
-														"TCGA-E1-5311-01A-01R-1470-07",
-														"TCGA-DB-5270-01A-02R-1470-07",
-														"TCGA-E1-5303-01A-01R-1470-07",
-														"TCGA-DH-5143-01A-01R-1470-07"
-													]
-												},
-												dataref:{
-													url: "api/dataset/1/values"							
-												},
+												dataref: {
+													url: "api/dataset/1/values",
+													row: {
+														"keys": [	
+															"CREB3L1",
+															"ELMO2",
+															"ERCC5",
+															"MMP2",
+															"PNMA1",
+															"RPS11",
+															"ZHX3"],
+														"selections": [{
+																name: "selection 1",
+																dimension: "row",
+																dataref: {
+																	row: {
+																		keys: ["CREB3L1",
+																				"ELMO2",
+																				"PNMA1",
+																				"RPS11",
+																				"ZHX3"]
+																	}
+																}																
+															},
+															{
+																name: "selection 2",
+																dimension: "row",
+																dataref: {
+																	row: {
+																		keys: ["ERCC5",
+																				"MMP2"]
+																	}
+																}																
+															}]
+													},
+													column: {
+														"keys": [
+															"TCGA-CS-4944-01A-01R-1470-07",
+															"TCGA-E1-5311-01A-01R-1470-07",
+															"TCGA-DB-5270-01A-02R-1470-07",
+															"TCGA-E1-5303-01A-01R-1470-07",
+															"TCGA-DH-5143-01A-01R-1470-07"
+														]
+													}
+												},												
+												values: [{
+															"row": "CREB3L1",
+															"column": "TCGA-CS-4944-01A-01R-1470-07",
+															"value": -0.990166666666667
+														},
+														{
+															"row": "CREB3L1",
+															"column": "TCGA-E1-5311-01A-01R-1470-07",
+															"value": -1.70383333333333
+														},
+														{
+															"row": "CREB3L1",
+															"column": "TCGA-DB-5270-01A-02R-1470-07",
+															"value": -0.1735
+														},
+														{
+															"row": "CREB3L1",
+															"column": "TCGA-E1-5303-01A-01R-1470-07",
+															"value": 0.262
+														},
+														{
+															"row": "CREB3L1",
+															"column": "TCGA-DH-5143-01A-01R-1470-07",
+															"value": -1.5475
+														},
+														{
+															"row": "ELMO2",
+															"column": "TCGA-CS-4944-01A-01R-1470-07",
+															"value": 1.880125
+														},
+														{
+															"row": "ELMO2",
+															"column": "TCGA-E1-5311-01A-01R-1470-07",
+															"value": 2.5738125
+														},
+														{
+															"row": "ELMO2",
+															"column": "TCGA-DB-5270-01A-02R-1470-07",
+															"value": 1.3080625
+														},
+														{
+															"row": "ELMO2",
+															"column": "TCGA-E1-5303-01A-01R-1470-07",
+															"value": 0.8185
+														},
+														{
+															"row": "ELMO2",
+															"column": "TCGA-DH-5143-01A-01R-1470-07",
+															"value": 1.3643125
+														},
+														{
+															"row": "ERCC5",
+															"column": "TCGA-CS-4944-01A-01R-1470-07",
+															"value": 0.2414
+														},
+														{
+															"row": "ERCC5",
+															"column": "TCGA-E1-5311-01A-01R-1470-07",
+															"value": 0.2394
+														},
+														{
+															"row": "ERCC5",
+															"column": "TCGA-DB-5270-01A-02R-1470-07",
+															"value": -0.2134
+														},
+														{
+															"row": "ERCC5",
+															"column": "TCGA-E1-5303-01A-01R-1470-07",
+															"value": 0.3646
+														},
+														{
+															"row": "ERCC5",
+															"column": "TCGA-DH-5143-01A-01R-1470-07",
+															"value": 0.5866
+														},
+														{
+															"row": "MMP2",
+															"column": "TCGA-CS-4944-01A-01R-1470-07",
+															"value": -1.36525
+														},
+														{
+															"row": "MMP2",
+															"column": "TCGA-E1-5311-01A-01R-1470-07",
+															"value": -1.066875
+														},
+														{
+															"row": "MMP2",
+															"column": "TCGA-DB-5270-01A-02R-1470-07",
+															"value": -1.31625
+														},
+														{
+															"row": "MMP2",
+															"column": "TCGA-E1-5303-01A-01R-1470-07",
+															"value": -1.469625
+														},
+														{
+															"row": "MMP2",
+															"column": "TCGA-DH-5143-01A-01R-1470-07",
+															"value": -0.54525
+														},
+														{
+															"row": "PNMA1",
+															"column": "TCGA-CS-4944-01A-01R-1470-07",
+															"value": 3.1918
+														},
+														{
+															"row": "PNMA1",
+															"column": "TCGA-E1-5311-01A-01R-1470-07",
+															"value": 3.3446
+														},
+														{
+															"row": "PNMA1",
+															"column": "TCGA-DB-5270-01A-02R-1470-07",
+															"value": 3.0248
+														},
+														{
+															"row": "PNMA1",
+															"column": "TCGA-E1-5303-01A-01R-1470-07",
+															"value": 2.6394
+														},
+														{
+															"row": "PNMA1",
+															"column": "TCGA-DH-5143-01A-01R-1470-07",
+															"value": 2.7474
+														},
+														{
+															"row": "RPS11",
+															"column": "TCGA-CS-4944-01A-01R-1470-07",
+															"value": -0.6999
+														},
+														{
+															"row": "RPS11",
+															"column": "TCGA-E1-5311-01A-01R-1470-07",
+															"value": 0.1297
+														},
+														{
+															"row": "RPS11",
+															"column": "TCGA-DB-5270-01A-02R-1470-07",
+															"value": -0.4983
+														},
+														{
+															"row": "RPS11",
+															"column": "TCGA-E1-5303-01A-01R-1470-07",
+															"value": 0.4767
+														},
+														{
+															"row": "RPS11",
+															"column": "TCGA-DH-5143-01A-01R-1470-07",
+															"value": 0.0287
+														},
+														{
+															"row": "ZHX3",
+															"column": "TCGA-CS-4944-01A-01R-1470-07",
+															"value": 1.45775
+														},
+														{
+															"row": "ZHX3",
+															"column": "TCGA-E1-5311-01A-01R-1470-07",
+															"value": 1.127375
+														},
+														{
+															"row": "ZHX3",
+															"column": "TCGA-DB-5270-01A-02R-1470-07",
+															"value": 1.041375
+														},
+														{
+															"row": "ZHX3",
+															"column": "TCGA-E1-5303-01A-01R-1470-07",
+															"value": 1.253375
+														},
+														{
+															"row": "ZHX3",
+															"column": "TCGA-DH-5143-01A-01R-1470-07",
+															"value": 1.172
+														}] 
+											},
+											{
+												id: 1,
+												name: "dataset 2",
+												dataref: {
+													url: "api/dataset/1/values",
+													row: {												
+														"keys": ["CREB3L1",
+															"ELMO2",
+															"ERCC5",
+															"MMP2",
+															"PNMA1",
+															"RPS11",
+															"ZHX3"],
+														"selections": [{
+																name: "selection 1",
+																dimension: "row",
+																dataref:{																																
+																	row: {
+																		keys: ["CREB3L1",
+																			"ELMO2",
+																			"PNMA1",
+																			"RPS11"]
+																		}
+																}
+															},
+															{
+																name: "selection 2",
+																dimension: "row",
+																dataref: {																
+																	row: {
+																		keys: ["ERCC5",
+																			"MMP2",
+																			"ZHX3"]
+																		}
+																}
+															}]
+													},
+													column: {
+														"keys": [
+															"TCGA-CS-4944-01A-01R-1470-07",
+															"TCGA-E1-5311-01A-01R-1470-07",
+															"TCGA-DB-5270-01A-02R-1470-07",
+															"TCGA-E1-5303-01A-01R-1470-07",
+															"TCGA-DH-5143-01A-01R-1470-07"]
+													}
+												},												
 												values: [{
 															"row": "CREB3L1",
 															"column": "TCGA-CS-4944-01A-01R-1470-07",
@@ -268,19 +513,22 @@ define(["lodash", "./NestedArrayStorageMixin"], function(_, NestedStorageMixin){
 										"name": "kkk",
 										"timestamp": {"timeInMillis": 1417506148961,"seconds": 28,"minutes": 42,"hours": 2,"period": "AM"},
 										"type": "Hierarchical Clustering",						
-										"params": [{
+										"params": {
 											name: "hcl params",
 											"dimension": "column",
 											"distance": "manhatan",
 											"linkage": "complete",
-											"dataref": [{
-												id: 1,
-												url: "dataset/1/values",
-												column: [],
-												row: [],
-											}],
-										}],
+											"data": {
+												"dataref": [{
+													id: 1,
+													url: "dataset/1/values",
+													column: {},
+													row: {},
+												}]
+											}
+										},
 										result: [{
+											"name": "HCL Result",
 											"type": "histogram",
 											"root": {
 												"distance": 2.7851566041428764,
@@ -326,36 +574,46 @@ define(["lodash", "./NestedArrayStorageMixin"], function(_, NestedStorageMixin){
 										},
 										"type": "LIMMA Differential Expression Analysis",
 										"params": {
-											dataref: [{
-												id: 1,
-												name: "c1",
-												url: "dataset/1/values",
-												column: [
-															"TCGA-E1-5311-01A-01R-1470-07",
-															"TCGA-DH-5143-01A-01R-1470-07"
-														],
-												row: []
-											},
-											{
-												id: 2,
-												name: "c2",
-												url: "dataset/1/values",
-												column: [
-													"TCGA-E1-5303-01A-01R-1470-07",
-													"TCGA-DB-5270-01A-02R-1470-07",
-													"TCGA-CS-4944-01A-01R-1470-07"
-												],
-												row: []
-											}],
 											"control": {								
-												datarefId: 1,								
+												dataref: {
+													id: 1,
+													name: "c1",
+													url: "dataset/1/values",
+													dimension: "column",
+													column: {
+														keys: [
+																"TCGA-E1-5311-01A-01R-1470-07",
+																"TCGA-DH-5143-01A-01R-1470-07"]
+														},
+													row: {}
+												}								
 											},
 											"experiment": {
-												datarefId: 2
+												dataref: {
+													id: 2,
+													name: "c2",
+													url: "dataset/1/values",
+													dimension: "column",
+													column: {
+														keys: [
+														"TCGA-E1-5303-01A-01R-1470-07",
+														"TCGA-DB-5270-01A-02R-1470-07",
+														"TCGA-CS-4944-01A-01R-1470-07"]
+													},
+													row: {}
+												}
 											}	
 										},
-										result: [{"results": []},
-										         {"topGo": []}]
+										result: [{
+											"name": "Limma Results",
+											"type": "table",
+											"results": []
+										},
+										{
+											"name": "topGO",
+											"type": "table",
+											"topGo": []
+										}]
 									}],
 									dashboards: [],
 									history: []
@@ -368,26 +626,51 @@ define(["lodash", "./NestedArrayStorageMixin"], function(_, NestedStorageMixin){
 								dataset: [{
 										id: 1,
 										name: "dataset 1",
-										row: {
-											"keys": [	
-												"CREB3L1",
-												"ELMO2",
-												"ERCC5",
-												"MMP2",
-												"PNMA1",
-												"RPS11",
-												"ZHX3"],
-											"selections": []
-										},
-										column: {
-											"keys": [
-												"TCGA-CS-4944-01A-01R-1470-07",
-												"TCGA-E1-5311-01A-01R-1470-07",
-												"TCGA-DB-5270-01A-02R-1470-07",
-												"TCGA-E1-5303-01A-01R-1470-07",
-												"TCGA-DH-5143-01A-01R-1470-07"
-											],
-											"selections": []
+										dataref: {
+											row: {
+												"keys": [	
+													"CREB3L1",
+													"ELMO2",
+													"ERCC5",
+													"MMP2",
+													"PNMA1",
+													"RPS11",
+													"ZHX3"],
+												"selections": [{
+													id: 1,
+													name: "Row selection 1",
+													dimension: "row",
+													dataref: {
+														row: {
+															keys: ["CREB3L1",
+																	"ELMO2",
+																	"ERCC5",
+																	"MMP2"]
+														}
+													}
+												}]
+											},
+											column: {
+												"keys": [
+													"TCGA-CS-4944-01A-01R-1470-07",
+													"TCGA-E1-5311-01A-01R-1470-07",
+													"TCGA-DB-5270-01A-02R-1470-07",
+													"TCGA-E1-5303-01A-01R-1470-07",
+													"TCGA-DH-5143-01A-01R-1470-07"
+												],
+												"selections": [{
+													id: 1,
+													name: "Column selection 1", 
+													dimension: "column",
+													dataref: {
+														column: {
+															keys: ["TCGA-DB-5270-01A-02R-1470-07",
+																	"TCGA-E1-5303-01A-01R-1470-07",
+																	"TCGA-DH-5143-01A-01R-1470-07"]
+														}
+													}
+												}]
+											}
 										},
 										values: [
 											{

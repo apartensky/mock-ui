@@ -8,9 +8,9 @@ define(["jquery"], function($){
 				nodeType: '@'
 			},			
 			restrict: "AE",
-//			templateUrl: "app/widgets/project/projectTree/templates/projectTree.tpl.html",			
+			templateUrl: "app/widgets/project/projectTree/templates/projectTree.tpl.html",			
 //			templateUrl: "app/widgets/project/projectTree/templates/projectTree.dxTree.tpl.html",
-			templateUrl: "app/widgets/project/projectTree/templates/projectTree.bootstrapTree.tpl.html",
+//			templateUrl: "app/widgets/project/projectTree/templates/projectTree.bootstrapTree.tpl.html",
 //			controller: "ProjectTreeVM",
 //			controllerAs: "ProjectTreeVM"
 			link: {
