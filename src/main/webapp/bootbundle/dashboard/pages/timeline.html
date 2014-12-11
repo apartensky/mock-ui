@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="css/timeline.css" />
+<div class="container-fluid" ng-controller="timelineCtrl">
+    <ul class="timeline">
+        <li ng-repeat="event in items | orderBy:sortingOrder:reverse" class="clearfix" ng-class="(event.class!=null)?event.class:''">
+          <div class="timeline-badge" ng-class="(event.badgeClass!=null)?event.badgeClass:'btn-info'">
+            <i class="glyphicon" ng-class="(event.badgeIcon!=null)?event.badgeIcon:'glyphicon-hand-left'"></i>
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-img row" ng-show="event.img != null"><img class="img-responsive" src="{{event.img}}" /></div>
+            <div class="timeline-heading">
+              <h4 class="timeline-title">{{event.title}}</h4>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{event.dt | date:'fullDate'}}</small></p>
+            </div>
+            <div class="timeline-body">
+              <p>{{event.desc}}</p>
+            </div>
+          </div>
+        </li>
+    </ul>
+</div><!--/container-->

@@ -1,0 +1,105 @@
+<script>
+    // hide all
+    $('#descriptions .panel').hide();
+    
+    // show first
+    $('#descriptions .panel').eq(0).show();
+    
+    // handle img click
+    $('#grid img').click(function(){
+    
+      // get index of the img that was clicked
+      var idx = $(this).parent().index();
+      
+      // remove special style from all others
+      $('#grid img').removeClass('highlight');
+      
+      // add a special style to the clicked image
+      $(this).addClass('highlight');
+      
+      // hide all others
+      $('#descriptions .panel').hide();
+      
+      // show desc for clicked img
+      $('#descriptions .panel').eq(idx).show();
+      
+    });
+</script>
+<div class="container-fluid">
+    <div class="row">
+  		<div class="col-md-12"><h3>Photo Grid with Text Descriptions</h3></div>
+  	</div>
+	<div class="row flex">
+      <div class="col-md-6">
+        <div class="row" id="grid">
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive margin-bottom-5"></div>  
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive margin-bottom-5"></div> 
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive margin-bottom-5"></div> 
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive margin-bottom-5"></div>  
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive margin-bottom-5"></div> 
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive margin-bottom-5"></div> 
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive"></div>  
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive"></div> 
+        	<div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive"></div>
+        </div>
+      </div>
+      <div class="col-md-6 flex" id="descriptions">
+      	<div class="panel panel-default flex-col">
+         <div class="panel-heading">Heading 1</div>
+         <div class="panel-body flex-grow">Content here for image 1.. Blah blah blah, blah blah. That is very interesting stuff. Aenean sit amet felis 
+          dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. </div>
+         <div class="panel-footer">Footer</div> 
+        </div>
+        <div class="panel panel-default flex-col">
+         <div class="panel-heading">Heading 2</div>
+         <div class="panel-body flex-grow">Content here for image 2..Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+            Aliquam in felis sit amet augue.</div>
+         <div class="panel-footer">Footer</div> 
+        </div>
+        <div class="panel panel-default flex-col">
+         <div class="panel-heading">Heading 3</div>
+         <div class="panel-body flex-grow">Content here for image 3..</div>
+         <div class="panel-footer">Footer</div> 
+        </div>
+        <div class="panel panel-default flex-col">
+         <div class="panel-heading">Heading 4</div>
+         <div class="panel-body flex-grow">Content here for image 4..</div>
+         <div class="panel-footer">Footer</div> 
+        </div>
+        <div class="panel panel-default flex-col">
+         <div class="panel-heading">Heading 5</div>
+         <div class="panel-body flex-grow">Content here..Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+          Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. </div>
+         <div class="panel-footer">Footer</div> 
+        </div>
+        <div class="panel panel-default flex-col">
+         <div class="panel-heading">Heading 6</div>
+         <div class="panel-body flex-grow">Content here.. Aenean sit amet felis 
+          dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. </div>
+         <div class="panel-footer">Footer</div> 
+        </div>
+        <div class="panel panel-default flex-col">
+         <div class="panel-heading">Heading 7</div>
+         <div class="panel-body flex-grow">Content here.. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+          Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+          dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+          Aliquam in felis sit amet augue.</div>
+         <div class="panel-footer">Footer</div> 
+        </div>
+        <div class="panel panel-default flex-col">
+         <div class="panel-heading">Heading 8</div>
+         <div class="panel-body flex-grow">Content here.. Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+          dolor, in sagittis nisi. </div>
+         <div class="panel-footer">Footer</div> 
+        </div>
+        <div class="panel panel-default flex-col">
+         <div class="panel-heading">Heading 9</div>
+         <div class="panel-body flex-grow">Content here..</div>
+         <div class="panel-footer">Footer</div> 
+        </div>
+      </div>
+	</div>
+    <hr>
+</div><!--/container-->

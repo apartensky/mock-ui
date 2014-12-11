@@ -1,0 +1,22 @@
+        <script>
+        $('.sidebar-toggle').click(function(){
+            // toggle the collapse of the tiny nav - menu-items-sm
+        	$('#wrapper').toggleClass("active");
+            $(this).find('i').toggleClass("glyphicon-chevron-left glyphicon-chevron-right");
+        });
+        </script>
+            
+        <!--sidebar contents -->
+        
+            <!--toggle arrow-->
+          	<ul class="nav">
+      			<li><a href="#" data-target="#sidebar-wrapper" class="sidebar-toggle visible-xs text-right"><i class="menu-icon glyphicon glyphicon-chevron-right"></i></a></li>
+        	</ul>
+        	
+        	<!--large screen nav (menu-items)-->
+            <ul menu-items class="nav hidden-xs" id="menuLg"></ul>
+            
+          	<!--tiny screen nav (menu-items-sm)-->
+            <ul menu-items-sm class="nav visible-xs" id="menuSm"></ul>
+            
+        <!--/sidebar contents-->

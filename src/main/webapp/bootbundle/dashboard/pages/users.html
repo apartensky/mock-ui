@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <!--userlist-->
+    <div class="panel panel-default" ng-controller="usersCtrl">
+        <div class="panel-heading">
+          <a id="refreshUserList" class="pull-right refresh-me" data-target="#userListPanel" href="javascript:;"><span class="fa fa-refresh"></span></a>
+          <h4>Recent Signups</h4>
+        </div>
+        <div class="panel-body panel-refresh" id="userListPanel">
+          <div class="table-responsive">
+            <table id="user-signups" class="table table-striped table-bordered"> 
+              <thead> 
+                <tr>
+                  <th class="hidden-xs"></th> 
+                  <th class="hidden-xs">First Name</th> 
+                  <th>Last Name</th> 
+                  <th>Points</th> 
+                  <th class="text-center">Approved</th> 
+                  <th class="text-right">Approve</th> 
+                </tr> 
+              </thead>
+              <tbody class="refresh-container"> 
+                <tr ng-repeat="user in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
+                  <td class="hidden-xs" ng-click="go('/user-profile')"><img src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=24" class="img-circle" /></td>
+                  <td class="hidden-xs" ng-click="go('/user-profile')">{{user.firstName}}</td>
+                  <td ng-click="go('/user-profile')">{{user.lastName}}</td>
+                  <td ng-click="go('/user-profile')">{{user.points}}</td>
+                  <td class="text-center"><span class="label" ng-class="{'label-danger': user.approved==false,'label-success': user.approved==true}">{{user.approved}}</span></td>
+                  <td class="text-right"><input type="checkbox" ng-click="approveUser(user.id)" ng-model="user.approved" value="true"></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr><td colspan="6">
+                   <div class="text-center">
+                      <ul class="pagination">
+                        <li ng-class="{disabled: currentPage == 0}">
+                          <a class="btn btn-default btn-sm" href="javascript:;" ng-click="prevPage()">« Prev</a>
+                        </li>
+                        <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+                          <a class="btn btn-default btn-sm" href="javascript:;" ng-click="nextPage()">Next »</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div> <!--/.table-responsive-->
+          <h5><strong>Data Viewer</strong></h5>
+          <pre>{{pagedItems | json}}</pre>
+        </div><!--/.panel-body-->
+      </div><!--/.panel-->
+    <!--/userlist-->
+</div>

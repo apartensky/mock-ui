@@ -4,10 +4,11 @@ define([], function(){
 			
 			"dataset": {label: "Datasets"},
 			"dataset\.[0\-9]+": {label: "Dataset"},
-			"dataset\.[0\-9]+\.column": {label: "columns"},
-			"dataset\.[0\-9]+\.column.keys": {label: "keys"},
-			"dataset\.[0\-9]+\.row": {label: "rows"},
-			"dataset\.[0\-9]+\.row.keys": {label: "keys"},
+			"dataset\.[0\-9]+\.dataref": {label: "columns"},
+			"dataset\.[0\-9]+\.dataref\.column": {label: "columns"},
+			"dataset\.[0\-9]+\.dataref\.column\.keys": {label: "keys"},
+			"dataset\.[0\-9]+\.dataref\.row": {label: "rows"},
+			"dataset\.[0\-9]+\.dataref\.row\.keys": {label: "keys"},
 			
 			"analysis": {label: "Analyses"},
 			"analysis\.[0\-9]+": {label: "Analysis"},

@@ -1,0 +1,247 @@
+<div class="container-fluid" ng-controller="chartsCtrl">
+    <div class="row" id="mini-charts">
+      	<div class="col-md-6 col-sm-4">
+      	  <blockquote class="bg-info small" remove-me>
+      	    <span>Notice: These data visualizations reflect infastructure activity since 12:01AM EST</span>
+      	  </blockquote>
+      	</div>
+        <div class="col-md-6 tab-content col-md-offset-0 col-sm-8 col-sm-offset-0 col-xs-10 col-xs-offset-0 hidden-xs sparklines">
+          <div class="row tab-pane active" id="bars">
+            <div class="col-xs-1 col-xs-offset-3">Hourly<br><span class="fa fa-clock-o fa-lg"></span></div>
+        	<div class="col-xs-2 border-right"><div id="bar1" class="bar-chart"></div></div>
+            <div class="col-xs-1">Daily<br><span class="fa fa-calendar-o fa-lg"></span></div>
+            <div class="col-xs-2 border-right"><div id="bar2" class="bar-chart"></div></div>
+            <div class="col-xs-1">Earnings<br><span class="fa fa-usd fa-lg"></span></div>
+            <div class="col-xs-2"><div id="bar3" class="bar-chart"></div></div>
+          </div>
+          <div class="row tab-pane" id="pies">
+            <div class="col-xs-1 col-xs-offset-3">Speed<br><span class="fa fa-tachometer fa-lg"></span></div>
+        	<div class="col-xs-2 border-right"><div id="p1" class="pie-chart"></div></div>
+            <div class="col-xs-1">Orders<br><span class="fa fa-credit-card fa-lg"></span></div>
+            <div class="col-xs-2 border-right"><div id="p2" class="pie-chart"></div></div>
+            <div class="col-xs-1">Source<br><span class="fa fa-arrow-circle-right fa-lg"></span></div>
+            <div class="col-xs-2"><div id="p3" class="pie-chart"></div></div>
+          </div><!--/row-->
+        </div><!--/col-->
+  </div><!--/row-->
+  <div class="pull-right hidden-xs">
+      <small>Chart view</small>
+      <div class="btn-group btn-group-xs btn-toggle"> 
+        <button class="btn btn-default" data-toggle="tab" data-target="#pies">Pie</button>
+        <button class="btn btn-default active" data-toggle="tab" data-target="#bars">Bar</button>
+      </div>
+  </div>
+  <ul class="nav nav-tabs" id="adminTab">
+      <li class="active"><a data-toggle="tab" data-target="#summary" href="javascript:;">Summary</a></li>
+      <li><a data-toggle="tab" data-target="#traffic" href="javascript:;">Traffic</a></li>
+      <li><a data-toggle="tab" data-target="#network" href="javascript:;">Network</a></li>
+  </ul> 
+  <div class="tab-content pad-0">
+      <div class="tab-pane panel active" id="summary">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6">
+                <h5>Active users</h5>
+                <div class="progress progress-striped active stretch-right" title="No. of active users on-line" data-toggle="tooltip">
+                  <div class="progress-bar progress-bar-success" style="width:40%;"></div>
+                </div>
+                <h5>Authenticated</h5>
+                <div class="progress stretch-right" title="No. of code snippets" data-toggle="tooltip">
+                  <div class="progress-bar progress-bar-success" style="width:26%;"></div>
+                </div>
+                <h5>Requests</h5>
+                <div class="progress stretch-right" title="No. of code snippets" data-toggle="tooltip">
+                  <div class="progress-bar progress-bar-success" style="width:86%;"></div>
+                </div>
+                <h5>Completed</h5>
+                <div class="progress stretch-right" title="No. of completed requests" data-toggle="tooltip">
+                  <div class="progress-bar progress-bar-success" style="width:60%;"></div>
+                </div>
+                <h5>Pending</h5>
+                <div class="progress progress-striped active stretch-right" title="No. of pending requests" data-toggle="tooltip">
+                  <div class="progress-bar progress-bar-success" style="width:30%;"></div>
+                </div>
+            </div><!--/col-->
+            <div class="col-sm-6">
+                  <h4 class="text-center">
+                    <div class="btn-group btn-toggle realtime"> 
+                     <button class="btn btn-xs btn-default">off</button>
+                     <button class="btn btn-xs btn-success active">live</button>
+                    </div>
+                  </h4>
+                  <div id="chart1" class="big-chart"></div>
+            </div><!--/col-->
+          </div><!--/row-->
+        </div><!--/panel-body-->
+      </div><!--/pane stats panel-->
+      <!--pane rev-->
+      <div class="tab-pane" id="traffic">
+		<div class="alert alert-info slide-down margin-top-0 margin-bottom-15">
+		    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          	<strong>Here are the latest reports for your account.</strong>
+  		</div>
+        <div class="row">
+          <div class="col-sm-3 col-xs-6">
+            <div class="panel">
+            <div class="panel-body">
+                <span class="pull-right text-success small strong"><i class="glyphicon glyphicon-chevron-up"></i> 2.5%</span>
+                <span class="strong">Peak</span>
+                <div id="chart2" class="line-chart"></div>
+            </div><!--/panel-body-->
+            </div><!--/panel-->
+          </div>
+          <div class="col-sm-3 col-xs-6">
+            <div class="panel">
+            <div class="panel-body">
+                <span class="pull-right text-danger small strong"><i class="glyphicon glyphicon-chevron-down"></i> 4%</span>
+                <span class="strong">Off-line</span>
+                <div id="chart3" class="line-chart"></div>
+            </div><!--/panel-body-->
+            </div><!--/panel-->
+          </div>
+          <div class="col-sm-3 col-xs-6">
+            <div class="panel">
+            <div class="panel-body">
+                <span class="pull-right text-info small strong"><i class="glyphicon glyphicon-chevron-up"></i> 11%</span>
+                <span class="strong">Direct</span>
+                <div id="chart4" class="line-chart"></div>
+            </div><!--/panel-body-->
+            </div><!--/panel-->
+          </div>
+          <div class="col-sm-3 col-xs-6">
+            <div class="panel">
+            <div class="panel-body">
+                <span class="pull-right text-info small strong">12,400 &nbsp; <i class="glyphicon glyphicon-chevron-up"></i> 1%</span>
+                <span class="strong">Mobile</span>
+                <div id="chart5" class="line-chart"></div>
+            </div><!--/panel-body-->
+            </div><!--/panel-->
+          </div>
+        </div><!--/row-->
+        <!--network table-->
+        <div class="table-responsive" ng-controller="networkCtrl">
+        <table class="table table-striped table-condensed pull-down">
+          <thead>
+            <tr>
+             <th><a href="javascript:;" ng-click="sortBy('name')">Name</a></th>
+             <th><a href="javascript:;" ng-click="sortBy('browser')">Browser</a></th>
+             <th><a href="javascript:;" ng-click="sortBy('views')">Views</a></th>
+             <th><a href="javascript:;" ng-click="sortBy('dt')">Date &amp; Time</a></th>
+             <th><a href="javascript:;" ng-click="sortBy('ip')">IP Address</a></th>
+             <th></th>
+            </tr>
+          </thead>
+          <tbody id="networkList">
+            <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
+              <td><a href="javascript:;">{{item.name}}</a></td>
+              <td>{{item.browser}}</td>
+              <td>{{item.views}}</td>
+              <td>{{item.dt | date:'MM-dd-yyyy HH:mm'}}</td>
+              <td>{{item.ip}}</td>
+              <td class="text-right"><i title="responsive device" class="fa fa-tablet fa-2x"></i></td>
+            </tr>
+          </tbody>
+        </table>  
+        <div class="text-center">
+            <ul class="pagination pagination-sm" id="networkPager">
+                <li ng-class="{disabled: currentPage == 0}">
+                  <a href="javascript:;" ng-click="prevPage()">Prev</a>
+                </li>
+                <li ng-repeat="n in range(pagedItems.length)"
+                    ng-class="{active: n == currentPage}"
+                    ng-click="setPage()">
+                  <a href ng-bind="n + 1">1</a>
+                </li>
+                <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+                  <a href="javascript:;" ng-click="nextPage()">Next</a>
+                </li>
+            </ul>
+        </div>
+        </div><!--/table div-->
+      </div><!--/pane traffic-->
+      <!--/pane network-->
+      <div class="tab-pane panel" id="network">
+          <hr>
+          <div class="row pull-up">
+            <div class="col-sm-3 col-xs-6">
+              <div id="donut1" class="donut"></div>
+              <div class="donut-label">24</div>
+              <h4 class="text-center">blocks</h4>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+              <div id="donut2" class="donut"></div>
+              <div class="donut-label">189</div>
+              <h4 class="text-center">requests</h4>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+              <div id="donut3" class="donut"></div>
+              <div class="donut-label">4</div>
+              <h4 class="text-center">errors</h4>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+              <div id="donut4" class="donut"></div>
+              <div class="donut-label">29</div>
+              <h4 class="text-center">bursts</h4>
+            </div>
+        </div><!--/row-->
+        <hr>
+        <div class="pad-15 pull-up">
+            <h4>Storage Space</h4>
+            <div class="progress progress-sm stretch-right">
+            	<div class="progress-bar progress-bar-info" style="width:30%;"></div>
+            </div>
+            <h6>2.85 GB of <strong>15 GB</strong></h6>
+              
+            <hr>
+              
+            <h4>Bandwidth</h4>
+            <div class="progress progress-sm stretch-right">
+            	<div class="progress-bar progress-bar-info" style="width:73%;"></div>
+            </div>
+            <h6>39.4 GB of <strong>50 GB</strong></h6>
+        </div>
+      </div><!--/pane network-->
+    </div><!--/tab-content-->
+    
+    
+    <!--row of 4 boxes-->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="well">
+              <h4 class="text-danger"><span class="label label-danger pull-right">- 9%</span> New Users </h4>
+              <div class="progress progress-sm">
+                <div class="progress-bar progress-bar-danger" style="width:9%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="well">
+              <h4 class="text-success"><span class="label label-success pull-right">+ 3%</span> Returning </h4>
+              <div class="progress progress-sm">
+                <div class="progress-bar progress-bar-success" style="width:3%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="well">
+              <h4 class="text-primary"><span class="label label-primary pull-right">201</span> Sales </h4>
+              <div class="progress progress-sm">
+                <div class="progress-bar progress-bar-primary" style="width:80%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="well">
+              <h4 class="text-success"><span class="label label-success pull-right">+ 24%</span> Pageviews </h4>
+              <div class="progress progress-sm">
+                <div class="progress-bar progress-bar-success" style="width:24%;"></div>
+              </div>
+            </div>
+          </div>
+        </div><!--/row-->    
+      </div><!--/col-12-->
+    </div><!--/row-->
+    
+</div><!--/container-fluid-->

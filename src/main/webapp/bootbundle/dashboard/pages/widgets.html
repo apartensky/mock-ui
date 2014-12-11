@@ -1,0 +1,965 @@
+
+<!--example panels-->
+<div class="container-fluid">
+    <h4>Panels</h4>
+	<div class="row">
+  		<div class="col-md-6">
+      	
+           <!--panel-->
+           <div class="panel panel-default">
+            <div class="panel-heading chevron-toggle" data-toggle="collapse" data-target="#collapse1">
+              <h3 class="panel-title">
+              	Collapsible Panel
+              </h3>
+            </div>
+            <div id="collapse1" class="collapse in">
+              <div class="panel-body">
+                  <blockquote>
+                    <p>"Click my heading to make me collapse"</p>
+                  </blockquote>
+                  <button class="btn btn-default pull-right">Button</button>
+              </div>
+            </div>
+          </div><!--/panel-->
+          
+          <!--panel-->
+          <div class="panel panel-default">
+            <div class="panel-heading chevron-toggle collapsed" data-toggle="collapse" data-target="#collapseList">
+              <h3 class="panel-title">
+              	Collapsible List Group
+              </h3>
+            </div>
+            <ul id="collapseList" class="list-group collapse">
+               <li class="list-group-item">Bootply</li>
+               <li class="list-group-item">Triveo</li>
+               <li class="list-group-item">Behance</li>
+            </ul>
+          </div><!--/panel-->
+          
+          <!--panel-->
+          <div class="panel panel-default" id="thisPanel">
+            <div class="panel-heading">
+                <a class="panel-close close" data-dismiss="alert" data-target="#thisPanel">×</a> 
+                <h3 class="panel-title">
+              	 Closable List Group
+              	</h3>
+            </div>
+            <ul class="list-group">
+               <li class="list-group-item">Bootply</li>
+               <li class="list-group-item">Triveo</li>
+               <li class="list-group-item">Behance</li>
+               <li class="list-group-item">Zillow</li>
+            </ul>
+          </div><!--/panel-->
+          
+        </div>
+      	<div class="col-md-6">
+      
+           <!--panel-->
+           <div class="panel panel-default">
+            <div class="panel-heading chevron-toggle collapsed" data-toggle="collapse" data-target="#collapse2">
+              <h3 class="panel-title">
+              	Collapsed Panel
+              </h3>
+            </div>
+            <div id="collapse2" class="collapse">
+              <div class="panel-body">
+                  <blockquote>
+                    <p>"Click my heading to toggle me"</p>
+                  </blockquote>
+                  <p>Wow, that's clever!</p>
+              </div>
+            </div>
+          </div><!--/panel-->
+          
+          <!--panel-info-->
+          <div class="panel panel-info">
+            <div class="panel-heading chevron-toggle collapsed" data-toggle="collapse" data-target="#collapse3">
+              <h3 class="panel-title">
+              	Collapsed Panel (info)
+              </h3>
+            </div>
+            <div id="collapse3" class="collapse">
+              <div class="panel-body">
+                <blockquote>
+                	<p>"Click my heading to toggle me"</p>
+                </blockquote>
+                  
+                <p>This panel has the <code>panel-info</code> context.</p>
+              </div>
+            </div>
+          </div><!--/panel-info-->
+         
+          <!--panel-->
+          <div class="panel panel-default">
+            <div class="panel-heading chevron-toggle" data-toggle="collapse" data-target="#collapseList2">
+              <h3 class="panel-title">
+              	Collapsible Linked List Group
+              </h3>
+            </div>
+            <div id="collapseList2" class="list-group collapse in">
+               <a href="javascript:;" class="list-group-item"><span class="pull-right badge badge-default">44</span> Link 1</a>
+               <a href="javascript:;" class="list-group-item"><span class="pull-right badge badge-default">8</span> Link 2</a>
+               <a href="javascript:;" class="list-group-item"><span class="pull-right badge badge-default">23</span> Link 3</a>
+               <a href="javascript:;" class="list-group-item text-muted">Link n..</a>
+            </div>
+          </div><!--/panel-->
+          
+          <!--toggle switch panel-->
+          <div >
+              <div class="panel panel-default" id="togglePanel">
+                <div class="panel-heading">
+                    <div class="btn-group btn-group-xs btn-toggle pull-right"> 
+                        <button class="btn btn-default" data-toggle="tab" data-target="#a">alpha</button>
+                        <button class="btn btn-primary active" data-toggle="tab" data-target="#b">beta</button>
+                    </div>       
+                    <h3 class="panel-title">
+                  	 Toggle Switch Panel
+                  	</h3>
+                </div>
+                <div class="panel-body tab-content">
+                    <div class="tab-pane" id="a">Alpha - This is the content for this panel. He he. Put some content that you want to toggle here...</div>
+                    <div class="tab-pane active" id="b">Beta - This is the content for this panel. Ha ha. Put something else you want to toggle here...</div>
+                </div>
+              </div>
+          </div><!--/toggle switch panel-->
+          
+        </div>
+  	</div>
+</div>
+<!--/example panels-->
+
+<hr>
+
+<!--list to list-->
+<div class="container-fluid" ng-controller="dualListCtrl">
+  <h4>Drag &amp; Drop List-to-List</h4>
+  <div class="row">  
+    <div class="col-md-5">
+      <div class="list-group" id="list1" x-lvl-drop-target="true" x-on-drop="drop(dragEl, dropEl, bToA)">
+        <a href="javascript:;" class="list-group-item active">Staff
+          <input title="Toggle all" ng-click="toggleA()" ng-model="toggle" value="{{toggle}}" type="checkbox" class="pull-right"></a>
+        <span ng-repeat="user in listA">
+          <a href="javascript:;" data-id="{{user.id}}" x-lvl-draggable="true" class="list-group-item">{{user.firstName}}
+            <small class="text-muted"><em>{{user.role}}</em></small>                    
+            <input id="{{user.id}}" ng-click="selectedA.push(user.id)" name="selectedA[]" value="{{user.id}}" ng-checked="selectedA.indexOf(user.id) > -1" type="checkbox" class="pull-right">
+          </a>
+        </span>
+      </div>
+    </div><!--/col-->
+    <div class="col-md-2 text-center pad-15">
+      <div class="btn-group margin-top-30">
+        <button title="Send to list 1" class="btn btn-default" ng-click="bToA()" id="btnA"><i class="glyphicon glyphicon-chevron-left"></i></button>
+        <button title="Send to list 2" class="btn btn-default" ng-click="aToB()" id="btnB"><i class="glyphicon glyphicon-chevron-right"></i></button>
+      </div>
+    </div><!--/col-->
+    <div class="col-md-5">
+      <div class="list-group" id="list2" x-lvl-drop-target="true" x-on-drop="drop(dragEl, dropEl, aToB)">
+        <a href="javascript:;" class="list-group-item active">Team Members
+          <input title="Toggle all" ng-click="toggleB()" ng-model="toggle" value="{{toggle}}" type="checkbox" class="pull-right">
+        </a>
+        <span ng-repeat="user in listB">
+          <a href="javascript:;" data-id="{{user.id}}" class="list-group-item" x-lvl-draggable="true">{{user.firstName}}
+            <small class="text-muted"><em>{{user.role}}</em></small>
+            <input id="{{user.id}}" ng-click="selectedB.push(user.id)" name="selectedB[]" value="{{user.id}}" ng-checked="selectedB.indexOf(user.id) > -1" type="checkbox" class="pull-right">
+          </a>
+        </span>
+      </div>
+    </div><!--/col-->
+    
+  </div><!--/row-->
+</div><!--/container-fluid-->
+
+<hr>
+
+<div class="container-fluid">
+    <h4>Pricing Tables</h4>
+</div>
+<section class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+            <div class="list-group">
+              <a href="javascript:;" class="list-group-item active">
+                <h4 class="list-group-item-heading">Basic</h4>
+                <h6>Free to get started</h6>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Option 100 - more about this</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Option 2 - more about this</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Option 3 GB</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Option 4</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Feature</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Feature</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <button class="btn btn-primary btn-lg btn-block">$0 per month</button>
+              </a>
+            </div>
+      </div><!--/left-->
+      <div class="col-md-4 col-xs-12">
+            <div class="list-group text-center">
+              <a href="javascript:;" class="list-group-item active">
+                <h4 class="list-group-item-heading">Better</h4>
+                <h6>Most popular plan</h6>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Option 200 - more about this</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Option 2 - more about this</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Option 5 GB</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Option 6</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Feature</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Feature</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <button class="btn btn-primary btn-lg btn-block">$10 per month</button>
+              </a>
+            </div>
+      </div><!--/middle-->
+      <div class="col-md-4 col-xs-12">
+            <div class="list-group text-right">
+              <a href="javascript:;" class="list-group-item active">
+                <h4 class="list-group-item-heading">Best</h4>
+                <h6>For enterprise grade</h6>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Option 100 - more about this</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Option 2 - more about this</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Option 8 GB</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Option 10</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Unlimited</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <p class="list-group-item-text">Unlimited</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <button class="btn btn-primary btn-lg btn-block">$20 per month</button>
+              </a>
+            </div>
+      </div><!--/right-->
+    </div><!--/row-->
+</section><!--/container-fluid pricing tables-->
+
+<hr>
+
+<!--misc widgets-->
+<div class="container-fluid">
+    <h4>Widgets</h4>
+	<div class="row">
+  		<div class="col-md-6">
+      	
+          <!--image over 3-->
+          <div class="panel panel-default">
+          	<div class="row">
+            	<div class="col-xs-12"><img src="//placehold.it/800x200" class="img-responsive"></div>
+            </div>
+            <div class="row">
+            	<div class="col-xs-4 text-center"><h1><a href="javascript:;" title="Messages" data-toggle="tooltip" data-placement="top"><i class="glyphicon glyphicon-envelope"></i></a></h1></div>
+                <div class="col-xs-4 text-center"><h1><a href="javascript:;" title="Media" data-toggle="tooltip"><i class="glyphicon glyphicon-headphones"></i></a></h1></div>
+                <div class="col-xs-4 text-center"><h1><a href="javascript:;" title="Eye Candy" data-toggle="tooltip"><i class="glyphicon glyphicon-eye-open"></i></a></h1></div>
+            </div>  
+          </div>
+          <!--/image over 3-->
+          
+          <!--mini tabs-->
+          <div class="panel panel-default">
+          	<div class="row">
+              <div class="col-xs-12">
+
+                <h4 class="pull-left pad-left-15">Tabs Wizard</h4>
+                <ul class="nav nav-tabs">
+                  <li class="pull-right"><a href="javascript:;" data-target="#step3" data-toggle="tab">Step 3</a></li>
+                  <li class="pull-right"><a href="javascript:;" data-target="#step2" data-toggle="tab">Step 2</a></li>
+                  <li class="pull-right active"><a href="javascript:;" data-target="#step1" data-toggle="tab">Step 1</a></li>
+                </ul>
+                
+                <!-- tab panes -->
+                <div class="tab-content clearfix">
+                  <div class="col-xs-12 tab-pane active in fade" id="step1">
+                  
+                    <h4>This is first...</h4>
+                    <p>Nullam sapien massa, aliquam in cursus ut, ullamcorper in tortor. 
+                    Aliquam mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.</p>
+                    
+                    <button class="btn btn-default pull-right tab-wizard-btn">Next</button>
+                    <br><br>
+                  </div><!--/tab-pane-->
+                  <div class="col-xs-12 tab-pane fade" id="step2">
+                  
+                    <h4>This is next...</h4>
+                    <p>Tab 2 -- Nullam sapien massa, aliquam in cursus ut, ullamcorper in tortor. 
+                    Aliquam mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.</p>
+                    
+                    <button class="btn btn-default pull-right tab-wizard-btn">Next</button>
+                    <br><br>
+                  </div><!--/tab-pane-->
+                  <div class="col-xs-12 tab-pane fade" id="step3">
+                  
+                    <h4>Complete</h4>
+                    <p>Tab 3 -- Sapien massa, aliquam in cursus ut, ullamcorper in tortor. 
+                    Aliquam mauris arcu, tristique a lobortis vndimentum feugiat gusto.</p>
+                    
+                    <button class="btn btn-default pull-right tab-wizard-btn">Start Over</button>
+                    <br><br>
+                    
+                  </div><!--/tab-pane-->
+                </div><!--/tab-content-->
+                                
+              </div><!--/col-12-->
+            </div><!--/row-->
+          </div><!--/mini tabs-->
+          
+          <!--dropdown tabs-->
+          <div class="panel panel-default">
+          	<div class="row">
+              <div class="col-xs-12">
+
+                <ul class="nav nav-tabs" id="dropdownTabs">
+                  <li class="active"><a  href="javascript:;" data-target="#t1" data-toggle="tab">One</a></li>
+                  <li><a href="javascript:;" data-target="#t2" data-toggle="tab">Two</a></li>
+                  <li><a href="javascript:;" data-target="#t3" data-toggle="tab">Three</a></li>
+                  <li><a href="javascript:;" data-target="#t4" data-toggle="tab">Four</a></li>
+                  <li><a href="javascript:;" data-target="#t5" data-toggle="tab">Five</a></li>
+                  <li class="pull-right">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+                      More <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" id="collapsedTab">
+                  		<li><a href="javascript:;" data-target="#t6" data-toggle="tab">Six</a></li>
+                  		<li><a href="javascript:;" data-target="#t7" data-toggle="tab">Seven</a></li>
+                  		<li><a href="javascript:;" data-target="#t8" data-toggle="tab">Eight</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                
+                <!-- tab panes for dropdownTabs -->
+                <div class="tab-content clearfix">
+                  <div class="col-xs-12 tab-pane active in fade" id="t1">
+                    <h4>Dropdown Tabs</h4>
+                    <p>Additional tabs go into the dropdown on the right.
+                    </p>
+                    <span class="label label-primary">Primary</span>
+          			<span class="label label-success">Success</span>
+          			<span class="label label-info">Info</span>
+                    <br>
+                  </div><!--/tab-pane-->
+                  <div class="col-xs-12 tab-pane fade" id="t2">
+                  
+                    <h4>Content</h4>
+                    <p>Tab 2 -- Nullam sapien massa, aliquam in cursus ut, ullamcorper in tortor. 
+                    Aliquam mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.</p>
+                    <br>
+                    
+                  </div><!--/tab-pane-->
+                  <div class="col-xs-12 tab-pane fade" id="t3">
+                  
+                    <h4>Content</h4>
+                    <p>Tab 3 -- Sapien massa, aliquam in cursus ut, ullamcorper in tortor. 
+                    Aliquam mauris arcu, tristique a lobortis vndimentum feugiat gusto.</p>       
+                    <br>
+                    
+                  </div><!--/tab-pane-->
+                  <div class="col-xs-12 tab-pane fade" id="t4">
+                    <h4>Content</h4>
+                    <p>Sapien massa, aliquam in cursus ut, ullamcorper in tortor. 
+                    Aliquam mauris arcu, tristique a lobortis vndimentum feugiat gusto.</p>       
+                    <br>
+                  </div><!--/tab-pane-->
+                  <div class="col-xs-12 tab-pane fade" id="t5">
+                    <h4>Content</h4>
+                    <p>Sapien massa, aliquam in cursus ut, ullamcorper in tortor. 
+                    Aliquam mauris arcu, tristique a lobortis vndimentum feugiat gusto.</p>       
+                    <br>
+                  </div><!--/tab-pane-->
+                  <div class="col-xs-12 tab-pane fade" id="t6">
+                    <h4>Content</h4>
+                    <p>Sapien massa, aliquam in cursus ut, ullamcorper in tortor. 
+                    Aliquam mauris arcu, tristique a lobortis vndimentum feugiat gusto.</p>       
+                    <br>
+                  </div><!--/tab-pane-->
+                  <div class="col-xs-12 tab-pane fade" id="t7">
+                    <h4>Content</h4>
+                    <p>Sapien massa, aliquam in cursus ut, ullamcorper in tortor. 
+                    Aliquam mauris arcu, tristique a lobortis vndimentum feugiat gusto.</p>       
+                    <br>
+                  </div><!--/tab-pane-->
+                  <div class="col-xs-12 tab-pane fade" id="t8">
+                    <h4>Content</h4>
+                    <p>Sapien massa, aliquam in cursus ut, ullamcorper in tortor. 
+                    Aliquam mauris arcu, tristique a lobortis vndimentum feugiat gusto.</p>       
+                    <br>
+                  </div><!--/tab-pane-->
+                </div><!--/tab-content-->
+                                
+              </div><!--/col-12-->
+            </div><!--/row-->
+          </div><!--/dropdown tabs-->
+          
+          <!--tabs justified-->
+          <div class="panel panel-default">
+            <div class="row">
+            	<div class="col-md-12">            
+            
+                  <ul id="tabsJustified" class="nav nav-tabs nav-justified">
+                    <li>
+                      <a href="javascript:;" data-target="#home1" data-toggle="tab">Home</a>
+                    </li>
+                    <li class="active">
+                      <a href="javascript:;" data-target="#profile1" data-toggle="tab">Profile</a>
+                    </li>
+                    <li>
+                      <a href="javascript:;" data-target="#messages" data-toggle="tab">Messages</a>
+                    </li>
+                  </ul><!--/tabs-->
+                  <br>
+                  <div id="tabsJustifiedContent" class="tab-content">
+                    <div class="col-xs-12 tab-pane fade" id="home1">
+                      <div class="list-group">
+               			<a href="javascript:;" class="list-group-item"><span class="pull-right badge badge-default">51</span> Home Link</a>
+               			<a href="javascript:;" class="list-group-item"><span class="pull-right badge badge-default">8</span> Link 2</a>
+               			<a href="javascript:;" class="list-group-item"><span class="pull-right badge badge-default">23</span> Link 3</a>
+               			<a href="javascript:;" class="list-group-item text-muted">Link n..</a>
+            		  </div>
+                    </div>
+                    <div class="col-xs-12 tab-pane fade active in" id="profile1">
+                      <div class="row">
+                      	<div class="col-sm-7">
+                          <h4>Justified Tabs</h4>
+                          <p>Food truck fixie locavore Exercitation, blog sartorial PBR leggings next Vegan fanny sapie.</p>
+                        </div>
+                        <div class="col-sm-5"><img src="//placehold.it/150x80" class="pull-right img-responsive img-rounded"></div> 
+                      </div>
+           			  <hr>
+                      <a href="javascript:;" class="btn btn-info btn-block">Read More Profiles</a>
+                      <div class="spacer5"></div>
+                    </div>
+                    <div class="col-xs-12 tab-pane fade" id="messages">
+                      <div class="list-group">
+               			<a href="javascript:;" class="list-group-item"><span class="pull-right badge badge-default">44</span> Message 1</a>
+               			<a href="javascript:;" class="list-group-item"><span class="pull-right badge badge-default">8</span> Message 2</a>
+               			<a href="javascript:;" class="list-group-item"><span class="pull-right badge badge-default">23</span> Message 3</a>
+               			<a href="javascript:;" class="list-group-item text-muted">Message n..</a>
+            		  </div>
+                    </div>
+                  </div><!--/tabs content-->
+                  
+				</div><!--/col-12-->
+            </div><!--/row-->
+        </div><!--/tabs justified-->
+          
+        <!--refresh widget-->
+        <div class="panel panel-default" id="refreshPanel1">
+          <div class="panel-heading">
+            <h4><a id="refresh1" class="pull-right refresh-me" data-target="#refreshPanel1" href="javascript:;"><span class="fa fa-refresh"></span></a>Reload Widget</h4>
+          </div>
+          <div class="panel-body panel-refresh refresh-container">
+            <p><strong>Refresh Me</strong></p>
+              <div class="well"> 
+                This animated reload widget utilizes FontAwesome 4 and a simple, lightweight plugin that's included.
+              </div>
+              <div class="refresh-data"> 
+              	This is the original data that will update upon refresh..
+              </div>
+          </div>
+        </div>
+        <!--refresh widget-->
+        
+        <!--mini calendar-->
+        <div class="panel panel-default">
+          	<div class="row">
+           		<div class="col-xs-6"><div class="bg-primary" datepicker></div></div>
+            	<div class="col-xs-6 pad-left-0"><h3 class="margin-top-5 text-center">{{date | date:'EEEE'}}</h3><br>
+            	<h1 class="text-center text-uber">{{date | date:'d'}}</h1></div>
+            </div>
+          </div>
+        <!--/mini calendar-->
+          
+        <!--notify widget-->
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4>Notify Widget</h4></div>
+          <div class="panel-body">
+            <p><strong>Display Feedback</strong></p>
+              <div class="well"> 
+                Use the AngularJS notify service to display growler like alerts to users. Alerts can be triggered
+                from JavaScript, jQuery or directly in the scope of the included AngularJS app.
+              </div>
+              <div> 
+                <button ng-click="noty.add({type:'info',title:'Informational alert..'})" class="btn btn-info">Info Alert</button>
+                <button ng-click="noty.add({type:'warning',title:'Warning alert..'})" class="btn btn-warning">Warning Alert</button>
+                <button ng-click="noty.add({type:'danger',title:'Oh no!',body:'Error alert..'})" class="btn btn-danger">Error Alert</button>
+              </div>
+          </div>
+        </div>
+        <!--notify widget-->
+        
+        <!--mini slider-->
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4>Mini Slider</h4></div>
+          	<div class="margin-top-15" mini-slider></div>
+        </div>
+        <!--/mini slider-->
+        
+        <!--tags list-->
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4><i class="fa fa-tag fa-lg"></i> Tags</h4></div>
+          	<div class="panel-body">
+          	    <div class="row">
+          	      <div class="col-md-6">
+          	        <a href="/resources/bootstrap-3"><span class="label label-default">bootstrap-3</span></a>
+                	<a href="/resources/glyphicons"><span class="label label-default">glyphicons</span></a>
+                	<a href="/resources/icons"><span class="label label-default">icons</span></a>
+                	<a href="/resources/carousel"><span class="label label-default">carousel</span></a>
+                	<a href="/resources/layout"><span class="label label-default">layout</span></a>
+                	<a href="/resources/panel"><span class="label label-default">panel</span></a>
+                	<a href="/resources/snippet"><span class="label label-default">snippet</span></a>
+                	<a href="/resources/images"><span class="label label-default">images</span></a>
+                	<a href="/resources/grid"><span class="label label-default">grid</span></a>
+                	<a href="/resources/responsive"><span class="label label-default">responsive</span></a>
+                	<a href="/resources/gallery"><span class="label label-default">gallery</span></a>
+                	<a href="/resources/thumbnails"><span class="label label-default">thumbnails</span></a>
+                	<a href="/resources/dashboard"><span class="label label-default">dashboard</span></a>
+                	<a href="/resources/full"><span class="label label-default">full</span></a>
+                	<a href="/resources/list-group"><span class="label label-default">list-group</span></a>
+                	<a href="/resources/fade"><span class="label label-default">fade</span></a>
+                	<a href="/resources/transition"><span class="label label-default">transition</span></a>
+                	<a href="/resources/nav"><span class="label label-default">nav</span></a>
+                	<a href="/resources/login"><span class="label label-default">login</span></a>
+                	<a href="/resources/panel"><span class="label label-default">panel</span></a>
+                	<a href="/resources/snippet"><span class="label label-default">snippet</span></a>
+                	<a href="/resources/glyphicons"><span class="label label-default">glyphicons</span></a>
+                	<a href="/resources/icons"><span class="label label-default">icons</span></a>
+                	<a href="/resources/slider"><span class="label label-default">slider</span></a>
+                	<a href="/resources/photography"><span class="label label-default">photography</span></a>
+                	<a href="/resources/grid"><span class="label label-default">grid</span></a>
+                	<a href="/resources/smartphone"><span class="label label-default">smartphone</span></a>
+                	<a href="/resources/modal"><span class="label label-default">modal</span></a>
+          	      </div>
+          	      <div class="col-md-6">
+          	        <div class="list-group">
+              	     <a href="/resources" class="list-group-item">
+              	       <span class="badge badge-default pull-right">78</span> Slider
+              	     </a>
+              	     <a href="/resources" class="list-group-item">
+              	       <span class="badge badge-default pull-right">128</span> Login
+              	     </a>
+              	     <a href="/resources" class="list-group-item">
+              	       <span class="badge badge-default pull-right">99</span> Snippet
+              	     </a>
+              	     <a href="/resources" class="list-group-item">
+              	       <span class="badge badge-default pull-right">234</span> Template
+              	     </a>
+              	     <a href="/resources" class="list-group-item">
+              	       <span class="badge badge-default pull-right">51</span> Mobile
+              	     </a>
+          	        </div>
+          	      </div>
+          	    </div>
+            	
+            	
+          	</div><!--/panel-body-->
+        </div><!--/panel-->
+        <!--/tags list-->
+        
+
+        </div><!--/col-6-->
+      	<div class="col-md-6">
+      
+          <!--paged-->
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <!--settings dropdown-->
+              <div class="pull-right btn-group">
+                <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-cog"></i> &nbsp;&nbsp;<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu pull-right" role="menu">
+                  <li><a href="javascript:;">Setting 1</a></li>
+                  <li><a href="javascript:;">Setting 2</a></li>
+                  <li><a href="javascript:;">Action 3</a></li>
+                  <li class="divider"></li>
+                  <li><a href="javascript:;">Separated link</a></li>
+                </ul>
+              </div>
+              <!--/settings dropdown-->
+              <h4>Pagination Widget</h4>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped">
+               <thead>
+                <tr>
+                   <th>#</th><th>Desc</th><th>Points</th>
+                 </tr>
+               </thead>
+               <tbody id="table1" class="page-me" data-pager="#pager1" data-per-page="5">
+                 <tr>
+                   <td>1</td><td>Mike Adams</td><td>23</td>
+                 </tr>
+                 <tr>
+                   <td>2</td><td>Holly Galivan</td><td>44</td>
+                 </tr>
+                 <tr>
+                   <td>3</td><td>Mary Shea</td><td>86</td>
+                 </tr>
+                 <tr>
+                   <td>4</td><td>Jim Adams</td><td>23</td>
+                 </tr>
+                 <tr>
+                   <td>5</td><td>Henry Galivan</td><td>44</td>
+                 </tr>
+                 <tr>
+                   <td>6</td><td>Bob Shea</td><td>26</td>
+                 </tr>
+                 <tr>
+                   <td>7</td><td>Andy Parks</td><td>56</td>
+                 </tr>
+                 <tr>
+                   <td>8</td><td>Bob Skelly</td><td>96</td>
+                 </tr>
+                 <tr>
+                   <td>9</td><td>William Defoe</td><td>13</td>
+                 </tr>
+                 <tr>
+                   <td>10</td><td>Will Tripp</td><td>16</td>
+                 </tr>
+                 <tr>
+                   <td>11</td><td>Bill Champion</td><td>44</td>
+                 </tr>
+                 <tr>
+                   <td>12</td><td>Lastly Jane</td><td>6</td>
+                 </tr>
+              	</tbody>
+              </table>
+            </div><!--/table-responsive-->
+            <div class="text-center">
+      			<ul class="pagination" id="pager1"></ul>
+      		</div>
+          </div><!--/paged-->
+          
+          <!--side-by-side-->
+          <div class="panel panel-default">
+          	<div class="row v-center">
+           		<div class="col-xs-6"><img src="//placehold.it/400" class="img-responsive"></div>
+            	<div class="col-xs-6 pad-left-0 text-center" title="Follow on Facebook" data-toggle="tooltip"><a href="javascript:;"><span class="fa fa-facebook fa-5x"></span></a></div>
+            </div>
+          </div>
+          <!--/side-by-side-->
+          
+          <!--user-profile-->
+          <div class="panel panel-default">
+			<div class="panel-body">
+              		<div class="row">
+                        <div class="col-xs-12 col-md-8 col-sm-6">
+                            <h4>Mike Anamendolla</h4>
+                            <p>Web Designer / UI</p>
+                            <p>I love to read, hang out with friends, listen to music, and learn new things. </p>
+                            <p>
+                               <span class="label label-info tags">html5</span> 
+                               <span class="label label-info tags">css3</span>
+                               <span class="label label-info tags">jquery</span>
+                            </p>
+                        </div><!--/col-->          
+                        <div class="col-xs-12 col-md-4 col-sm-6 text-center">
+                                <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="" class="center-block img-circle img-responsive">
+                                <br>
+                                <ul class="list-inline ratings text-center" title="Ratings">
+                                  <li><a href="#"><span class="fa fa-star"></span></a></li>
+                                  <li><a href="#"><span class="fa fa-star"></span></a></li>
+                                  <li><a href="#"><span class="fa fa-star"></span></a></li>
+                                  <li><a href="#"><span class="fa fa-star"></span></a></li>
+                                  <li><a href="#"><span class="fa fa-star"></span></a></li>
+                                </ul>
+                        </div><!--/col-->
+
+                        <div class="col-xs-12 col-md-4">
+                            <h2><strong> 20,7K </strong></h2>                    
+                            <p><small>Followers</small></p>
+                            <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>
+                        </div><!--/col-->
+                        <div class="col-xs-12 col-md-4">
+                            <h2><strong>245</strong></h2>                    
+                            <p><small>Following</small></p>
+                            <button class="btn btn-info btn-block"><span class="fa fa-user"></span> View Profile </button>
+                        </div><!--/col-->
+                        <div class="col-xs-12 col-md-4">
+                            <h2><strong>43</strong></h2>                    
+                            <p><small>Snippets</small></p>
+                            <button type="button" class="btn btn-primary btn-block"><span class="fa fa-gear"></span> Options </button>  
+                        </div><!--/col-->
+              		</div><!--/row-->
+              </div><!--/panel-body-->
+          </div><!--/user-profile panel-->
+          
+          <!--scrolling table-->
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>
+              	Fixed Header Scrolling Table 
+              </h4>
+            </div>
+              <table class="table table-fixed">
+               <thead>
+                <tr>
+                  <th class="col-xs-2">#</th><th class="col-xs-8">Name</th><th class="col-xs-2">Points</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <td class="col-xs-2">1</td><td class="col-xs-8">Mike Adams</td><td class="col-xs-2">23</td>
+                 </tr>
+                 <tr>
+                   <td class="col-xs-2">2</td><td class="col-xs-8">Holly Galivan</td><td class="col-xs-2">44</td>
+                 </tr>
+                 <tr>
+                   <td class="col-xs-2">3</td><td class="col-xs-8">Mary Shea</td><td class="col-xs-2">86</td>
+                 </tr>
+                 <tr>
+                   <td class="col-xs-2">4</td><td class="col-xs-8">Jim Adams</td><td>23</td>
+                 </tr>
+                 <tr>
+                   <td class="col-xs-2">5</td><td class="col-xs-8">Henry Galivan</td><td class="col-xs-2">44</td>
+                 </tr>
+                 <tr>
+                   <td class="col-xs-2">6</td><td class="col-xs-8">Bob Shea</td><td class="col-xs-2">26</td>
+                 </tr>
+                 <tr>
+                   <td class="col-xs-2">7</td><td class="col-xs-8">Andy Parks</td><td class="col-xs-2">56</td>
+                 </tr>
+                 <tr>
+                   <td class="col-xs-2">8</td><td class="col-xs-8">Bob Skelly</td><td class="col-xs-2">96</td>
+                 </tr>
+                 <tr>
+                   <td class="col-xs-2">9</td><td class="col-xs-8">William Defoe</td><td class="col-xs-2">13</td>
+                 </tr>
+                 <tr>
+                   <td class="col-xs-2">10</td><td class="col-xs-8">Will Tripp</td><td class="col-xs-2">16</td>
+                 </tr>
+                 <tr>
+                   <td class="col-xs-2">11</td><td class="col-xs-8">Bill Champion</td><td class="col-xs-2">44</td>
+                 </tr>
+                 <tr>
+                   <td class="col-xs-2">12</td><td class="col-xs-8">Lastly Jane</td><td class="col-xs-2">6</td>
+                 </tr>
+              	</tbody>
+              </table>
+          </div><!--/scrolling table-->
+          
+          <!--userlist-->
+          <div class="panel panel-default" ng-controller="usersCtrl" id="newUsers">
+            <div class="panel-heading">
+              <h4><a id="refresh2" class="pull-right refresh-me" data-target="#newUsers" href="javascript:;"><span class="fa fa-refresh"></span></a>Recent Signups</h4>
+            </div>
+            <div class="panel-body refresh-container">
+              <div class="table-responsive">
+                <table id="user-signups" class="table table-striped"> 
+                  <thead> 
+                    <tr> 
+                      <th class="hidden-xs">First Name</th> 
+                      <th>Last Name</th> 
+                      <th class="text-center">Status</th> 
+                      <th class="text-right">Approve</th> 
+                    </tr> 
+                  </thead>
+                  <tbody> 
+                    <tr ng-repeat="user in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
+                      <td ng-click="go('/user-profile')" class="hidden-xs">{{user.firstName}}</td>
+                      <td ng-click="go('/user-profile')">{{user.lastName}}</td>
+                      <td class="text-center"><span class="label" ng-class="{'label-danger': user.approved==false,'label-success': user.approved==true}">{{user.approved}}</span></td>
+                      <td class="text-right"><input type="checkbox" ng-click="approveUser($index)" ng-model="user.approved" value="true"></td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr><td colspan="4">
+                       <div class="text-center">
+                          <ul class="pagination">
+                            <li ng-class="{disabled: currentPage == 0}">
+                              <a class="btn btn-default btn-sm" href="javascript:;" ng-click="prevPage()">« Prev</a>
+                            </li>
+                            <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+                              <a class="btn btn-default btn-sm" href="javascript:;" ng-click="nextPage()">Next »</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div> <!--/.table-responsive-->
+              
+            </div><!--/.panel-body-->
+        </div><!--/.panel-->
+        <!--/userlist-->
+        
+        <!--contacts-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="fa fa-phone-square fa-lg"></i> Contacts
+                <ul class="list-inline pull-right">
+                 <li class="dropdown">
+                   <a class="dropdown-toggle" href="javascript:;" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span></a>
+                   <div class="dropdown-menu dropdown-menu-right spacer5" style="min-width:240px;">
+                     <form role="form" class="form-horizontal">
+                       <small>Contact Quick Add</small>
+                       <input class="form-control input-sm margin-bottom-5" placeholder="Name" type="text">
+                       <input class="form-control input-sm margin-bottom-5" placeholder="Phone" type="text">   
+                       <input class="form-control input-sm margin-bottom-5" placeholder="Address" type="text"> 
+                       <input class="form-control input-sm margin-bottom-5" placeholder="Email" type="text"> 
+                       <button class="btn btn-primary btn-block" data-toggle="dropdown">Add</button>
+                     </form>
+                   </div>
+                 </li>
+                </ul>
+                </h4>
+            </div>
+            <div class="row" style="display: none;">
+                <div class="col-xs-12">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="contact-list-search">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search text-muted"></span></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <ul class="list-group pull-down" id="contact-list">
+                <li class="list-group-item">
+                    <div class="col-xs-12 col-sm-2">
+                        <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="Mike Anamendolla" class="img-responsive img-circle">
+                    </div>
+                    <div class="col-xs-12 col-sm-10">
+                        <span class="fa fa-mobile fa-2x text-success pull-right pulse" title="online now"></span>
+                        <span class="name">Mike Anamendolla</span><br>
+                        <span class="glyphicon glyphicon-map-marker text-muted" data-toggle="tooltip" title="5842 Hillcrest Rd"></span>
+                        <span class="visible-xs"> <span class="text-muted">5842 Hillcrest Rd</span><br></span>
+                        <span class="glyphicon glyphicon-earphone text-muted" data-toggle="tooltip" title="(870) 288-4149"></span>
+                        <span class="visible-xs"> <span class="text-muted">(870) 288-4149</span><br></span>
+                        <span class="fa fa-comments text-muted" data-toggle="tooltip"></span>
+                        <span class="visible-xs"> <span class="text-muted">mike.ana@example.com</span><br></span>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+                <li class="list-group-item">
+                    <div class="col-xs-12 col-sm-2">
+                        <img src="http://api.randomuser.me/portraits/men/97.jpg" alt="Seth Frazier" class="img-responsive img-circle">
+                    </div>
+                    <div class="col-xs-12 col-sm-10">
+                        <span class="name">Seth Frazier</span><br>
+                        <span class="glyphicon glyphicon-map-marker text-muted" data-toggle="tooltip" title="7396 E North St"></span>
+                        <span class="visible-xs"> <span class="text-muted">7396 E North St</span><br></span>
+                        <span class="glyphicon glyphicon-earphone text-muted" data-toggle="tooltip" title="(560) 180-4143"></span>
+                        <span class="visible-xs"> <span class="text-muted">(560) 180-4143</span><br></span>
+                        <span class="fa fa-comments text-muted" data-toggle="tooltip" title="seth.frazier@example.com"></span>
+                        <span class="visible-xs"> <span class="text-muted">seth.frazier@example.com</span><br></span>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+                <li class="list-group-item">
+                    <div class="col-xs-12 col-sm-2">
+                        <img src="http://api.randomuser.me/portraits/women/90.jpg" alt="Jean Myers" class="img-responsive img-circle">
+                    </div>
+                    <div class="col-xs-12 col-sm-10">
+                        <span class="name">Jean Myers</span><br>
+                        <span class="glyphicon glyphicon-map-marker text-muted" data-toggle="tooltip" title="4949 W Dallas St"></span>
+                        <span class="visible-xs"> <span class="text-muted">4949 W Dallas St</span><br></span>
+                        <span class="glyphicon glyphicon-earphone text-muted" data-toggle="tooltip" title="(477) 792-2822"></span>
+                        <span class="visible-xs"> <span class="text-muted">(477) 792-2822</span><br></span>
+                        <span class="fa fa-comments text-muted" data-toggle="tooltip" title="jean.myers@example.com"></span>
+                        <span class="visible-xs"> <span class="text-muted">jean.myers@example.com</span><br></span>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+                <li class="list-group-item">
+                    <div class="col-xs-12 col-sm-2">
+                        <img src="http://api.randomuser.me/portraits/men/24.jpg" alt="Todd Shelton" class="img-responsive img-circle">
+                    </div>
+                    <div class="col-xs-12 col-sm-10">
+                        <span class="name">Todd Shelton</span><br>
+                        <span class="glyphicon glyphicon-map-marker text-muted" data-toggle="tooltip" title="5133 Pecan Acres Ln"></span>
+                        <span class="visible-xs"> <span class="text-muted">5133 Pecan Acres Ln</span><br></span>
+                        <span class="glyphicon glyphicon-earphone text-muted" data-toggle="tooltip" title="(522) 991-3367"></span>
+                        <span class="visible-xs"> <span class="text-muted">(522) 991-3367</span><br></span>
+                        <span class="fa fa-comments text-muted" data-toggle="tooltip" title="todd.shelton@example.com"></span>
+                        <span class="visible-xs"> <span class="text-muted">todd.shelton@example.com</span><br></span>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+                <li class="list-group-item">
+                    <div class="col-xs-12 col-sm-2">
+                        <img src="http://api.randomuser.me/portraits/women/34.jpg" alt="Rosemary Porter" class="img-responsive img-circle">
+                    </div>
+                    <div class="col-xs-12 col-sm-10">
+                        <span class="fa fa-inbox fa-2x text-danger pull-right" title="left you a message"><span class="count-circle">3</span></span>
+                        <span class="fa fa-mobile fa-2x text-success pull-right pulse" title="online now"></span>
+                        <span class="name">Rosemary Porter</span><br>
+                        <span class="glyphicon glyphicon-map-marker text-muted" data-toggle="tooltip" title="5267 Cackson St"></span>
+                        <span class="visible-xs"> <span class="text-muted">5267 Cackson St</span><br></span>
+                        <span class="glyphicon glyphicon-earphone text-muted" data-toggle="tooltip" title="(497) 160-9776"></span>
+                        <span class="visible-xs"> <span class="text-muted">(497) 160-9776</span><br></span>
+                        <span class="fa fa-comments text-muted" data-toggle="tooltip" title="rosemary.porter@example.com"></span>
+                        <span class="visible-xs"> <span class="text-muted">rosemary.porter@example.com</span><br></span>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+                <li class="list-group-item">
+                    <div class="col-xs-12 col-sm-2">
+                        <img src="http://api.randomuser.me/portraits/women/56.jpg" alt="Debbie Schmidt" class="img-responsive img-circle">
+                    </div>
+                    <div class="col-xs-12 col-sm-10">
+                        <span class="name">Debbie Schmidt</span><br>
+                        <span class="glyphicon glyphicon-map-marker text-muted" data-toggle="tooltip" title="3903 W Alexander Rd"></span>
+                        <span class="visible-xs"> <span class="text-muted">3903 W Alexander Rd</span><br></span>
+                        <span class="glyphicon glyphicon-earphone text-muted" data-toggle="tooltip" title="(867) 322-1852"></span>
+                        <span class="visible-xs"> <span class="text-muted">(867) 322-1852</span><br></span>
+                        <span class="fa fa-comments text-muted" data-toggle="tooltip" title="debbie.schmidt@example.com"></span>
+                        <span class="visible-xs"> <span class="text-muted">debbie.schmidt@example.com</span><br></span>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+                <li class="list-group-item">
+                    <div class="col-xs-12 col-sm-2">
+                        <img src="http://api.randomuser.me/portraits/women/76.jpg" alt="Glenda Patterson" class="img-responsive img-circle">
+                    </div>
+                    <div class="col-xs-12 col-sm-10">
+                        <span class="name">Glenda Patterson</span><br>
+                        <span class="glyphicon glyphicon-map-marker text-muted" data-toggle="tooltip" title="5020 Poplar Dr"></span>
+                        <span class="visible-xs"> <span class="text-muted">5020 Poplar Dr</span><br></span>
+                        <span class="glyphicon glyphicon-earphone text-muted" data-toggle="tooltip" title="(538) 718-7548"></span>
+                        <span class="visible-xs"> <span class="text-muted">(538) 718-7548</span><br></span>
+                        <span class="fa fa-comments text-muted" data-toggle="tooltip" title="glenda.patterson@example.com"></span>
+                        <span class="visible-xs"> <span class="text-muted">glenda.patterson@example.com</span><br></span>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+            </ul>
+        </div> <!--/contacts-->
+        
+                 
+        </div><!--/col-6-->
+  	</div>
+</div><!--/widgets-->

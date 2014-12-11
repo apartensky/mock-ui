@@ -1,0 +1,148 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- left column-->
+        <div class="col-md-6">
+
+            <!--big icon bar-->
+            <ul class="well well-sm nav nav-justified" id="iconbar">
+              <li class="col-md-12"><a class="text-center" href="/calendar"><i class="fa fa-calendar-o fa-3x"></i> <br>Calendar</a></li>
+              <li class="col-md-12"><a class="text-center" href="/todo"><i class="fa fa-edit fa-3x"></i> <br>Tasks</a></li>
+              <li class="col-md-12"><a class="text-center" href="/gallery"><i class="fa fa-camera fa-3x"></i> <br>Photos</a></li>
+              <li class="col-md-12"><a class="text-center" href="/inbox"><i class="fa fa-envelope-o fa-3x"></i> <br>Messages</a></li>
+            </ul>
+            <!--/big icon bar-->
+            
+            <div ng-controller="listCtrl" class="well well-sm">
+                <h4>Latest Activity</h4>
+                <div class="media" ng-repeat="item in list">
+                  <button type="button" class="close" ng-click="deleteItem($index)" aria-hidden="true">×</button>
+                  <a class="pull-left" href="#">
+                    <img src="{{item.img}}" style="width:40px;" class="img-circle">
+                  </a>
+                  <div class="media-body">
+                    <a class="media-heading">
+                      <div><strong>{{item.username}}</strong> {{item.action}} in <strong>`{{item.category}}`</strong></div>
+                    </a>
+                    <small>{{item.timeAgo}}</small>
+                  </div>
+                </div>
+            </div><!--/listCtrl-->
+            
+            <!--tasks-->
+            <div todo></div>
+            
+        </div><!--/col-->
+        <!-- right column-->
+        <div class="col-md-6">
+         
+            <!--active users panel-->
+            <div class="panel panel-default">
+                <div class="panel-heading" data-toggle="collapse" data-target="#listActiveUsers">
+                  <h4>
+                      Most Active Users
+                  </h4>
+                </div>
+                <div id="listActiveUsers" class="list-group collapse in">
+                    <a ng-repeat="u in users.slice(0,5) | orderBy:'-points'" href="javascript:;" ng-click="go('/user-profile')" class="list-group-item"><span class="pull-right badge badge-default">{{u.points}}</span>{{u.firstName}} {{u.lastName}}</a>
+                    <a href="/users" class="list-group-item btn">All Users</a>
+                </div>
+            </div><!--/active users panel-->
+            
+            <!--mini clock-->
+            <div class="panel panel-default hidden-xs">
+                  <div class="v-center">
+                    <div class="col-xs-8">
+                      <h1 class="text-center margin-top-10"><a title="Calendar" href="/calendar" current-time="'h:mm:ss a'"></a></h1>
+                    </div>
+                    <div class="col-xs-4 bg-info">
+                      <h1 class="margin-bottom-15 margin-top-15 text-center">
+                       <span class="fa fa-clock-o fa-2x"></span>
+                      </h1>
+                    </div>
+                </div>
+            </div>
+            <!--/mini clock-->
+            
+            <!--mini user profile-->
+            <div class="well well-sm">
+                <div class="media">
+                    <a class="pull-left" href="/user-profile">
+                        <img class="media-object img-thumbnail" style="width:76px;" src="http://api.randomuser.me/portraits/men/24.jpg">
+                    </a>
+                    <div class="media-body">
+                        <ul class="pull-right list-inline">
+                            <li><a href="javascript:;" title="Pinterest"><span class="fa fa-pinterest fa-lg"></span></a></li>
+                        </ul>
+                        <h4 class="media-heading"><a href="/user-profile">Mike Sumner</a></h4>
+                        <p><span class="label label-info">10 photos</span> <span class="label label-primary">89 followers</span></p>
+                        <p>
+                            <a href="javascript:;" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-comment"></span> Message</a>
+                            <a href="javascript:;" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-heart"></span> Favorite</a>
+                            <a href="javascript:;" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-ban-circle"></span> Unfollow</a>
+                        </p>
+                    </div>
+                </div>
+            </div><!--/mini user profile-->
+            
+            <!--mini user profile2-->
+            <div class="well well-sm">
+                <div class="media">
+                    <a class="pull-left" href="/user-profile">
+                        <img class="media-object img-thumbnail" style="width:76px;" src="http://api.randomuser.me/portraits/women/12.jpg">
+                    </a>
+                    <div class="media-body">
+                        <ul class="pull-right list-inline">
+                            <li><a href="javascript:;" title="Google+"><span class="fa fa-google-plus fa-lg"></span></a></li>
+                        </ul>
+                        <h4 class="media-heading"><a href="/user-profile">James Tavares</a></h4>
+                        <p><span class="label label-info">21 photos</span> <span class="label label-primary">52 followers</span></p>
+                        <p>
+                            <a href="javascript:;" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-comment"></span> Message</a>
+                            <a href="javascript:;" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-heart"></span> Favorite</a>
+                            <a href="javascript:;" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-ban-circle"></span> Unfollow</a>
+                        </p>
+                    </div>
+                </div>
+            </div><!--/mini user profile2-->
+            
+            <!--mini user profile3-->
+            <div class="well well-sm">
+                <div class="media">
+                    <a class="pull-left" href="/user-profile">
+                        <img class="media-object img-thumbnail" style="width:76px;" src="http://api.randomuser.me/portraits/men/14.jpg">
+                    </a>
+                    <div class="media-body">
+                        <ul class="pull-right list-inline">
+                            <li><a href="javascript:;" title="Twitter"><span class="fa fa-twitter fa-lg"></span></a></li>
+                        </ul>
+                        <h4 class="media-heading"><a href="/user-profile">Devon Hillenbrant</a></h4>
+                        <p><span class="label label-info">74 photos</span> <span class="label label-primary">109 followers</span></p>
+                        <p>
+                            <a href="javascript:;" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-comment"></span> Message</a>
+                            <a href="javascript:;" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-heart"></span> Favorite</a>
+                            <a href="javascript:;" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-ban-circle"></span> Unfollow</a>
+                        </p>
+                    </div>
+                </div>
+            </div><!--/mini user profile3-->
+            
+            <!--status update-->
+            <div class="well well-sm"> 
+             <form role="form">
+              <span class="pull-right small"><span id="charCount"></span> characters left</span>
+              <h4>What's New</h4>
+              <div class="form-group">
+               <textarea class="form-control live-char-count" data-max="140" data-target="#charCount" rows="3" placeholder="Update your status"></textarea>
+              </div>
+              <button class="btn btn-success pull-right" type="button">Post</button>
+              <ul class="list-inline">
+                <li><a href="javascript:;"><i class="fa fa-link fa-lg"></i></a></li>
+                <li><a href="javascript:;"><i class="fa fa-camera fa-lg"></i></a></li>
+                <li><a href="javascript:;"><i class="fa fa-map-marker fa-lg"></i></a></li>
+              </ul>
+             </form>
+            </div>
+            <!--status update-->
+        </div><!--/col-->
+    </div><!--/row-->
+</div><!--/container-->

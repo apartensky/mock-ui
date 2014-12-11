@@ -1,0 +1,266 @@
+<div class="container-fluid" ng-controller="formsCtrl">
+    <div class="row" id="exSelects">
+      <div class="col-sm-6">
+        <h4>Select with Search Filter</h4>
+        <selectpicker data-array="items" data-selected="selected" data-title="Choose.."></selectpicker>
+      </div><!--/col-->
+      <div class="col-sm-6">
+        <h4>Tag Picker</h4>
+        <tagpicker data-array="items" data-selected-list="selectedList" data-title="Select tags.."></tagpicker>
+      </div><!--/col-->
+    </div><!--/row-->
+    
+    <hr>
+    
+    <div class="row" id="exColorPicker">
+      <div class="col-sm-6">
+        <h4>Color Picker</h4>
+        <input type="text" mini-colors class="form-control" name="colorPicker" />
+      </div><!--/col-->
+      <div class="col-sm-6">
+        <h4>Seach with Category Selector</h4>
+        <div class="form-group" style="display:inline;">
+          <div class="input-group"> 
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="javascript:;">Category 1</a></li>
+                <li><a href="javascript:;">Category 2</a></li>
+                <li><a href="javascript:;">Category 3</a></li>
+                <li><a href="javascript:;">Category 4</a></li>
+                <li><a href="javascript:;">Category 5</a></li> 
+              </ul>
+            </div>
+            <input class="form-control" placeholder="What are searching for?" type="text">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </span>
+          </div>
+        </div>
+      </div><!--/col-->
+    </div><!--/row-->
+    
+    <hr>
+    
+    <div class="row" id="exDateTime">
+      <div class="col-sm-3">
+        <h4>Date &amp; Time Inputs</h4>
+        <div class="form-group">
+          <label class="control-label">Date picker</label>
+          <div class="input-group date" id="datepicker">
+            <input datepicker type="text" class="form-control">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+          </div>
+        </div>
+      </div><!--/col-->
+      <div class="col-sm-3">
+        <h4>&nbsp;</h4>
+        <div class="form-group">
+          <label class="control-label">Time picker</label>
+          <div class="input-group" id="timepicker">
+            <input type="text" class="form-control">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+          </div>
+        </div>
+      </div><!--/col-->
+      <div class="col-sm-6">
+        <h4>Date Range Selector</h4>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="input-daterange form-group has-feedback">
+              <label class="control-label">Start</label>
+              <input class="form-control" name="dateStart" type="text" placeholder="from">
+              <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+            </div>
+          </div><!--/col-->
+          <div class="col-sm-6">
+            <div class="input-daterange form-group has-feedback">
+              <label class="control-label">End</label>
+              <input class="form-control" name="dateEnd" type="text" placeholder="to">
+              <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+            </div>
+          </div><!--/col-->
+        </div><!--/row-->
+        
+      </div><!--/col-->
+    </div><!--/row-->
+  
+    <hr>
+    
+    <div class="row" id="exInputMasking">
+      <div class="col-sm-6">
+        <h4>Input Masking</h4>
+        
+        <h5>Phone Number</h5>
+      	<input type="text" class="form-control" data-mask="(999) 999-9999 x9999" placeholder="(555) 111-2222">
+        
+        <h5>Credit Card</h5>
+      	<input type="text" class="form-control" data-mask="9999-9999-9999-9999" placeholder="0000-0000-0000-0000">
+        
+        <h5>Tax Id</h5>
+      	<input type="text" class="form-control" data-mask="99-9999999" placeholder="XX-XXXXXXX">
+        
+        <h5>Date</h5>
+        <div class="form-group">
+          	<div class="input-group">
+        	 <input type="text" class="form-control" data-mask="99/99/9999" placeholder="MM/DD/YYYY">
+        	 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+          	</div>
+        </div>
+      
+      </div><!--/col-->
+      <div class="col-sm-6">
+      
+        <h4>&nbsp;</h4>
+        
+        <h5>Twitter</h5>
+      	<input type="text" class="form-control" data-mask="@ww?wwwwwwwwwwwwwww" placeholder="@screename">
+        
+        <h5>Expiration Date</h5>
+        <input type="text" class="form-control" data-mask="99/9999" placeholder="MM/YYYY">
+        
+        <h5>Social Security #</h5>
+      	<input type="text" class="form-control" data-mask="999-99-9999" placeholder="123-23-1234">
+        
+        <h5>Time</h5>
+        <div class="form-group">
+          	<div class="input-group">
+        	 <input type="time" class="form-control" placeholder="12:00 AM">
+        	 <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+          </div>
+        </div>
+      
+      </div><!--/col-->
+    </div><!--/row-->
+  
+    <hr>
+    
+    <div class="row">
+      <form class="col-sm-6" id="exHtml5Validation">
+        <h4>HTML5 Validation</h4>
+        <div class="form-group has-feedback">
+         <label>Email</label>
+      	 <input type="email" class="form-control" placeholder="you@validemail.com" required="" min="7" data-valid-pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+         <span class="glyphicon glyphicon-ok form-control-feedback fade"></span>
+         <h6 class="help-block">Enter a valid email address.</h6>
+        </div>
+        <div class="form-group has-feedback">
+         <label>Password</label>
+      	 <input type="password" id="inputPassword" class="form-control has-feedback" required="" placeholder="xxxxxx" pattern="^[a-z,A-Z,0-9,_]{6,15}$" title="One word. No spaces or special characters." min="6">
+         <span class="glyphicon glyphicon-ok form-control-feedback fade"></span>
+         <h6 class="help-block">Enter a password of at least 6 alpha and numeric chars.</h6>
+        </div>
+        <div class="form-group has-feedback">
+         <label>Verify</label>
+      	 <input type="password" class="form-control has-feedback" placeholder="xxxxxx" required="" pattern="^[a-z,A-Z,0-9,_]{6,15}$" title="One word. No spaces or special characters." min="6" data-valid-match="inputPassword">
+         <span class="glyphicon glyphicon-ok form-control-feedback fade"></span>
+         <h6 class="help-block">Re-enter that same password for verification.</h6>
+        </div>
+        <div class="form-group has-feedback">
+         <label>Username</label>
+         <input type="text" class="form-control" placeholder="username" min="6" max="20" required="" pattern="^[a-z,A-Z,0-9,_]{6,20}$">
+         <span class="glyphicon glyphicon-ok form-control-feedback fade"></span>
+         <h6 class="help-block">Enter a username. No spaces or special characters.</h6>
+        </div>
+        <div class="form-group has-feedback">
+         <label>Web URL</label>
+         <input type="url" class="form-control" placeholder="username" data-valid-min="10" pattern="https?://.+">
+         <span class="glyphicon glyphicon-ok form-control-feedback fade"></span>
+         <h6 class="help-block">Enter a URL address. Include the http:// or https:// portion.</h6>
+        </div>
+        <button class="btn btn-default" type="submit">Validate</button>
+      </form><!--/col-->
+      <!--end html5 validation-->
+      
+      <!--file and image upload-->
+      <div class="col-sm-6" id="exFileImageUpload">
+        <h4>File &amp; Image Upload</h4>
+        <div class="form-group">
+        	<label>File selector</label>
+            <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+                <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Choose...</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+            </div>
+            <h6 class="help-block">Click 'Choose..' to select a file.</h6>
+        </div><!--/form-group-->
+      	<div class="form-group">
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+              <label>Image uploader</label>
+              <div class="fileinput-new thumbnail">
+                <img data-src="" src="/img/bg_suburb.jpg" class="img-responsive">
+              </div>
+              <div class="fileinput-preview fileinput-exists thumbnail"></div>
+              <div>
+                <span class="btn btn-default btn-file"><span class="fileinput-new">Select image...</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+              </div>
+            </div>
+        </div><!--/form-group-->
+      </div><!--/col-->
+      <!--end file and image upload-->
+    </div><!--/row-->
+    
+    <hr>
+    
+    <div class="row" id="exForms">
+      <div class="col-sm-4">
+        <h4>Live Character Count</h4>
+        <form accept-charset="UTF-8" method="POST" id="liveTextarea">
+            <textarea class="form-control counter margin-bottom-5" name="textarea1" placeholder="Type in your message" rows="5"></textarea>
+            <h6 class="pull-right"><span class="counter-message"></span> characters remaining</h6>
+            <button class="btn btn-info" type="submit">Post New Message</button>
+        </form>
+      </div><!--/col-->
+      <div class="col-sm-8" ng-controller="wysiwygCtrl">
+        <h4>WYSIWYG Rich Text Editor</h4>
+        <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
+          <div class="btn-group  btn-group-sm">
+            <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="" data-original-title="Font"><i class="glyphicon glyphicon-font"></i><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              <li><a data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li><li><a data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li><li><a data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li><li><a data-edit="fontName Arial Black" style="font-family:'Arial Black'">Arial Black</a></li><li><a data-edit="fontName Courier" style="font-family:'Courier'">Courier</a></li><li><a data-edit="fontName Courier New" style="font-family:'Courier New'">Courier New</a></li><li><a data-edit="fontName Comic Sans MS" style="font-family:'Comic Sans MS'">Comic Sans MS</a></li><li><a data-edit="fontName Helvetica" style="font-family:'Helvetica'">Helvetica</a></li><li><a data-edit="fontName Impact" style="font-family:'Impact'">Impact</a></li><li><a data-edit="fontName Lucida Grande" style="font-family:'Lucida Grande'">Lucida Grande</a></li><li><a data-edit="fontName Lucida Sans" style="font-family:'Lucida Sans'">Lucida Sans</a></li><li><a data-edit="fontName Tahoma" style="font-family:'Tahoma'">Tahoma</a></li><li><a data-edit="fontName Times" style="font-family:'Times'">Times</a></li><li><a data-edit="fontName Times New Roman" style="font-family:'Times New Roman'">Times New Roman</a></li><li><a data-edit="fontName Verdana" style="font-family:'Verdana'">Verdana</a></li></ul>
+          </div>
+          <div class="btn-group btn-group-sm">
+            <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="" data-original-title="Font Size"><i class="glyphicon glyphicon-text-height"></i>&nbsp;<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              <li><a data-edit="fontSize 5"><font size="5">Huge</font></a></li>
+              <li><a data-edit="fontSize 3"><font size="3">Normal</font></a></li>
+              <li><a data-edit="fontSize 1"><font size="1">Small</font></a></li>
+              </ul>
+          </div>
+          <div class="btn-group btn-group-sm">
+            <a class="btn btn-default" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="glyphicon glyphicon-bold"></i></a>
+            <a class="btn btn-default" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="glyphicon glyphicon-italic"></i></a>
+            <a class="btn btn-default" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="glyphicon glyphicon-text-width"></i></a>
+          </div>
+          <div class="btn-group btn-group-sm">
+            <a class="btn btn-default btn-sm" data-edit="insertunorderedlist" title="Bullet list"><i class="glyphicon glyphicon-list"></i></a>
+            <a class="btn btn-default btn-sm" data-edit="insertorderedlist" title="Number list"><i class="glyphicon glyphicon-list-alt"></i></a>
+            <a class="btn btn-default btn-sm" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="glyphicon glyphicon-indent-left"></i></a>
+            <a class="btn btn-default btn-sm" data-edit="indent" title="Indent (Tab)"><i class="glyphicon glyphicon-indent-right"></i></a>
+          </div>
+          <div class="btn-group btn-group-sm">
+            <a class="btn btn-default" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="glyphicon glyphicon-align-left"></i></a>
+            <a class="btn btn-default" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="glyphicon glyphicon-align-center"></i></a>
+            <a class="btn btn-default" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="glyphicon glyphicon-align-right"></i></a>
+            <a class="btn btn-default" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="glyphicon glyphicon-align-justify"></i></a>
+          </div>
+          <div class="btn-group btn-group-sm">
+            <a class="btn btn-default" data-toggle="dropdown" title="Hyperlink"><i class="glyphicon glyphicon-link"></i></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <form>
+              <input class="form-control" placeholder="URL" type="text" data-edit="createLink">
+              <button class="btn btn-default btn-xs" type="button">Add</button>
+              </form>
+            </div>
+            <a class="btn btn-default" data-edit="unlink" title="Remove Hyperlink"><i class="glyphicon glyphicon-remove"></i></a>
+          </div>
+          <div class="btn-group btn-group-sm">
+            <a class="btn btn-default" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="glyphicon glyphicon-backward"></i></a>
+            <a class="btn btn-default" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="glyphicon glyphicon-forward"></i></a>
+          </div>
+        </div>
+        
+        <div id="editor" class="well col-xs-12" style="overflow:scroll;min-height:387px;">Go ahead and type something..</div>
+      </div><!--/col-->
+    </div><!--/row-->
+    
+</div><!--/container-->
