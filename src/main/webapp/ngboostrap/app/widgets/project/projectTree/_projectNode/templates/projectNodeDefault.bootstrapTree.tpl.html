@@ -1,7 +1,10 @@
+ 			
+{{node.nodenode.name || node.nodeName}}:
+<div ng-if="isObject(node.nodeData)" style="display:inline;">{{node.nodeData.name}}</div>
+<div ng-if="!isObject(node.nodeData)" style="display:inline;">{{node.nodeData}}</div>
 
-
-{{node.nodenode.name || node.nodeName}} (default)  			
 <!-- <div ng-click="$event.stopPropagation()"> -->
 <!-- <input type="text" /><input type="button" value="send" /> -->
 <!-- </div> -->
-<a ng-click="add(data, 'selection')" ">selection</a>
+<!-- <a ng-click="add(data, 'selection')" ">selection</a> -->
+

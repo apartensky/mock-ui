@@ -18,7 +18,8 @@
 			angularData: ["vendor/angular-data/angular-data"],
 			dxTree: ["vendor/dxtree/dxTree"],
 			lessjs: ["vendor/lessjs/less.min.js"],
-			bootstrapTree: ["vendor/bootstrap-tree/bootstrap-tree"]
+			bootstrapTree: ["vendor/bootstrap-tree/bootstrap-tree"],
+			ngAside: ["vendor/angular-aside/js/angular-aside"]
 		},
 		shim: {
 			jquery: {
@@ -55,6 +56,9 @@
 			},
 			bootstrapTree: {
 				deps: ["ng", "jquery"]
+			},
+			ngAside: {
+				deps: ["ng", "uibootstrap"]
 			}
 			
 		}

@@ -1,6 +1,6 @@
 define(["ng",        
-        "nguirouter", "uibootstrap", "ngresource",        
-        "ngmocks", "angularTreeView", "dxTree", "bootstrapTree",
+        "nguirouter", "uibootstrap", "ngresource", "ngmocks", 
+        "angularTreeView", "dxTree", "bootstrapTree", "ngAside",
         "app/domain/domain.module",
         "app/views/views.module",
         "app/widgets/components.module",
@@ -21,13 +21,28 @@ define(["ng",
 	.config(['$stateProvider', '$urlRouterProvider',
 	function($stateProvider, $urlRouterProvider){
 				
-		$stateProvider.state("about", {
-			url: "/about",
-			templateUrl: "app/views/about/templates/about.tpl.html"
+		$stateProvider
+		.state("root", {
+			templateUrl: "app/views/root/templates/root.tpl.html"
 		})
-		.state("contact", {
+		.state("root.about", {
+			url: "/about",
+			templateUrl: "app/views/about/templates/about.tpl.html",
+			parent: "root"
+		})
+		.state("root.contact", {
 			url: "/contact",
-			templateUrl: "app/views/contact/templates/contact.tpl.html"
+			templateUrl: "app/views/contact/templates/contact.tpl.html",
+			parent: "root"
+		})
+		.state("root.issues", {
+			url: "/issues",
+			templateUrl: "app/views/issues/templates/issues.tpl.html",
+			parent: "root",
+			data: {
+				sidemenuUrl: "app/views/issues/templates/issues.sidemenu.tpl.html"
+//				sidemenuUrl: "app/views/issues/templates/issues.sidemenu.accordion.tpl.html"
+			}
 		});
 	}])
 	.config(function($provide) {

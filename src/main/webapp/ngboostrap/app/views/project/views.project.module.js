@@ -4,7 +4,8 @@ function(ng, ProjectviewVM){
 	module.controller("ProjectViewVM", ["$scope", "$stateParams", "project", ProjectviewVM]);
 	module.config(['$stateProvider', '$urlRouterProvider',
 	   	     	function($stateProvider, $urlRouterProvider){	     				
-	   	     		$stateProvider.state("project", {
+	   	     		$stateProvider.state("root.project", {
+	   	     			parent: "root",
 	   	     			url: "/project/:id/",
 			   	     	params: {
 			   	     	   id: null
@@ -18,7 +19,7 @@ function(ng, ProjectviewVM){
 	   	     					console.info("***resolving project", $stateParams.id);
 	   	     					if($stateParams.id===null){
 	   	     						return ProjectRepository.put({}).$promise.then(function(data){
-	   	     							$state.go("project", {id: data.id});
+	   	     							$state.go("root.project", {id: data.id});
 	   	     						});
 	   	     					}else{
 	   	     						var project = ProjectRepository.get($stateParams.id);

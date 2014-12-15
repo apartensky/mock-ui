@@ -19,7 +19,8 @@ define([], function(){
 		}
 		
 		var templateMap = {
-			Datasets: "<div>{{node.nodeName}} (datasets)</div>",
+			Datasets: "<div>{{node.nodeName}}</div>",
+//			Analysis: "<project-analysis analysis=\"node.nodeData\"></project-analysis>",
 			Default: "<project-node-default node='node' ></project-node-default>"
 		};
 		

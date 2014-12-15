@@ -38,7 +38,9 @@ project-data-dimension{
 	text-overflow: ellipsis;
 }
 
-
+h3 {
+	margin-top: 5px;
+}
 
 
 

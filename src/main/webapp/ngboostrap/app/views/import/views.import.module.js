@@ -3,11 +3,12 @@ define(["ng", "lodash", "./ImportVM"],
 			var module = ng.module("mui.views.import", []);
 			module.config(['$stateProvider', '$urlRouterProvider',
 			     	function($stateProvider, $urlRouterProvider){	     				
-			     		$stateProvider.state("import", {
+			     		$stateProvider.state("root.import", {
 			     			url: "/datasource/:datasourceId/:datasetId",
 			     			templateUrl: "app/views/import/import.tpl.html",
 			     			controller: "ImportVM",
 			     			controllerAs: "ImportVM",
+			     			parent: "root",
 			     			resolve: {
 			     				datasource: ["DatasourceRepository", "$stateParams", function(DatasourceRepository, $stateParams){
 			     					return DatasourceRepository.get($stateParams.datasourceId);
