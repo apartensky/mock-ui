@@ -1,20 +1,29 @@
-#main-wrapper {
-//	&.sidemenuOn{
-//		margin-left: 205px;
-//		transition: margin .2s ease;
-//		&.shrink{
-//			margin-left: 35px;
-//			transition: margin .2s ease;
-//		}
-//	}
+@import "/ngboostrap/css/import.less";
 
-	#sidemenu-container{		
-		&.sidemenuOn{
-			display: 220px; 			
-			&.shrink{				
-				width: 50px;
+#main-wrapper {
+	&.sidemenuOn{
+		margin-left: 205px;
+		transition: margin .2s ease;
+		@media (max-width: @screen-xs-max) {
+			margin-left: -15px;
+		}
+		
+		&.shrink{
+			margin-left: 35px;
+			transition: margin .2s ease;
+			@media (max-width: @screen-xs-max) {
+				margin-left: -15px;
 			}
 		}
 	}
+
+//	#sidemenu-container{		
+//		&.sidemenuOn{
+//			display: 220px; 			
+//			&.shrink{				
+//				width: 50px;
+//			}
+//		}
+//	}
 	
 }

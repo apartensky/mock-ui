@@ -10,6 +10,9 @@ function(ng, ProjectviewVM){
 			   	     	params: {
 			   	     	   id: null
 			   	     	},
+			   	     	data: {
+			   	     		sidemenuUrl: "app/views/project/templates/project.sidemenu.accordion.tpl.html"
+			   	     	},
 	   	     			templateUrl: "app/views/project/templates/project.tpl.html",
 	   	     			controller: "ProjectViewVM",
 	   	     			controllerAs: "ProjectViewVM",

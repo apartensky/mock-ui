@@ -1,8 +1,11 @@
-aside#sidemenu-container{	
+@import "/ngboostrap/css/import.less";
+
+aside#sidemenu-container{
+		
 	z-index: 11;
-//	position: absolute;
-	position: fixed;
-	top: 62px;
+	position: absolute;
+//	position: fixed;
+	top: 70px;
 	bottom: 0;
 //	left: -220px;
 	left: 0px;
@@ -13,16 +16,30 @@ aside#sidemenu-container{
 	-webkit-overflow-scrolling: touch;
 	-webkit-overflow-scrolling: -blackberry-touch;
 	
+	@media (max-width: @screen-sm-max) {
+		position: absolute;
+		top: 128px;
+	}
+	
+	@media (max-width: @screen-xs-max) {
+		position: relative;
+		top: inherit;
+		width: inherit;
+	}
+	
 	&.shrink{
 //		background-color: orange;
-		transition: width 0.5s ease-out;		
-		width: 50px;
-		sidemenu {
-				.panel-title :nth-child(n+2){
-					width: 0;				
-//					display:none;
-					opacity: 0;
-					transition: opacity 0.1s ease-in;
+		@media (min-width: @screen-sm-min) {
+			transition: width 0.5s ease-out;		
+			width: 50px;
+			sidemenu {
+					.panel-title :nth-child(n+2){
+						width: 0;				
+	//					display:none;
+						visibility: hidden;
+						opacity: 0;
+						transition: opacity 0.1s ease-in;
+				}
 			}
 		}
 	}
@@ -35,7 +52,8 @@ aside#sidemenu-container{
 }
 
 sidemenu{	
-	
+//	background-color: lighten(@brand-primary, 80%);	
+	border-radius: @panel-border-radius;
 	&, >div {
 		width: 100%;
 		height: 100%;
@@ -54,6 +72,7 @@ sidemenu{
   	:nth-child(n+2){
 			width: inherit;			
 			opacity: 100;	
+			visibility: visible;
 			transition: opacity 0.5s ease-in;
 		}
 		a{

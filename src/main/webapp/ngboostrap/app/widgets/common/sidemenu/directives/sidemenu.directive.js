@@ -28,10 +28,11 @@ define(["ng"], function(ng){
 				
 				scope.open=function($event){
 					angular.element($event.target).parent().parent().toggleClass("open");
+					
 					var targetPanel = angular.element($event.target).closest('.panel').find('.panel-collapse');
-					targetPanel.scope().isOpen=false;
 					if(SidemenuSrv.isShrink()){
-						console.debug("OPEN!", elem, $event.target, angular.element($event.target).closest('.panel-collapse'));						
+						console.debug("SHIRNK - OPEN!", elem, $event.target, targetPanel);
+//						targetPanel.scope().isOpen=true;											
 						angular.element($event.target).closest('#sidemenu-container').removeClass("shrink");
 					}
 				};

@@ -1,9 +1,7 @@
-<script type="text/ng-template"  id="tree_item_renderer.html">
-	<project-node node="data" name="data.nodeData.name || data.nodeName"></project-node>
+<script style="display:none;" type="text/ng-template"  id="tree_item_renderer.html"><project-node node="data" name="data.nodeData.name || data.nodeName"></project-node>
 	<ul role="group">
  			<li ng-repeat="data in data.nodes" ng-include="'tree_item_renderer.html'" role="treeitem" ng-class="{parent_li: data.nodes.length>0}" ></li>
-	</ul>					
-</script>
+	</ul></script>
 <ul ng-controller="ProjectTreeVM" class="tree">
 	<li ng-repeat="data in tree" ng-include="script_id" role="tree"></li>
 </ul>
