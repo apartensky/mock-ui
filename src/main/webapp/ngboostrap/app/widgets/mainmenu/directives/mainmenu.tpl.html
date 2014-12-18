@@ -2,7 +2,11 @@
 <nav class="navbar navbar-default" role="navigation" >
   <div class="container-fluid">
   	<ul id="side-menu-toggle" class="nav navbar-header pull-left " ng-if="$state.current.name === 'root.project'">	
-		<li toggle-sidepanel="left" class="pull-left"></li>
+		<li toggle-sidepanel="left" ng-controller="ToggleSidepanelVM as ToggleSidepanelVM" class="pull-left">
+			<button ng-click='ToggleSidepanelVM.toggleSidepanel("left")'>
+					<i class="fa fa-bars"></i>"
+			</button>"
+		</li>
 		</ul>	
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">

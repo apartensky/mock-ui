@@ -1,17 +1,19 @@
 define(["ng"], function(ng){
 	var ToggleSidepanelDirective = function(sidepanelSrvc){
 		return {
-			restrict: "EA",
+			restrict: "A",
 			scope: {
 				toggleSidepanel: "@"
 			},						
+			controller: "ToggleSidepanelVM",
+			controllerAs: "ToggleSidepanelVM",
 //			template: "<button class='navbar-toggle' ng-click='toggle()'>" +
 //					"<span class='icon-bar'></span><span class='icon-bar'></span><span class='icon-bar'></span>" +
 //				    "</button>",
-			template: "<button ng-click='toggle()'>"
-//				+ "<span class='glyphicon glyphicon-list' aria-hidden='true'></span>"
-				+ "<i class=\"fa fa-bars\"></i>"
-				+ "</button>",
+//			template: "<button ng-click='toggle()'>"
+////				+ "<span class='glyphicon glyphicon-list' aria-hidden='true'></span>"
+//				+ "<i class=\"fa fa-bars\"></i>"
+//				+ "</button>",
 //			compile: function(tElm,tAttrs){
 //			return function(scope, elem, attr){
 //				var exp = $parse('sidepanelSrvc.toggle(direction)');
@@ -22,10 +24,12 @@ define(["ng"], function(ng){
 //			}
 //		}
 			link: function(scope, elem, attr){
-				scope.toggle=function(){
-					console.debug("CLIK!!! toggle 1");
-					sidepanelSrvc.toggle(attr.toggleSidepanel);
-				}
+				scope.sideMenuVM={
+					toggle: function(){
+						console.debug("CLIK!!! toggle 1");
+						sidepanelSrvc.toggle(attr.toggleSidepanel);						
+					}
+				};
 //				elem.bind('click', function(){
 //					console.debug("CLIK!!! toggle ");
 //					sidepanelSrvc.toggle(attr.toggleSidepanel);
