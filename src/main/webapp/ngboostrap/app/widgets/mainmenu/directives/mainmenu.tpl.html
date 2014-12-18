@@ -31,8 +31,25 @@
       <ul class="nav navbar-nav navbar-right">
         <li ui-sref-active="active" ><a ui-sref=".about" >About</a></li>
         <li ui-sref-active="active" ><a ui-sref=".contact">Contact</a></li>
-        <li ui-sref-active="active" ><a ui-sref=".issues">Issues</a></li>         
-      </ul>    
+        <li ui-sref-active="active" ><a ui-sref=".issues">Issues</a></li>
+        
+        <li class="dropdown">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <i class="fa fa-gear"></i>                
+            </a>
+            <div class="dropdown-menu with-arrow panel panel-default" ng-click="$event.stopPropagation()">
+                <div class="panel-heading">
+                    Layout
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">                        	
+                    	<div class="checkbox"><label class="checkbox"><input type="checkbox" ng-model="settings.sidemenu.shrink">Shrink</label></div>
+										</li>
+                </ul>                
+            </div>
+        </li>
+      </ul>
+      
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
@@ -42,7 +59,7 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<aside ng-if="$state.current.name === 'root.issues'" id="sidemenu-container">	
-		<div ng-include src="$state.current.data.sidemenuUrl"></div>			
+<aside ng-if="$state.current.data && $state.current.data.sidemenuUrl" id="sidemenu-container" ng-class="{shrink: settings.sidemenu.shrink}">	
+		<div ng-include src="$state.current.data.sidemenuUrl"></div>
 </aside>
 </div>

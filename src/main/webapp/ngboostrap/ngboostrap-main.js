@@ -4,7 +4,8 @@
 		basePath: "/ngboostrap",
 		paths: {
 			jquery : ["//code.jquery.com/jquery-2.1.1", "vendor/jquery/jquery-2.1.1"],
-			ng : ["//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular" , "vendor/angularjs/angular"],
+			bootstrap: ["vendor/bootstrap-3.3.1/dist/js/bootstrap"],
+			ng : ["//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular" , "vendor/angularjs/angular"],			
 			uibootstrap: ["vendor/uibootstrap/ui-bootstrap-0.11.2.custom"],
 			nguirouter :  ["vendor/uirouter/angular-ui-router", "//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.12/angular-ui-router"],
 			ngresource: ["vendor/angularjs/angular-resource"],
@@ -19,11 +20,15 @@
 			dxTree: ["vendor/dxtree/dxTree"],
 			lessjs: ["vendor/lessjs/less.min.js"],
 			bootstrapTree: ["vendor/bootstrap-tree/bootstrap-tree"],
-			ngAside: ["vendor/angular-aside/js/angular-aside"]
+			ngAside: ["vendor/angular-aside/js/angular-aside"],
+			iarouseNav: ["vendor/iarouse/js/shared/Nav"]
 		},
 		shim: {
 			jquery: {
 				exports: "$"
+			},
+			bootstrap: {
+				deps: ["jquery"]
 			},
 			ng: {
 				deps: ["jquery"],
@@ -58,6 +63,9 @@
 				deps: ["ng", "jquery"]
 			},
 			ngAside: {
+				deps: ["ng", "uibootstrap"]
+			},
+			iarouseNav: {
 				deps: ["ng", "uibootstrap"]
 			}
 			

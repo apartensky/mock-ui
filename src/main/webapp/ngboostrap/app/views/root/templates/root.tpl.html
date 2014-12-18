@@ -1,2 +1,14 @@
 <main-menu></main-menu>
-<ui-view/>
+<div class="row" id="main-wrapper" ng-class="{'sidemenuOn': RootCtrl.isSideMenu(), 'shrink': RootCtrl.isShrink()}">
+	<!-- <button ng-click="RootCtrl.isSideMenu()">root</button> -->
+	
+<!-- 	<div class="col-md-1" ng-class="{'hidden-desktop': !RootCtrl.isSideMenu(), 'shrink': RootCtrl.isShrink()}" id="sidemenu-container"> -->
+<!-- 		<aside ng-if="RootCtrl.isSideMenu()" >	 -->
+<!-- 				<div ng-include src="$state.current.data.sidemenuUrl"></div> -->
+<!-- 		</aside> -->
+<!-- 	</div> -->
+	
+	<div ng-class="{'col-md-11': RootCtrl.isSideMenu(), 'col-md-12': !RootCtrl.isSideMenu()}">
+		<ui-view/>
+	</div>
+</div>

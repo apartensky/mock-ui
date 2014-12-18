@@ -1,4 +1,4 @@
-define(["ng",        
+define(["ng", 
         "nguirouter", "uibootstrap", "ngresource", "ngmocks", 
         "angularTreeView", "dxTree", "bootstrapTree", "ngAside",
         "app/domain/domain.module",
@@ -23,7 +23,9 @@ define(["ng",
 				
 		$stateProvider
 		.state("root", {
-			templateUrl: "app/views/root/templates/root.tpl.html"
+			templateUrl: "app/views/root/templates/root.tpl.html",
+			controller: "RootCtrl",
+			controllerAs: "RootCtrl"
 		})
 		.state("root.about", {
 			url: "/about",
@@ -33,15 +35,18 @@ define(["ng",
 		.state("root.contact", {
 			url: "/contact",
 			templateUrl: "app/views/contact/templates/contact.tpl.html",
-			parent: "root"
+			parent: "root",
+			data: {
+				sidemenuUrl: "app/views/contact/templates/contact.sidemenu.tpl.html"
+			}
 		})
 		.state("root.issues", {
 			url: "/issues",
 			templateUrl: "app/views/issues/templates/issues.tpl.html",
 			parent: "root",
 			data: {
-				sidemenuUrl: "app/views/issues/templates/issues.sidemenu.tpl.html"
-//				sidemenuUrl: "app/views/issues/templates/issues.sidemenu.accordion.tpl.html"
+//				sidemenuUrl: "app/views/issues/templates/issues.sidemenu.tpl.html"
+				sidemenuUrl: "app/views/issues/templates/issues.sidemenu.accordion.tpl.html"
 			}
 		});
 	}])
