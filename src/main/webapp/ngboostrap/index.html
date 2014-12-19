@@ -25,8 +25,21 @@
 
 <link href="css/main.css" rel="stylesheet" type="text/css"/>
 	
-
-<script src="vendor/lessjs/less.min.js" type="text/javascript"></script>
+<script>
+  less = {
+    env: "development",
+    logLevel: 2,
+    async: false,
+    fileAsync: false,
+    poll: 1000,    
+    dumpLineNumbers: "comments"
+//     relativeUrls: false    
+  };
+</script>
+<script data-env="development" src="vendor/lessjs/less.min.js" type="text/javascript"></script>
+<script type="text/javascript">     
+//      less.watch();
+</script>
 <script data-main="ngboostrap-main" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.js"></script>
 <!-- <script src="vendor/bootstrap-tree/bootstrap-tree.js"></script> -->
 </head>
