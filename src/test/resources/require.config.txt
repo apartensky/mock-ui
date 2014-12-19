@@ -11,7 +11,12 @@
 			lodash: ["vendor/lodash/lodash"],
 			angularTreeView: ["vendor/angular-treeview/treeView"],
 			angularData: ["vendor/angular-data/angular-data"],
-			dxTree: ["vendor/dxtree/dxTree"]
+			dxTree: ["vendor/dxtree/dxTree"],
+			lessjs: ["vendor/lessjs/less.min.js"],
+			bootstrapTree: ["vendor/bootstrap-tree/bootstrap-tree"],
+			ngAside: ["vendor/angular-aside/js/angular-aside"],
+			iarouseNav: ["vendor/iarouse/js/shared/Nav"]
+			
 		},
 		shim: {
 			ng: {
@@ -42,7 +47,17 @@
 			},
 			dxTree: {
 				deps: ["ng"]
+			},
+			bootstrapTree: {
+				deps: ["ng", "jquery"]
+			},
+			ngAside: {
+				deps: ["ng", "uibootstrap"]
+			},
+			iarouseNav: {
+				deps: ["ng", "uibootstrap"]
 			}
+	
 			
 		}
 	

@@ -59,30 +59,19 @@ define(["ng"], function(ng){
 			},
 			template: "<div ng-transclude></div>",
 			link: function(scope, elem, attr){
-				var watched=false;
 				
 				scope.$watch(function(){
-					console.debug("watching ... "+scope.sidepanel, sidepanelSrvc.isCollapsed(scope.sidepanel));
+//					console.debug("watching ... "+scope.sidepanel, sidepanelSrvc.isCollapsed(scope.sidepanel));
 					return sidepanelSrvc.isCollapsed(scope.sidepanel);
 				}, function(newValue, oldValue){			
-					console.debug("change ... ", newValue, oldValue);
+//					console.debug("change ... ", newValue, oldValue);
 					if(newValue!==oldValue){
-						console.debug("changed !!! ", newValue, oldValue);
+//						console.debug("changed !!! ", newValue, oldValue);
 						toggle(elem, ng.element('#'+scope.contentId), scope.sidepanel);
 					}
-				});	
-				
-				scope.toggle=function(){					
-					scope.watched = !scope.watched;
-					console.debug("toggled", scope.watched)
-				}
-				scope.$watch(function(){
-					return scope.watched;
-				}, function(newValue, oldValue){
-					console.debug("watched ... ", newValue, oldValue);
-				})
+				});
 			}
-		}
+		};
 	};
 	SidePanelDirective.$inject=["sidepanelSrvc"];
 	return SidePanelDirective;

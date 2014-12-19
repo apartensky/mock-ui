@@ -2,11 +2,11 @@ define(["ng"], function(ng){
 	var ToggleSidepanelDirective = function(sidepanelSrvc){
 		return {
 			restrict: "A",
-			scope: {
-				toggleSidepanel: "@"
-			},						
-			controller: "ToggleSidepanelVM",
-			controllerAs: "ToggleSidepanelVM",
+//			scope: {
+//				toggleSidepanel: "@"
+//			},	
+//			controller: "ToggleSidepanelVM",
+//			controllerAs: "ToggleSidepanelVM",
 //			template: "<button class='navbar-toggle' ng-click='toggle()'>" +
 //					"<span class='icon-bar'></span><span class='icon-bar'></span><span class='icon-bar'></span>" +
 //				    "</button>",
@@ -25,9 +25,9 @@ define(["ng"], function(ng){
 //		}
 			link: function(scope, elem, attr){
 				scope.sideMenuVM={
-					toggle: function(){
+					toggle: function(direction){
 						console.debug("CLIK!!! toggle 1");
-						sidepanelSrvc.toggle(attr.toggleSidepanel);						
+						sidepanelSrvc.toggle(direction);						
 					}
 				};
 //				elem.bind('click', function(){

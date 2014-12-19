@@ -62,7 +62,7 @@ define([], function(){
                     			visible: true
                     	}
                     	
-                    	console.debug("Post LINK: ", scope.node);
+//                    	console.debug("Post LINK: ", scope.node);
                     	var template = templateMap[scope.node.nodeName] || templateMap.Default;
 //                    	template="<i class='icon-minus-sign'></i>"+template;
                     	elm.html(template);                    	
