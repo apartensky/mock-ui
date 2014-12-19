@@ -4,6 +4,7 @@ define([], function(){
 			console.debug("CLIK CTRL!!! toggle 1");
 			sidepanelSrvc.toggle(direction);
 		};
+		this.isCollapsed=sidepanelSrvc.isCollapsed;
 	};
 	ToggleSidepanelVM.$inject=["sidepanelSrvc"];
 	return ToggleSidepanelVM;

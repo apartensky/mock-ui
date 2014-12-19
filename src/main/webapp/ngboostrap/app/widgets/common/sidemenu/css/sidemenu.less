@@ -1,11 +1,12 @@
 @import "/ngboostrap/css/import.less";
+@sidemenu-top: @navbar-height + 10;
 
 aside#sidemenu-container{
 		
 	z-index: 11;
 	position: absolute;
 //	position: fixed;
-	top: 70px;
+	top: @sidemenu-top;
 	bottom: 0;
 //	left: -220px;
 	left: 0px;
@@ -16,10 +17,10 @@ aside#sidemenu-container{
 	-webkit-overflow-scrolling: touch;
 	-webkit-overflow-scrolling: -blackberry-touch;
 	
-	@media (max-width: @screen-sm-max) {
-		position: absolute;
-		top: 128px;
-	}
+//	@media (max-width: @screen-sm-max) {
+//		position: absolute;
+//		top: 128px;
+//	}
 	
 	@media (max-width: @screen-xs-max) {
 		position: relative;

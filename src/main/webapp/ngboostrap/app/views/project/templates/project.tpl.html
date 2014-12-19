@@ -1,11 +1,15 @@
 <div class="row">		
 	<div class="col-md-4" sidepanel="left" content-id="content-wrapper">		
-		<h3><project-label clickable="false" editable="true" project="ProjectViewVM.getProject()"></project-label></h3></h3>
+		<h3>		
+		<project-label clickable="false" editable="true" project="ProjectViewVM.getProject()"></project-label>
+		</h3>
 		<project-tree node-type='Data' project="ProjectViewVM.getProject()"></project-tree>
 		<project-nav project="ProjectViewVM.getProject()"></project-nav>				
 	</div>
 	<div class="col-md-8" id="content-wrapper">
-			<h3>Visualizations</h3>
+			<h3><span toggle-sidepanel="left" ng-click='sideMenuVM.toggle()'  >					
+					<i class="fa" ng-class="{'fa-arrow-circle-o-right': sideMenuVM.isCollapsed(), 'fa-arrow-circle-o-left': !sideMenuVM.isCollapsed()}"></i>
+		</span>Visualizations</h3>			
 	</div>
 </div>
 

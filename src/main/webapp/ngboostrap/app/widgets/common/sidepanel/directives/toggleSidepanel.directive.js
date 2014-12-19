@@ -5,8 +5,8 @@ define(["ng"], function(ng){
 //			scope: {
 //				toggleSidepanel: "@"
 //			},	
-//			controller: "ToggleSidepanelVM",
-//			controllerAs: "ToggleSidepanelVM",
+			controller: "ToggleSidepanelVM",
+			controllerAs: "ToggleSidepanelVM",
 //			template: "<button class='navbar-toggle' ng-click='toggle()'>" +
 //					"<span class='icon-bar'></span><span class='icon-bar'></span><span class='icon-bar'></span>" +
 //				    "</button>",
@@ -19,15 +19,19 @@ define(["ng"], function(ng){
 //				var exp = $parse('sidepanelSrvc.toggle(direction)');
 //				elem.bind('click', function(){
 //					console.debug("CLIK!!! toggle 2");
-//					exp(scope, {sidepanelSrvc: sidepanelSrvc, direction: scope.toggleSidepanel});
+//					exp(scope, {sidepanelSr	vc: sidepanelSrvc, direction: scope.toggleSidepanel});
 //				});			
 //			}
 //		}
 			link: function(scope, elem, attr){
 				scope.sideMenuVM={
-					toggle: function(direction){
-						console.debug("CLIK!!! toggle 1");
-						sidepanelSrvc.toggle(direction);						
+					toggle: function(){
+						console.debug("GOGGLE!!!", attr);
+						sidepanelSrvc.toggle(attr.toggleSidepanel);						
+					},
+					isCollapsed: function(){
+						console.debug("IS COLLAPSED!!! toggle 1", sidepanelSrvc.isCollapsed(attr.toggleSidepanel));
+						return sidepanelSrvc.isCollapsed(attr.toggleSidepanel);
 					}
 				};
 //				elem.bind('click', function(){
