@@ -24,7 +24,7 @@ function(ng, RecursiveTreeMixin) {
 //	    $scope.script_id=$scope.nodeType+".html";
 	    
 	    $scope.$on('$includeContentLoaded', function($scope){
-	        console.debug("*$includeContentLoaded", $scope);	        
+//	        console.debug("*$includeContentLoaded", $scope);	        
 	    });
 	}	
 	

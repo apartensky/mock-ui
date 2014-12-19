@@ -2,7 +2,7 @@
 define(["ng"], function(ng){
 	var SidePanelSrvc = function SidePanelSrvc(){		
 			var sidePanelCollapse={
-					left: true,
+					left: false,
 					right: false
 			};
 			function toggle(direction){			

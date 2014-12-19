@@ -15,11 +15,11 @@ define(["ng"], function(ng){
 				};
 				
 				scope.shrink=function($event){
-					console.debug("shrink!", angular.element(elem).find("accorion"));					
+//					console.debug("shrink!", angular.element(elem).find("accorion"));					
 					if(SidemenuSrv.isShrink()){
 						angular.element($event.target).closest('#sidemenu-container').addClass("shrink");						
 						var openPanels=angular.element(elem).find(".panel-collapse.in");
-						console.debug("WILL collapse", openPanels);
+//						console.debug("WILL collapse", openPanels);
 						if(openPanels.length>0){
 							openPanels.scope().isOpen=false;							
 						}
@@ -31,14 +31,14 @@ define(["ng"], function(ng){
 					
 					var targetPanel = angular.element($event.target).closest('.panel').find('.panel-collapse');
 					if(SidemenuSrv.isShrink()){
-						console.debug("SHIRNK - OPEN!", elem, $event.target, targetPanel);
+//						console.debug("SHIRNK - OPEN!", elem, $event.target, targetPanel);
 //						targetPanel.scope().isOpen=true;											
 						angular.element($event.target).closest('#sidemenu-container').removeClass("shrink");
 					}
 				};
 //				webkitTransitionEnd oTransitionEnd MSTransitionEnd transitionend 
 				angular.element(elem).on("transitionend", function($event){							
-					console.debug("Trans ENDED", $event);
+//					console.debug("Trans ENDED", $event);
 //					targetPanel.scope().isOpen=true;							
 //					angular.element(elem).unbind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd");
 				});	
