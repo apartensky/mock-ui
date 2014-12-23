@@ -1686,7 +1686,11 @@ angular.module('ui.bootstrap.dropdown', [])
   };
 
   this.toggle = function( open ) {
-    return scope.isOpen = arguments.length ? !!open : !scope.isOpen;
+	  if(arguments.length)
+		  scope.isOpen =  !!open;
+	  else
+		  scope.isOpen=!scope.isOpen;
+	  return scope.isOpen;
   };
 
   // Allow other directives to watch status

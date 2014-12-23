@@ -1,0 +1,68 @@
+//@import "../../../../../css/import.less";
+//@import "../../../../../vendor/bootstrap-3.3.1/less/buttons.less";
+//.panel-heading {  
+//	.btn-group{	
+//		.btn{
+//			padding-top: 0;
+//			padding-bottom: 0;
+//			border-top: 0;
+//			border-bottom: 0;
+//		}		
+//	}
+//}
+
+@panel-heading-padding-v: unit(extract(@panel-heading-padding, 1));
+@panel-heading-padding-v-unit: get-unit(extract(@panel-heading-padding, 1));
+@panel-heading-padding-h: unit(extract(@panel-heading-padding, 2));
+@panel-heading-padding-h-unit: get-unit(extract(@panel-heading-padding, 2));
+
+.panel-heading-padding-btn(){
+	
+//	top: unit(-(@panel-heading-padding-v), @panel-heading-padding-v-unit);
+//	left: unit((@panel-heading-padding-h), @panel-heading-padding-h-unit);
+
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	border: 1px solid rgba(255,255,255,0.5);
+	
+}
+
+.panel{		
+	.panel-heading {		
+		position: relative;
+		.panel-controls.btn-group{		
+			.panel-heading-padding-btn();			
+			button{
+				//panel controls are always small buttons
+//				.btn-sm();
+				@panel-controls-padding: @padding-base-vertical - 2;
+				.button-size(@panel-controls-padding; @panel-controls-padding; @font-size-base; @line-height-base; @border-radius-base);
+				.btn-info();
+//				height: 100%;
+				//make controls take on the background color of the panel header
+//				background-color: rgba(0,0,0,0.0); 
+			}				
+		}
+		
+		.panel-actions.btn-group{			
+						
+			button{
+				//panel controls are always small buttons
+				.btn-sm();
+				.btn-info();		
+//				.btn-warning();
+
+				//make controls take on the background color of the panel header
+				border-color: rgba(255,255,255,0.3); 
+			}
+		}
+	}
+	.panel-title{
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: unit((@panel-heading-padding-h), @panel-heading-padding-h-unit);
+	}
+}
+
