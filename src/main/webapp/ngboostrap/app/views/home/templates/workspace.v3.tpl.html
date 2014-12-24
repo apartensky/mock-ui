@@ -11,7 +11,7 @@
 <!--     	<dataset-list show-add="true" show-edit="true"></dataset-list>    	 -->
 <!--     </mui-panel> -->
 
-		<div class="panel panel-default">
+		<div class="panel panel-info">
 		  <div class="panel-heading">
 		    <h3 class="panel-title">Your Projects</h3>
 		  </div>
@@ -42,38 +42,48 @@
 		        
 		    		    
         <h3 class="panel-title">Your Datasets</h3>
-        <!-- context commands -->
-<!-- 			  <div class="panel-actions btn-group" dropdown > -->
-<!-- 			  	<button type="button" class="btn "> -->
-<!-- 		        <i class="fa fa-plus"></i> -->
-<!-- 		      </button> -->
-<!-- 		      <button type="button" class="btn "> -->
-<!-- 		        <span>merge</span> -->
-<!-- 		      </button>		    		     -->
-<!-- 		      <button type="button" class="btn dropdown-toggle"> -->
-<!-- 		        <i class="fa fa-cog"></i> -->
-<!-- 		      </button>					 -->
-<!-- 		      <ul class="dropdown-menu" role="menu"> -->
-<!-- 		        <li><a href="#">Action</a></li> -->
-<!-- 		        <li><a href="#">Another action</a></li> -->
-<!-- 		        <li><a href="#">Something else here</a></li> -->
-<!-- 		        <li class="divider"></li> -->
-<!-- 		        <li><a href="#">Separated link</a></li> -->
-<!-- 		      </ul>		       -->
-<!-- 		    </div> -->
 		  </div>
+		  
+		  <!-- List group -->
+		  <ul class="panel-toolbar list-group">
+		    <li class="list-group-item">
+			    <div class="btn-toolbar" role="toolbar" >
+					  <div class="panel-actions btn-group" dropdown >
+					  	<button type="button" class="btn ">
+				        <i class="fa fa-plus"></i>
+				      </button>
+				      <button type="button" class="btn ">
+				        <span>merge</span>
+				      </button>		    		    
+				      <button type="button" class="btn dropdown-toggle">
+				        <i class="fa fa-cog"></i>
+				      </button>					
+				      <ul class="dropdown-menu" role="menu">
+				        <li><a href="#">Action</a></li>
+				        <li><a href="#">Another action</a></li>
+				        <li><a href="#">Something else here</a></li>
+				        <li class="divider"></li>
+				        <li><a href="#">Separated link</a></li>
+				      </ul>		      
+				    </div>		  	
+			  	</div>
+		   	</li>		   
+		  </ul>
+		  
+		  
 		  <div class="panel-body">
+		          <!-- context commands -->		    
 		    <dataset-list show-add="true" show-edit="true"></dataset-list>
 		  </div>
 		</div>
     
     
   </div>
-  <div class="col-md-9">
-  		
-  			<h3>Import Data</h3>	  	
+  <div class="col-md-9">  		
 	  		<tabset>
-			    <tab ng-repeat="datasource in HomeVM.datasources" heading="{{datasource.name}}" >
+	  			<li class="tabset-title"><h3>Import Data</h3></li>	  			
+			    <tab ng-repeat="datasource in HomeVM.datasources" class="pull-right">			    	
+			    	<tab-heading>{{datasource.name}}</tab-heading>
 			    	<div class="table-responsive">
 						<table class="table table-condensed">
 							<tr>
