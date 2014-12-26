@@ -16,7 +16,19 @@
 		  <div class="panel-heading" >
 		    <h3 class="panel-title">Your Projects</h3>
 		  </div>
-		  <div class="panel-body" collapse="panelControlls.isCollapsed">
+		  <!-- List group -->
+		  <ul class="panel-toolbar list-group" collapse="HomeVM.isCollapsed">
+		    <li class="list-group-item">
+			    <div class="btn-toolbar" role="toolbar" >
+					  <div class="panel-actions btn-group" dropdown >
+					  	<button type="button" class="btn ">
+				        <i class="fa fa-plus"></i>
+				      </button>
+				    </div>		  	
+			  	</div>
+		   	</li>		   
+		  </ul>
+		  <div class="panel-body" >
 		    <project-list show-add="true" show-edit="true"></project-list>
 		  </div>
 		</div>

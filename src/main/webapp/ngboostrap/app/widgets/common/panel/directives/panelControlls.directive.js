@@ -11,22 +11,27 @@ define(["ng"], function(ng){
 					}
 				};
 			}],
-			link: function(scope, elem, attr, controller){
+			compile: function(tElem, tAttr){
+				var notHeading = tElem.children(":not(.panel-heading)");
+				notHeading.attr("collapse", "panelControlls.isCollapsed");
 				
-				var heading = elem.children(".panel-heading");
-				var notHeading = elem.children(":not(.panel-heading)");
-				
-				heading.prepend($compile("<div class='panel-controls btn-group pull-right' >" +
-						"<button type=\"button\" class=\"btn\" ng-click=\"panelControlls.toggle()\">\n" + 
-						"		        <i ng-class=\"{\'fa fa-caret-up\': !panelControlls.isCollapsed, \'fa fa-caret-down\': panelControlls.isCollapsed}\"></i>\n" + 
-						"		      </button>		    \n" + 
-						"</div>")(scope));
-				
-				notHeading.attr("collapse=\"panelControlls.isCollapsed\"");
-				
-				elem.on("click", function(){
-					console.debug("CLIKKC PANEL");
-				});
+				return {
+					post: function(){},
+					pre: function(scope, elem, attr, controller){
+						
+						var heading = elem.children(".panel-heading");
+						
+						heading.prepend($compile("<div class='panel-controls btn-group pull-right' >" +
+								"<button type=\"button\" class=\"btn\" ng-click=\"panelControlls.toggle()\">\n" + 
+								"		        <i ng-class=\"{\'fa fa-caret-up\': !panelControlls.isCollapsed, \'fa fa-caret-down\': panelControlls.isCollapsed}\"></i>\n" + 
+								"		      </button>		    \n" + 
+								"</div>")(scope));
+						
+						elem.on("click", function(){
+							console.debug("CLIKKC PANEL");
+						});
+					}
+				};
 			}
 		};
 	};
