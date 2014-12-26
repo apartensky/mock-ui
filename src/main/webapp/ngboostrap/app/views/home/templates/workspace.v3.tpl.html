@@ -26,7 +26,7 @@
 			  <!-- max/min/etc controls for the panel -->
 			  <div class="panel-controls btn-group pull-right" dropdown >
 			  	<button type="button" class="btn" ng-click="HomeVM.toggle()">
-		        <i class="fa fa-caret-up" ></i>
+		        <i ng-class="{'fa fa-caret-up': !HomeVM.isCollapsed, 'fa fa-caret-down': HomeVM.isCollapsed}"></i>
 		      </button>		    
 		      <button type="button" class="btn dropdown-toggle">
 		        <i class="fa fa-cog"></i>
