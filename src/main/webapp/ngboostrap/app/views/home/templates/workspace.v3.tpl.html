@@ -20,13 +20,13 @@
 		  </div>
 		</div>
 		
-		<div class="panel panel-info">
+		<div class="panel panel-info" >
 		  <div class="panel-heading ">
 			  
 			  <!-- max/min/etc controls for the panel -->
 			  <div class="panel-controls btn-group pull-right" dropdown >
-			  	<button type="button" class="btn">
-		        <i class="fa fa-caret-up"></i>
+			  	<button type="button" class="btn" ng-click="HomeVM.toggle()">
+		        <i class="fa fa-caret-up" ></i>
 		      </button>		    
 		      <button type="button" class="btn dropdown-toggle">
 		        <i class="fa fa-cog"></i>
@@ -45,7 +45,7 @@
 		  </div>
 		  
 		  <!-- List group -->
-		  <ul class="panel-toolbar list-group">
+		  <ul class="panel-toolbar list-group" collapse="HomeVM.isCollapsed">
 		    <li class="list-group-item">
 			    <div class="btn-toolbar" role="toolbar" >
 					  <div class="panel-actions btn-group" dropdown >
@@ -71,9 +71,10 @@
 		  </ul>
 		  
 		  
-		  <div class="panel-body">
+		  <div class="panel-body" collapse="HomeVM.isCollapsed">
 		          <!-- context commands -->		    
 		    <dataset-list show-add="true" show-edit="true"></dataset-list>
+				
 		  </div>
 		</div>
     

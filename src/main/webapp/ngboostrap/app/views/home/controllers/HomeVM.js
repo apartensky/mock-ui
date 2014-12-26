@@ -19,5 +19,10 @@ define(["ng"], function(ng){
 		this.importDataset=function(datasource, dataset){
 			Navigator.importDataset(datasource, dataset);
 		}
+		this.toggle=function(){
+			console.debug("COLLQ!")
+			this.isCollapsed=!this.isCollapsed;
+		}
+		this.isCollapsed=false;
 	}
 });
