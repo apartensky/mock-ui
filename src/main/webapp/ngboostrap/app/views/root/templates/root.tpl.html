@@ -1,17 +1,30 @@
-<main-menu></main-menu>
-<div class="row" id="main-wrapper" ng-class="{'sidemenuOn': RootCtrl.isSideMenu(), 'shrink': RootCtrl.isShrink()}">
-	<div class="col-md-12">
-	<!-- <button ng-click="RootCtrl.isSideMenu()">root</button> -->
-	
-<!-- 	<div class="col-md-1" ng-class="{'hidden-desktop': !RootCtrl.isSideMenu(), 'shrink': RootCtrl.isShrink()}" id="sidemenu-container"> -->
-<!-- 		<aside ng-if="RootCtrl.isSideMenu()" >	 -->
-<!-- 				<div ng-include src="$state.current.data.sidemenuUrl"></div> -->
-<!-- 		</aside> -->
-<!-- 	</div> -->	
-<!-- 	<div ng-class="{'col-md-11': RootCtrl.isSideMenu(), 'col-md-12': !RootCtrl.isSideMenu()}"> -->
-<!-- 		<ui-view/> -->
-<!-- 	</div> -->
 
+
+<main-menu></main-menu>
+
+<aside ng-if="$state.current.data && $state.current.data.sidemenuUrl" id="sidemenu-container" ng-class="{shrink: settings.sidemenu.shrink}">	
+		<div ng-include src="$state.current.data.sidemenuUrl"></div>
+</aside>
+
+<div class="row" id="main-wrapper" ng-class="{'sidemenuOn': RootCtrl.isSideMenu(), 'shrink': RootCtrl.isShrink()}">
+	<div class="col-md-12">	
+		
 		<ui-view/>
+		
 	</div>
 </div>
+
+<div class="row" id="main-footer" ng-class="{'sidemenuOn': RootCtrl.isSideMenu(), 'shrink': RootCtrl.isShrink()}">
+	<div class="col-md-12">
+		footer
+	</div>
+</div>
+
+<!-- <al-constraint -->
+<!--     element="sidemenu-container" -->
+<!--     attribute="height" -->
+<!--     relation="equal" -->
+<!--     to-element="main-wrapper" -->
+<!--     to-attribute="height" -->
+<!--     multiplier="1"     -->
+<!--     priority="100"></al-constraint> -->

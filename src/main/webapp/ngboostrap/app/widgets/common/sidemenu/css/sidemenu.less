@@ -7,17 +7,21 @@ aside#sidemenu-container{
 	z-index: 11;
 	position: absolute;
 //	position: fixed;
-	top: @sidemenu-top;
-	bottom: 0;
+	top: 0;	
+//	bottom: 0;
 //	left: -220px;
 	left: 0px;
+	height:100%;
+	min-height: 100%;
 	width: 220px;	
 	transition: width 0.5s ease;
-	padding: 0;
+	padding: @sidemenu-top 0 0 0;
+	
 	background-color: #fefefe;
+	border: 1px solid black;
 	-webkit-overflow-scrolling: touch;
 	-webkit-overflow-scrolling: -blackberry-touch;
-	
+	z-index: 900px;
 //	@media (max-width: @screen-sm-max) {
 //		position: absolute;
 //		top: 128px;

@@ -1,6 +1,6 @@
 define(["ng", 
         "nguirouter", "uibootstrap", "ngresource", "ngmocks", 
-        "angularTreeView", "dxTree", "bootstrapTree", "ngAside",
+        "angularTreeView", "dxTree", "bootstrapTree", "ngAside", "angularGridster", "angularAutolayout",
         "app/domain/domain.module",
         "app/views/views.module",
         "app/widgets/components.module",
@@ -13,6 +13,7 @@ define(["ng",
 	                                     "ui.router",
 	                                     "AxelSoft",
 	                                     "dotjem.angular.tree",
+	                                     "gridster",
 	                                     "mui.domain",
 	                                     "mui.views",
 	                                     "mui.components",
@@ -40,15 +41,17 @@ define(["ng",
 				sidemenuUrl: "app/views/contact/templates/contact.sidemenu.tpl.html"
 			}
 		})
-		.state("root.issues", {
-			url: "/issues",
-			templateUrl: "app/views/issues/templates/issues.tpl.html",
-			parent: "root",
-			data: {
-//				sidemenuUrl: "app/views/issues/templates/issues.sidemenu.tpl.html"
-				sidemenuUrl: "app/views/issues/templates/issues.sidemenu.accordion.tpl.html"
-			}
-		});
+//		.state("root.issues", {
+//			url: "/issues",
+//			templateUrl: "app/views/issues/templates/issues.tpl.html",
+//			parent: "root",
+//			controller: "IssuesVM",
+//			data: {
+////				sidemenuUrl: "app/views/issues/templates/issues.sidemenu.tpl.html"
+//				sidemenuUrl: "app/views/issues/templates/issues.sidemenu.accordion.tpl.html"
+//			}
+//		})
+		;
 	}])
 	.config(function($provide) {
 	    $provide.decorator('$httpBackend', function($delegate) {

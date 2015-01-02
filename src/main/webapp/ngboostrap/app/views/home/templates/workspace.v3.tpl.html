@@ -17,12 +17,12 @@
 		    <h3 class="panel-title">Your Projects</h3>
 		  </div>
 		  <!-- List group -->
-		  <ul class="panel-toolbar list-group" collapse="HomeVM.isCollapsed">
+		  <ul class="panel-toolbar list-group" >
 		    <li class="list-group-item">
 			    <div class="btn-toolbar" role="toolbar" >
 					  <div class="panel-actions btn-group" dropdown >
 					  	<button type="button" class="btn ">
-				        <i class="fa fa-plus"></i>
+				        <i class=	"fa fa-plus"></i>
 				      </button>
 				    </div>		  	
 			  	</div>
@@ -34,8 +34,7 @@
 		</div>
 		
 		<div class="panel panel-info" >
-		  <div class="panel-heading ">
-			  
+		  <div class="panel-heading ">			  
 			  <!-- max/min/etc controls for the panel -->
 			  <div class="panel-controls btn-group pull-right" dropdown >
 			  	<button type="button" class="btn" ng-click="HomeVM.toggle()">
@@ -52,8 +51,6 @@
 		        <li><a href="#">Separated link</a></li>
 		      </ul>
 		    </div>
-		        
-		    		    
         <h3 class="panel-title">Your Datasets</h3>
 		  </div>
 		  
@@ -80,20 +77,18 @@
 				      </ul>		      
 				    </div>		  	
 			  	</div>
-		   	</li>		   
+		   	</li>
 		  </ul>
 		  
-		  
 		  <div class="panel-body" collapse="HomeVM.isCollapsed">
-		          <!-- context commands -->		    
+		    <!-- context commands -->		    
 		    <dataset-list show-add="true" show-edit="true"></dataset-list>
-				
 		  </div>
 		</div>
     
-    
   </div>
   <div class="col-md-9">  		
+  
 	  		<tabset>
 	  			<li class="tabset-title"><h3>Import Data</h3></li>	  			
 			    <tab ng-repeat="datasource in HomeVM.datasources" class="pull-right">			    	

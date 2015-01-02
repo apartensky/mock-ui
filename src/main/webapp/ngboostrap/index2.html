@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Angular Bootstrap</title>
+
+<!-- <link href="css/debug.css" rel="stylesheet" type="text/css"/> -->
+
+<style>
+body {
+margin: 0;
+padding: 0;
+min-height: 100%;
+}
+html {
+margin: 0;
+padding: 0;
+min-height: 100%;
+position: relative;
+}
+
+#header {
+display: block;
+height: 49px;
+margin: 0;
+padding: 0 13px 0 0;
+background-color: #f3f3f3;
+background-image: -moz-linear-gradient(top,#f3f3f3,#e2e2e2);
+background-image: -webkit-gradient(linear,0 0,0 100%,from(#f3f3f3),to(#e2e2e2));
+background-image: -webkit-linear-gradient(top,#f3f3f3,#e2e2e2);
+background-image: -o-linear-gradient(top,#f3f3f3,#e2e2e2);
+background-image: linear-gradient(to bottom,#f3f3f3,#e2e2e2);
+background-repeat: repeat-x;
+position: relative;
+z-index: 905;
+}
+
+aside {
+display: block;
+overflow: hidden;
+background: #3a3633;
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…BoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+background: -moz-linear-gradient(left,#3a3633 93%,#2a2725 100%);
+background: -webkit-gradient(linear,left top,right top,color-stop(93%,#3a3633),color-stop(100%,#2a2725));
+background: -webkit-linear-gradient(left,#3a3633 93%,#2a2725 100%);
+background: -o-linear-gradient(left,#3a3633 93%,#2a2725 100%);
+background: -ms-linear-gradient(left,#3a3633 93%,#2a2725 100%);
+background: linear-gradient(to right,#3a3633 93%,#2a2725 100%);
+min-height: 100%;
+box-sizing: border-box;
+}
+
+#left-panel {
+position: absolute;
+top: 0;
+left: 0;
+z-index: 904;
+padding-top: 49px; 
+width: 220px;
+}
+
+#main {
+margin-left: 220px;
+padding: 0;
+padding-bottom: 52px;
+min-height: 500px;
+}
+
+.page-footer {
+height: 52px;
+padding: 15px 13px 0;
+padding-left: 233px;
+border-top: 1px solid #CECECE;
+background: #2a2725;
+width: 100%;
+position: absolute;
+display: block;
+bottom: 0;
+}
+</style>
+<script>
+function addElement() {
+
+	  var ni = document.getElementById('main');
+
+	  var numi = document.getElementById('theValue');
+
+	  var num = (document.getElementById('theValue').value -1)+ 2;
+
+	  numi.value = num;
+
+	  var newdiv = document.createElement('div');
+
+	  var divIdName = 'my'+num+'Div';
+
+	  newdiv.setAttribute('id',divIdName);
+
+	  newdiv.innerHTML = 'Element Number '+num+' has been added! <a href=\'#\' onclick=\'removeElement(\"'+divIdName+'\")\'>Remove the div "'+divIdName+'"</a>';
+
+	  ni.appendChild(newdiv);
+
+	}
+	
+function removeElement(divNum) {
+
+	  var d = document.getElementById('main');
+
+	  var olddiv = document.getElementById(divNum);
+
+	  d.removeChild(olddiv);
+
+	}
+	
+	
+</script>
+</head>
+<body>
+<header id="header">header</header>
+<aside id="left-panel">aside</aside>
+<div id="main">
+	<input type="hidden" value="0" id="theValue" />
+	<p><a href="javascript:;" onclick="addElement();">Add Some Elements</a></p>
+</div>
+<div class="page-footer">footer</div>
+</body>
+<script>
+for(i=0;i<50;i++)
+	addElement();
+</script>
+</html>	

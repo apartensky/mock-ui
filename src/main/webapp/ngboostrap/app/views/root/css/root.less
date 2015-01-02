@@ -1,8 +1,9 @@
 //@import "../../../../css/import.less";
 //@import "/ngboostrap/vendor/bootstrap-3.3.1/less/variables.flatly.less";
 //@import "../../../../vendor/bootstrap-3.3.1/less/variables.flatly.less";
-
+#main-footer,
 #main-wrapper {
+	
 	&.sidemenuOn{
 		margin-left: 205px;
 		transition: margin .2s ease;
@@ -18,14 +19,21 @@
 			}
 		}
 	}
-
-//	#sidemenu-container{		
-//		&.sidemenuOn{
-//			display: 220px; 			
-//			&.shrink{				
-//				width: 50px;
-//			}
-//		}
-//	}
 	
+	>div.col-md-12 {
+		overflow-y: scoll;
+	}
 }
+
+html, body{
+	height: 100%;
+	min-height: 100%;
+}
+
+.outermost-wrapper{
+	.container-fluid();
+	min-height: 100%;
+}
+
+
+

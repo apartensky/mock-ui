@@ -21,7 +21,9 @@
 			lessjs: ["vendor/lessjs/less.min.js"],
 			bootstrapTree: ["vendor/bootstrap-tree/bootstrap-tree"],
 			ngAside: ["vendor/angular-aside/js/angular-aside"],
-			iarouseNav: ["vendor/iarouse/js/shared/Nav"]
+			iarouseNav: ["vendor/iarouse/js/shared/Nav"],
+			angularGridster: ["vendor/angular-gridster/angular-gridster"],
+			angularAutolayout: ["vendor/angular-autolayout/angular-autolayout"]
 		},
 		shim: {
 			jquery: {
@@ -67,6 +69,12 @@
 			},
 			iarouseNav: {
 				deps: ["ng", "uibootstrap"]
+			},
+			angularGridster: {
+				deps: ["ng", "jquery"]
+			},
+			angularAutolayout: {
+				deps: ["ng"]
 			}
 			
 		}
