@@ -2,10 +2,6 @@
 
 <main-menu></main-menu>
 
-<aside ng-if="$state.current.data && $state.current.data.sidemenuUrl" id="sidemenu-container" ng-class="{shrink: settings.sidemenu.shrink}">	
-		<div ng-include src="$state.current.data.sidemenuUrl"></div>
-</aside>
-
 <div class="row" id="main-wrapper" ng-class="{'sidemenuOn': RootCtrl.isSideMenu(), 'shrink': RootCtrl.isShrink()}">
 	<div class="col-md-12">	
 		
@@ -15,9 +11,11 @@
 </div>
 
 <div class="row" id="main-footer" ng-class="{'sidemenuOn': RootCtrl.isSideMenu(), 'shrink': RootCtrl.isShrink()}">
-	<div class="col-md-12">
-		footer
-	</div>
+<!-- 	<div class="col-md-12"> -->
+		<nav class="navbar navbar-default">			
+			<ul class="nav navbar-nav"><li><a>some link</a></li></ul>
+		</nav>
+<!-- 	</div> -->
 </div>
 
 <!-- <al-constraint -->

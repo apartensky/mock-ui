@@ -1,38 +1,47 @@
 define(["ng"], function(ng){
-	var ToggleSidepanelDirective = function(){
+	var ToggleSidemenuDirective = function(SideMenuSrv){
 		return {
 			restrict: "EA",
-			scope: {
-				toggleSidepanel: "@"
-			},						
+//			scope: {
+//				toggleSidemenu: "@",
+//				settings: "="
+//					
+//			},						
 //			template: "<button class='navbar-toggle' ng-click='toggle()'>" +
 //					"<span class='icon-bar'></span><span class='icon-bar'></span><span class='icon-bar'></span>" +
 //				    "</button>",
-			template: "<button ng-click='toggle()'>"
+			template: "<button ng-click='toggleSide()'>"
 //				+ "<span class='glyphicon glyphicon-list' aria-hidden='true'></span>"
 				+ "<i class=\"fa fa-bars\"></i>"
 				+ "</button>",
 //			compile: function(tElm,tAttrs){
 //			return function(scope, elem, attr){
-//				var exp = $parse('sidepanelSrvc.toggle(direction)');
+//				var exp = $parse('SideMenuSrv.toggle(direction)');
 //				elem.bind('click', function(){
 //					console.debug("CLIK!!! toggle 2");
-//					exp(scope, {sidepanelSrvc: sidepanelSrvc, direction: scope.toggleSidepanel});
+//					exp(scope, {SideMenuSrv: SideMenuSrv, direction: scope.toggleSidemenu});
 //				});			
 //			}
 //		}
+			controller: ["$scope", function($scope){
+				$scope.toggleSide=function(){
+					console.debug("CONTRA!!! toggle 1");
+					$scope.settings.sidemenu.shrink=!$scope.settings.sidemenu.shrink;
+				};
+			}],
 			link: function(scope, elem, attr){
-				scope.test=function(){
+				scope.toogle=function(){
 					console.debug("CLIK!!! toggle 1");
-					sidepanelSrvc.toggle(attr.toggleSidepanel);
+//					SideMenuSrv.toggle(attr.toggleSidemenu);
+					settings.sidemenu.shrink=!settings.sidemenu.shrink;
 				}
 //				elem.bind('click', function(){
 //					console.debug("CLIK!!! toggle ");
-//					sidepanelSrvc.toggle(attr.toggleSidepanel);
+//					SideMenuSrv.toggle(attr.toggleSidemenu);
 //				});			
 			}
 		};
 	};
-	ToggleSidepanelDirective.$inject=[];
-	return ToggleSidepanelDirective;
+	ToggleSidemenuDirective.$inject=["SideMenuSrv"];
+	return ToggleSidemenuDirective;
 });
