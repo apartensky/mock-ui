@@ -1,6 +1,6 @@
 <div class="row">
-<nav class="navbar navbar-default" role="navigation" >
-<!--   <div class="container-fluid">  	 -->
+<nav class="navbar navbar-default mainmenu" role="navigation" >
+  <div class="container-fluid">  	
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" ng-click="navbarCollapsed=!navbarCollapsed">
@@ -40,6 +40,7 @@
                 <ul class="list-group">
                     <li class="list-group-item">                        	
                     	<div class="checkbox"><label class="checkbox"><input type="checkbox" ng-model="settings.sidemenu.shrink">Shrink</label></div>
+                    	<div class="checkbox"><label class="checkbox"><input type="checkbox" ng-click="toggleFixedHeader()" ng-model="setting.header.fixed">Fixed Header</label></div>
 										</li>
                 </ul>                
             </div>
@@ -54,7 +55,7 @@
 <!--       </form>       -->
     </div>
     <!-- /.navbar-collapse -->
-<!--   </div> -->
+  </div>
   <!-- /.container-fluid -->
 </nav>
 

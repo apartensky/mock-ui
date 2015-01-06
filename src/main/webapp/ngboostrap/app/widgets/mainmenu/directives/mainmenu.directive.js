@@ -1,5 +1,5 @@
 define([], function(){
-	var MenuDirective = function(SideMenuSrv){
+	var MenuDirective = function(SideMenuSrv, $rootScope){
 		return {			
 			restrict: "AE",
 			replace: true,
@@ -10,12 +10,18 @@ define([], function(){
 				scope.settings={
 					sidemenu: {
 						shrink: false
+					},
+					header: {
+						fixed: false
 					}
+				};
+				scope.toggleFixedHeader=function(){
+					$rootScope.$broadcast("ui:toggleFixedHeader");
 				};
 				scope.$watch("settings.sidemenu.shrink", SideMenuSrv.toggle);
 			}
 		};
 	};
-	MenuDirective.$inject=["SideMenuSrv"];
+	MenuDirective.$inject=["SideMenuSrv", "$rootScope"];
 	return MenuDirective;
 });

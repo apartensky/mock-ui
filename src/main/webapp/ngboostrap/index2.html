@@ -35,6 +35,12 @@ position: relative;
 z-index: 905;
 }
 
+#header.fixed-header{
+	position:fixed;
+	top:0;
+	width: 100%;
+}
+
 aside {
 display: block;
 overflow: hidden;
@@ -115,7 +121,7 @@ function removeElement(divNum) {
 </script>
 </head>
 <body>
-<header id="header">header</header>
+<header id="header" class="fixed-header">header</header>
 <aside id="left-panel">aside</aside>
 <div id="main">
 	<input type="hidden" value="0" id="theValue" />
