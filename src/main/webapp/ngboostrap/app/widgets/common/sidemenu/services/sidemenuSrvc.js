@@ -1,7 +1,7 @@
 define(["ng"], function(ng){
 	var SideMenuSrvc = function SideMenuSrvc(){		
 			var sideMenuShrink=true;
-			function toggle(direction){			
+			function toggle(){			
 				sideMenuShrink=!sideMenuShrink;
 				console.debug("sidemenu toggled to " + sideMenuShrink);
 			}

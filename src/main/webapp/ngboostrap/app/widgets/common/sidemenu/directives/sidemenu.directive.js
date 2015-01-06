@@ -4,7 +4,7 @@ define(["ng"], function(ng){
 		return {			
 			restrict: "E",
 			transclude: true,
-			template: "<div ng-class='{shrink: settings.sidemenu.shrink}' ng-mouseleave='shrink($event)' ng-mouseenter=\'open($event)\' ng-transclude><div/>",
+			template: "<div ng-mouseleave='shrink($event)' ng-mouseenter=\'open($event)\' ng-transclude><div/>",
 			controller: "SideMenuVM",
 			link: function(scope, elem, attr){
 				scope.hello="hiiiiii";

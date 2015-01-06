@@ -2,7 +2,19 @@
 
 <main-menu></main-menu>
 
-<div class="row" id="main-wrapper" ng-class="{'sidemenuOn': RootCtrl.isSideMenu(), 'shrink': RootCtrl.isShrink()}">
+<aside ng-if="$state.current.data && $state.current.data.sidemenuUrl" id="sidemenu-container" ng-class="{shrink: RootCtrl.isSideMenuCollapse()}">	
+		<div ng-include src="$state.current.data.sidemenuUrl"></div>
+		<div class="aside-footer clearfix">
+			
+				<div ng-click='toggleSide()' toggle-sidemenu class="pull-right">
+<!-- 					<span class='glyphicon glyphicon-list'></span> -->
+					<i ng-class="{'fa fa-toggle-left': !RootCtrl.isSideMenuCollapse(), 'fa fa-toggle-right': RootCtrl.isSideMenuCollapse()}"></i>
+				</div>
+			
+		</div>		
+</aside>
+
+<div class="row" id="main-wrapper" ng-class="{'sidemenuOn': RootCtrl.isSideMenu(), 'shrink': RootCtrl.isSideMenuCollapse()}">
 	<div class="col-md-12">	
 		
 		<ui-view/>
@@ -10,7 +22,7 @@
 	</div>
 </div>
 
-<div class="row" id="main-footer" ng-class="{'sidemenuOn': RootCtrl.isSideMenu(), 'shrink': RootCtrl.isShrink()}">
+<div class="row" id="main-footer" ng-class="{'sidemenuOn': RootCtrl.isSideMenu(), 'shrink': RootCtrl.isSideMenuCollapse()}">
 <!-- 	<div class="col-md-12"> -->
 		<nav class="navbar navbar-default">			
 			<ul class="nav navbar-nav"><li><a>some link</a></li></ul>

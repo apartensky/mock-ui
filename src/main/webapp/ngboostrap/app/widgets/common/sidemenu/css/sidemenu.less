@@ -3,7 +3,7 @@
 @sidemenu-top: @navbar-height+2;
 @sidemenu-width: 220px;
 @sidemenu-width-shrink: 50px;
-
+@sidemenu-border: 1px solid rgba(0,0,0,.2);
 aside#sidemenu-container{
 		
 	z-index: 11;
@@ -21,7 +21,7 @@ aside#sidemenu-container{
 	padding: @sidemenu-top 0 0 0;
 	
 	background-color: #fefefe;
-	border: 1px solid rgba(0,0,0,.2);
+	border: @sidemenu-border;
 	-webkit-overflow-scrolling: touch;
 	-webkit-overflow-scrolling: -blackberry-touch;
 	z-index: 900px;
@@ -54,11 +54,35 @@ aside#sidemenu-container{
 		width: inherit;
 	}
 	
+	>div{
+		width: 100%;
+//		height: 100%;
+//		border-right: 2px solid black;	
+	}
+	
+	.aside-footer{				
+		position: fixed;
+		bottom: 0;
+		width: @sidemenu-width;
+		transition: width 0.5s ease-out;
+//		padding: @navbar-padding-vertical @navbar-padding-horizontal;
+		height: floor(@navbar-padding-vertical * 2 + @line-height-computed + 2); 
+		border-top: @sidemenu-border;		
+		
+		>div[toggle-sidemenu]{
+				padding: (@navbar-padding-vertical) @navbar-padding-horizontal;
+				display: inline-block;
+				vertical-align: middle;				
+				font-size: @font-size-large;
+				color: darken(@panel-info-heading-bg, 20%);			
+		}
+	}
+	
 	&.shrink{
 //		background-color: orange;
 		@media (min-width: @screen-sm-min) {
-			transition: width 0.5s ease-out;		
-			width: 50px;
+			transition: all 0.5s ease-out;		
+			width: @sidemenu-width-shrink;
 			sidemenu {
 					.panel-title :nth-child(n+2){
 						width: 0;				
@@ -69,17 +93,14 @@ aside#sidemenu-container{
 				}
 			}
 		}
+		
+		.aside-footer{
+			transition: width 0.5s ease-out;
+			width: @sidemenu-width-shrink;
+		}
 	}
 	
-	>div{
-		width: 100%;
-//		height: 100%;
-//		border-right: 2px solid black;	
-	}
-	.aside-footer{
-		position: fixed;
-		bottom: 0;
-	}	
+		
 }
 
 sidemenu{	
