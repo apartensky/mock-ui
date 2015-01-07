@@ -34,7 +34,7 @@ define(["ng"], function(ng){
 //					content.removeClass('col-md-8').addClass('col-md-12');								
 				} else {
 					// Slide in
-					menu.show(500).animate({left : 0});
+					menu.show(400).animate({left : 0});
 					content.removeClass('col-md-12').addClass('col-md-8');
 				}
 				
