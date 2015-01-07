@@ -18,6 +18,9 @@ define([], function(){
 				scope.toggleFixedHeader=function(){
 					$rootScope.$broadcast("ui:toggleFixedHeader");
 				};
+				scope.toggleFixedFooter=function(){
+					$rootScope.$broadcast("ui:toggleFixedFooter");
+				};
 				scope.$watch("settings.sidemenu.shrink", SideMenuSrv.toggle);
 			}
 		};

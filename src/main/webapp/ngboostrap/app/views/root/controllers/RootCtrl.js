@@ -4,6 +4,9 @@ define([], function(){
 		var header={
 			fixed: false
 		};
+		var footer={
+			fixed: false
+		};
 		
 		
 		this.isSideMenuCollapse=function(){
@@ -18,11 +21,18 @@ define([], function(){
 		
 		this.isHeaderFixed=function(){
 			return header.fixed;
-		};
-		
+		};		
 		$scope.$on("ui:toggleFixedHeader", function(){
 			console.debug("ui:toggleFixedHeader", header.fixed);
 			header.fixed=!header.fixed;
+		});
+
+		this.isFooterFixed=function(){
+			return footer.fixed;
+		};		
+		$scope.$on("ui:toggleFixedFooter", function(){
+			console.debug("ui:toggleFixedFooter", footer.fixed);
+			footer.fixed=!footer.fixed;
 		});
 		
 	};	
