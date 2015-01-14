@@ -3,16 +3,16 @@
 	<div layout-column="left" ng-class="{'col-0': layoutColumn.isClosed(), 'col-md-4': !layoutColumn.isClosed()}" content-id="content-wrapper" >		
 		<div class="pull-right">
 			<div class="btn btn-info btn-xs" ng-click="layoutColumn.toggle()">
-				  	<i class="fa fa-compress"></i>
+				  	<i class="fa fa-arrow-left"></i>
 			</div>
-			<div dropdown class="column-config-menu pull-right">						
-				<div class="btn btn-info btn-xs dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-			  	<i class="fa fa-cog"></i>
-			  </div>
-			  <ul class="dropdown-menu" role="menu">		  	
-	        <li><a ng-click="layoutColumn.hide()">Hide</a></li>
-	      </ul>
-			</div>
+<!-- 			<div dropdown class="column-config-menu pull-right">						 -->
+<!-- 				<div class="btn btn-info btn-xs dropdown-toggle" aria-haspopup="true" aria-expanded="false"> -->
+<!-- 			  	<i class="fa fa-cog"></i> -->
+<!-- 			  </div> -->
+<!-- 			  <ul class="dropdown-menu" role="menu">		  	 -->
+<!-- 	        <li><a ng-click="layoutColumn.hide()">Hide</a></li> -->
+<!-- 	      </ul> -->
+<!-- 			</div> -->
 		</div>
 		<h3><project-label clickable="false" editable="true" project="ProjectViewVM.getProject()"></project-label></h3>	
 		<project-tree node-type='Data' project="ProjectViewVM.getProject()"></project-tree>
@@ -20,19 +20,19 @@
 						
 	</div>
 	<div layout-column="right" ng-class="{'col-md-12': layoutColumn.isClosed(), 'col-md-8': !layoutColumn.isClosed()}" id="content-wrapper">
-		
-		<div dropdown class="column-config-menu pull-right">
+		<div class="pull-right">
 			<div class="btn btn-info btn-xs" ng-click="layoutColumn.toggle()">
 		  	<i ng-class="{'fa': true, 'fa-compress': layoutColumn.isClosed(), 'fa-expand': !layoutColumn.isClosed()}"></i>
 		  </div>
-			<div class="btn btn-info btn-xs dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-		  	<i class="fa fa-cog"></i>
-		  </div>
-		  <ul class="dropdown-menu" role="menu">		  	
-        <li><a ng-click="layoutColumn.hide()">Hide</a></li>
-      </ul>
+<!-- 			<div dropdown class="column-config-menu pull-right"> -->
+<!-- 				<div class="btn btn-info btn-xs dropdown-toggle" aria-haspopup="true" aria-expanded="false"> -->
+<!-- 			  	<i class="fa fa-cog"></i> -->
+<!-- 			  </div> -->
+<!-- 			  <ul class="dropdown-menu" role="menu">		  	 -->
+<!-- 	        <li><a ng-click="layoutColumn.hide()">Hide</a></li> -->
+<!-- 	      </ul> -->
+<!-- 			</div> -->
 		</div>
-				
 		<h3>
 <!-- 		<span toggle-sidepanel="left" ng-click='sideMenuVM.toggle()'><i class="fa" ng-class="{'fa-arrow-circle-o-right': sideMenuVM.isCollapsed(), 'fa-arrow-circle-o-left': !sideMenuVM.isCollapsed()}"></i></span> -->
 		Visualizations</h3>
