@@ -1,5 +1,5 @@
 define([], function(){
-	var RootCtrl = function(SideMenuSrv, $state, $scope){
+	var RootCtrl = function(SideMenuSrv, $state, $scope, $rootScope, sidepanelSrvc){
 		
 		var header={
 			fixed: false
@@ -35,9 +35,17 @@ define([], function(){
 			footer.fixed=!footer.fixed;
 		});
 		
+		this.hideLeft=function(){
+			$rootScope.$broadcast("ui:layoutColumn:toggle", {position: "left"});
+			console.debug("hide left");
+//			sidepanelSrvc.toggle("left");
+		};
+		this.isLeftClosed=function(){			
+			return sidepanelSrvc.isCollapsed();
+		};
 	};	
 	
-	RootCtrl.$inject=["SideMenuSrv", "$state", "$scope"];
+	RootCtrl.$inject=["SideMenuSrv", "$state", "$scope", "$rootScope", "sidepanelSrvc"];
 	RootCtrl.$name="RootCtrl";
 	return RootCtrl;
 });

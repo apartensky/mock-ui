@@ -30,7 +30,7 @@ define(["ng"], function(ng){
 						sidepanelSrvc.toggle(attr.toggleSidepanel);						
 					},
 					isCollapsed: function(){
-						console.debug("IS COLLAPSED!!! toggle 1", sidepanelSrvc.isCollapsed(attr.toggleSidepanel));
+//						console.debug("IS COLLAPSED!!! toggle 1", sidepanelSrvc.isCollapsed(attr.toggleSidepanel));
 						return sidepanelSrvc.isCollapsed(attr.toggleSidepanel);
 					}
 				};

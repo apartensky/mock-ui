@@ -9,6 +9,10 @@ define(["ng"], function(ng){
 			return project;
 		};
 		
+		this.toggelColumn=function(){
+			
+		};
+		
 		this.tree = {
 			folders : [ {
 				name : 'Folder 1',

@@ -23,7 +23,8 @@
 			ngAside: ["vendor/angular-aside/js/angular-aside"],
 			iarouseNav: ["vendor/iarouse/js/shared/Nav"],
 			angularGridster: ["vendor/angular-gridster/angular-gridster"],
-			angularAutolayout: ["vendor/angular-autolayout/angular-autolayout"]
+			angularAutolayout: ["vendor/angular-autolayout/angular-autolayout"]			
+	
 		},
 		shim: {
 			jquery: {

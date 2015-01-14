@@ -27,6 +27,35 @@ define([], function(){
 		                        { sizeX: 1, sizeY: 1, row: 2, col: 3 },
 		                        { sizeX: 1, sizeY: 1, row: 2, col: 4 }
 		                      ];
+		
+		
+		$scope.outerGridster = {
+		    config: {
+//		    	mobileModeEnabled: false,
+		        columns: 4,
+		        margins: [5,5]
+		    },
+		    items: [
+		        { sizeX: 2, sizeY: 1, row: 0, col: 0 },
+		        { sizeX: 2, sizeY: 1, row: 0, col: 2 },
+		        { sizeX: 2, sizeY: 1, row: 1, col: 0 },
+		        { sizeX: 2, sizeY: 1, row: 1, col: 2 }
+		    ]
+		};
+
+		// setup for inner gridster instance... 
+		$scope.innerGridster = {
+		   config: {
+		        columns: 2,
+		        mobileModeEnabled: false,		        
+		        margins: [5,5]
+		    },
+		    items: [
+		        { sizeX: 2, sizeY: 1, row: 0, col: 0 },
+		        { sizeX: 2, sizeY: 1, row: 0, col: 2 }
+		    ]
+		};
+		
 	};
 	IssuesVM.$inject=["$scope"];
 	return IssuesVM;

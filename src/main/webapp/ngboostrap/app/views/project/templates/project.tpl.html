@@ -1,50 +1,71 @@
-<div class="row">		
-	<div class="col-md-4" sidepanel="left" content-id="content-wrapper">		
-		<h3>		
-		<project-label clickable="false" editable="true" project="ProjectViewVM.getProject()"></project-label>
-		</h3>
+<div class="row" >
+	
+	<div layout-column="left" ng-class="{'col-0': layoutColumn.isClosed(), 'col-md-4': !layoutColumn.isClosed()}" content-id="content-wrapper" >		
+		<div dropdown class="column-config-menu pull-right">			
+			<div class="btn btn-info btn-xs" ng-click="layoutColumn.toggle()">
+			  	<i class="fa fa-compress"></i>
+			</div>
+<!-- 			<button type="button" class="btn dropdown-toggle" aria-haspopup="true" aria-expanded="false"> -->
+<!-- 		  	<i class="fa fa-cog"></i> -->
+<!-- 		  </button> -->
+<!-- 		  <ul class="dropdown-menu" role="menu">		  	 -->
+<!--         <li><a ng-click="layoutColumn.hide()">Hide</a></li> -->
+<!--       </ul> -->
+		</div>
+		
+		<h3><project-label clickable="false" editable="true" project="ProjectViewVM.getProject()"></project-label></h3>	
 		<project-tree node-type='Data' project="ProjectViewVM.getProject()"></project-tree>
-		<project-nav project="ProjectViewVM.getProject()"></project-nav>				
+		<project-nav project="ProjectViewVM.getProject()"></project-nav>
+						
 	</div>
-	<div class="col-md-8" id="content-wrapper">
-			<h3><span toggle-sidepanel="left" ng-click='sideMenuVM.toggle()'  >					
-					<i class="fa" ng-class="{'fa-arrow-circle-o-right': sideMenuVM.isCollapsed(), 'fa-arrow-circle-o-left': !sideMenuVM.isCollapsed()}"></i>
-		</span>Visualizations</h3>
+	<div layout-column="right" ng-class="{'col-md-12': layoutColumn.isClosed(), 'col-md-8': !layoutColumn.isClosed()}" id="content-wrapper">
+		
+		<div dropdown class="column-config-menu pull-right">
+			<div class="btn btn-info btn-xs" ng-click="layoutColumn.toggle()">
+		  	<i ng-class="{'fa': true, 'fa-compress': layoutColumn.isClosed(), 'fa-expand': !layoutColumn.isClosed()}"></i>
+		  </div>
+<!-- 			<button type="button" class="btn dropdown-toggle" aria-haspopup="true" aria-expanded="false"> -->
+<!-- 		  	<i class="fa fa-cog"></i> -->
+<!-- 		  </button> -->
+<!-- 		  <ul class="dropdown-menu" role="menu">		  	 -->
+<!--         <li><a ng-click="layoutColumn.hide()">Hide</a></li> -->
+<!--       </ul> -->
+		</div>
+				
+		<h3>
+<!-- 		<span toggle-sidepanel="left" ng-click='sideMenuVM.toggle()'><i class="fa" ng-class="{'fa-arrow-circle-o-right': sideMenuVM.isCollapsed(), 'fa-arrow-circle-o-left': !sideMenuVM.isCollapsed()}"></i></span> -->
+		Visualizations</h3>
 		<div>
-		asdf 
-		asdfasd
-		ffasd
-		fasd
-		fasd
-		fasd
-		fasd
-		f
-		asd
-		asdf 
-		asdfasd
-		ffasd
-		fasd
-		fasd
-		fasd
-		fasd
-		f
-		asd
-		asdf 
-		asdfasd
-		ffasd
-		fasd
-		fasd
-		fasd
-		fasd
-		f
-		asd
-		asdf 
-		asdfasd
-		ffasd
-		fasd
-		fasd
-		fasd
-		fasd
+		asdf asdf asdf asdf asdf asdfasf asdfasdf asdf asdf asdf asdf asdf asdf asdfasf asdfasdf asdf asdf asdf asdf asdf asdf asdfasf asdfasdf asdf asdf asdf asdf asdf asdf asdfasf asdfasdf asdf asdf asdf asdf asdf asdf asdfasf asdfasdf asdf asdf asdf asdf asdf asdf asdfasf asdfasdf asdf asdf asdf asdf asdf asdf asdfasf asdfasdf asdf asdf asdf asdf asdf asdf asdfasf asdfasdf asdf
+		</div>
+		<div>
+			101010101010101<br/>
+			101010000110000<br/>
+			010000101111110<br/>
+			101010101010101<br/>
+			101010000110000<br/>
+			010000101111110<br/>
+			101010101010101<br/>
+			101010000110000<br/>
+			010000101111110<br/>
+			101010101010101<br/>
+			101010000110000<br/>
+			010000101111110<br/>
+			101010101010101<br/>
+			101010000110000<br/>
+			010000101111110<br/>
+			101010101010101<br/>
+			101010000110000<br/>
+			010000101111110<br/>
+			101010101010101<br/>
+			101010000110000<br/>
+			010000101111110<br/>
+			101010101010101<br/>
+			101010000110000<br/>
+			010000101111110<br/>
+			101010101010101<br/>
+			101010000110000<br/>
+			010000101111110<br/>
 		</div>			
 	</div>
 </div>

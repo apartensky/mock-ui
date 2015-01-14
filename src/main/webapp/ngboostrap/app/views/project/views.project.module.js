@@ -6,14 +6,26 @@ function(ng, ProjectviewVM){
 	   	     	function($stateProvider, $urlRouterProvider){	     				
 	   	     		$stateProvider.state("root.project", {
 	   	     			parent: "root",
-	   	     			url: "/project/:id/",
+	   	     			url: "/project/:id/?layout",
 			   	     	params: {
-			   	     	   id: null
+			   	     	   id: null,
+			   	     	   layout: null
 			   	     	},
 			   	     	data: {
 			   	     		sidemenuUrl: "app/views/project/templates/project.sidemenu.accordion.tpl.html"
 			   	     	},
-	   	     			templateUrl: "app/views/project/templates/project.tpl.html",
+//	   	     			templateUrl: "app/views/project/templates/project.tpl.html",
+			   	     	templateProvider: ["$http", "$state", "$stateParams", function($http, $state, $stateParams){
+			   	     		var templateUrl="app/views/project/templates/project.tpl.html";
+			   	     		if($stateParams.layout)
+			   	     			templateUrl=templateUrl.replace("tpl.html", $stateParams.layout+".tpl.html");
+			   	     		
+			   	     		return $http.get(templateUrl).then(function(response){
+			   	     			console.debug("project templateProvider:", templateUrl, response);
+			   	     			return response.data;
+			   	     		});
+			   	     		 
+			   	     	}],
 	   	     			controller: "ProjectViewVM",
 	   	     			controllerAs: "ProjectViewVM",
 	   	     			resolve:{

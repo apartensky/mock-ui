@@ -50,14 +50,14 @@ define(["ng"], function(ng){
 		
 		return {
 			restrict: "EA",
-			transclude: true,
-			replace: true,
+//			transclude: true,
+//			replace: true,
 			scope: {
 				direction: "@",
 				sidepanel: "@",
 				contentId: "@"
 			},
-			template: "<div ng-transclude></div>",
+//			template: "<div ng-transclude></div>",
 			link: function(scope, elem, attr){
 				
 				scope.$watch(function(){

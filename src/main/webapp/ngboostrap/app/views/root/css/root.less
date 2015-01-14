@@ -4,6 +4,15 @@
 //#main-footer,
 
 
+//make root column fixed
+//top: 0;
+//bottom: 0;
+//left: 0;
+//right: 0;
+//position: relative;
+//overflow-y: hidden;
+//height: 100%;
+
 @sidemenuOn-margin-left: @sidemenu-width ;
 @sidemenuOn-margin-left-shrink: @sidemenu-width-shrink ;
 @footer-height: @navbar-padding-vertical*2+@line-height-computed;
@@ -30,7 +39,7 @@
 			margin-left: 0;
 			padding-left: 0;
 			padding-top: @navbar-margin-bottom;
-			
+			padding-bottom: 0;
 		}
 		
 		&.sidemenuOn{
@@ -141,5 +150,29 @@ html, body{
 	}
 }
 
-
-
+.col-0,
+.col-lg-0,
+.col-md-0,
+.col-sm-0,
+.col-xs-0 {
+    width: 0px;
+    float: left;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    min-height: 1px;
+    height: 1px;
+    opacity: 0;    
+}
+.column-config-menu{
+	position: relative;
+}
+.wrapper-config-menu{
+	position: absolute; 
+	top: 0;
+	right: 0; 	
+	z-index: 1000000;
+}
+div[layout-column]{
+	transition: width .5s ease;
+}
