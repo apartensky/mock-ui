@@ -7,7 +7,7 @@ define([], function(){
 		var footer={
 			fixed: false
 		};
-		
+		var columnScroll=false;
 		
 		this.isSideMenuCollapse=function(){
 			console.debug("root.isShrink", SideMenuSrv.isShrink());
@@ -43,6 +43,14 @@ define([], function(){
 		this.isLeftClosed=function(){			
 			return sidepanelSrvc.isCollapsed();
 		};
+		
+		$scope.$on("ui:toggleColumnScroll", function(){
+			console.debug("ui:toggleColumnScroll", columnScroll);
+			columnScroll=!columnScroll;
+		});
+		this.isColumnScroll=function(){
+			return columnScroll;
+		}
 	};	
 	
 	RootCtrl.$inject=["SideMenuSrv", "$state", "$scope", "$rootScope", "sidepanelSrvc"];

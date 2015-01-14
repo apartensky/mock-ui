@@ -13,7 +13,8 @@ define([], function(){
 					},
 					header: {
 						fixed: false
-					}
+					},
+					columnScroll: false
 				};
 				scope.toggleFixedHeader=function(){
 					$rootScope.$broadcast("ui:toggleFixedHeader");
@@ -21,6 +22,9 @@ define([], function(){
 				scope.toggleFixedFooter=function(){
 					$rootScope.$broadcast("ui:toggleFixedFooter");
 				};
+				scope.toggleColumnScroll=function(){
+					$rootScope.$broadcast("ui:toggleColumnScroll");					
+				}
 				scope.$watch("settings.sidemenu.shrink", SideMenuSrv.toggle);
 			}
 		};

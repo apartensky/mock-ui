@@ -37,21 +37,54 @@
 			right: @grid-gutter-width / 2;			
 			overflow-y: auto;
 			margin-left: 0;
-			padding-left: 0;
-			padding-top: @navbar-margin-bottom;
+			padding-left: 0;			
 			padding-bottom: 0;
+			padding-top: 0;
+			> div{
+				height: 100%;
+				position: relative;
+				div.row{
+					height: 100%;
+					position: relative;								
+					> div{						
+						padding-top: @navbar-margin-bottom;
+					}
+				}				
+			}
 		}
 		
+		&.columnScroll{
+			> div{
+				div.row{
+					> div{
+						height: 100%;
+						overflow-y: auto;		
+					}
+				}
+			}
+		}
+						
+//		&.columnScroll{
+//			height: 100%;
+//			position: relative;
+//			div.row{
+//				height: 100%;
+//				position: relative;
+//				> div{
+//					overflow-y: auto;
+//				}	
+//			}			
+//		}
 		&.sidemenuOn{
 			left: @sidemenuOn-margin-left;
 			margin-left: 0;
 			padding-left: 0;
-			padding-top: @navbar-margin-bottom;
+//			padding-top: @navbar-margin-bottom;
 			&.shrink{
 				left: @sidemenuOn-margin-left-shrink;
 				margin-left: 0;
 				padding-left: 0;
-				padding-top: @navbar-margin-bottom;
+//				padding-top: @navbar-margin-bottom;
 			}			
 		}				
 	}
