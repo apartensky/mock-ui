@@ -107,7 +107,7 @@
 	position: absolute;
 	display: block;
 	bottom: 0;
-	z-index: 903;	
+	z-index: 1903;	
 	width: 100%;	
 	
 	.fixed-footer & {
@@ -166,7 +166,7 @@ html, body{
 //	min-height: 100%;
 	>div{
 		>nav{
-			z-index: 905;
+			z-index: 1905;
 		}
 	}
 }
@@ -196,4 +196,12 @@ html, body{
 }
 div[layout-column]{
 	transition: width .5s ease;
+}
+
+div[ui-layout-container]{
+	> *{
+		margin: 0 15px;
+		display: block;
+//	box-sizing: content-box;
+	}	
 }
