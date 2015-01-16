@@ -2,10 +2,10 @@ define([], function(){
 	var RootCtrl = function(SideMenuSrv, $state, $scope, $rootScope, sidepanelSrvc){
 		
 		var header={
-			fixed: true
+			fixed: false
 		};
 		var footer={
-			fixed: true
+			fixed: false
 		};
 		var columnScroll=false;
 		
