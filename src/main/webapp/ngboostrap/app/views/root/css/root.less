@@ -199,6 +199,9 @@ div[layout-column]{
 }
 
 div[ui-layout-container]{
+	> *:first-child{
+		padding-top: @navbar-margin-bottom;
+	}
 	> *{
 		margin: 0 15px;
 		display: block;
