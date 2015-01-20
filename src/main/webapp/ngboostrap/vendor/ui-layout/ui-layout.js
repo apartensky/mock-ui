@@ -498,7 +498,9 @@ angular.module('ui.layout', [])
 
         prevButton.on('click', function() {
           var prevSplitbarBeforeButton, prevSplitbarAfterButton;
-          var result = ctrl.toggleBefore(scope.splitbar);
+//          angular.element(scope.splitbar.element[0]).addClass("ui-layout-transition");
+//          angular.element(scope.splitbar.element[0]).prev().addClass("ui-layout-transition");
+          var result = ctrl.toggleBefore(scope.splitbar);          
           var previousSplitbar = ctrl.getPreviousSplitbarContainer(scope.splitbar);
 
           if(previousSplitbar !== null) {
@@ -551,6 +553,8 @@ angular.module('ui.layout', [])
               }
             }
           }
+//          angular.element(scope.splitbar.element[0]).removeClass("ui-layout-transition");
+//          angular.element(scope.splitbar.element[0]).prev().removeClass("ui-layout-transition");
         });
 
         afterButton.on('click', function() {

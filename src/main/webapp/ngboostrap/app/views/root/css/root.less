@@ -201,20 +201,44 @@ div[layout-column]{
 #main-wrapper {
 	.fixed-header.fixed-footer &{		
 		
-		div[ui-layout-container],
+		div[ui-layout-container],		
 		.ui-layout-container{
+//			transition: all 0.2s ease-out;
+//			transition-property: left, width; 
 			> *:first-child{
 				padding-top: @navbar-margin-bottom;
 			}
 			> *{
 				margin: 0 15px;
-				display: block;
-		//	box-sizing: content-box;
+				display: block;		
 			}	
+		}
+		
+		.ui-splitbar{
+//			transition: all 0.2s ease-out;
+//			transition-property: left, width;
+			background-color: @btn-info-bg;
+			a{
+				&, span{
+					margin: 15px 0;
+					color: @btn-info-color;					
+				}
+			}
 		}
 
 	}
 }
+
+.ui-layout-transition{
+	transition: all 1.5s ease-out;
+	transition-property: left, width;
+}
+
+.ui-layout-container + .ui-layout-transition,
+.ui-layout-transition + .ui-layout-container{
+	transition: all 1.5s ease-out;
+	transition-property: left, width;
+} 
 
 //div[ui-layout]{
 //	&.stretch{
