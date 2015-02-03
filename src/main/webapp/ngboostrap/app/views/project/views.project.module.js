@@ -1,7 +1,7 @@
-define(["ng", "./controllers/ProjectViewVM"], 
-function(ng, ProjectviewVM){
-	var module=ng.module("mui.views.project", []);
-	module.controller("ProjectViewVM", ["$scope", "$stateParams", "project", ProjectviewVM]);
+define(["ng", "./controllers/ProjectViewVM", "./dataset/views.project.dataset.module", "./analysis/views.project.analysis.module"], 
+function(ng, ProjectViewVM){
+	var module=ng.module("mui.views.project", ["mui.views.project.dataset", "mui.views.project.analysis"]);
+	module.controller("ProjectViewVM", ProjectViewVM);
 	module.config(['$stateProvider', '$urlRouterProvider',
 	   	     	function($stateProvider, $urlRouterProvider){	     				
 	   	     		$stateProvider.state("root.project", {
@@ -46,7 +46,7 @@ function(ng, ProjectviewVM){
 	   	     					}
 	   	     				}]
 	   	     			}
-	   	     		})		
+	   	     		});		
 	   	}]);	
 	return module;
 });

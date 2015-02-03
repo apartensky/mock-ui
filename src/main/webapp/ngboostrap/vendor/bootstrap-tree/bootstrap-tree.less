@@ -79,4 +79,15 @@
 	> ul > li::before, > ul > li::after {
 		border: 0;
 	}
+	
+	i{
+		&.glyphicon-minus-sign,
+		&.glyphicon-plus-sign{
+			margin-right: 5px;
+		}
+		
+		& + *{
+			display: inline-block;
+		}
+	}	
 }

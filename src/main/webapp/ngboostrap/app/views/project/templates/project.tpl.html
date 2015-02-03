@@ -1,4 +1,4 @@
-<div class="row" >
+<div class="row" layout-row>
 	
 	<div layout-column="left" ng-class="{'col-0': layoutColumn.isClosed(), 'col-md-4': !layoutColumn.isClosed()}" content-id="content-wrapper" >		
 		<div class="pull-right">
@@ -35,39 +35,46 @@
 		</div>
 		<h3>
 <!-- 		<span toggle-sidepanel="left" ng-click='sideMenuVM.toggle()'><i class="fa" ng-class="{'fa-arrow-circle-o-right': sideMenuVM.isCollapsed(), 'fa-arrow-circle-o-left': !sideMenuVM.isCollapsed()}"></i></span> -->
-		Visualizations</h3>
-		<div>
-		asdf asdf asdf asdf asdf asdfasf asdfasdf asdf asdf asdf asdf asdf asdf asdfasf asdfasdf asdf asdf asdf asdf asdf asdf asdfasf asdfasdf asdf asdf asdf asdf asdf asdf asdfasf asdfasdf asdf asdf asdf asdf asdf asdf asdfasf asdfasdf asdf asdf asdf asdf asdf asdf asdfasf asdfasdf asdf asdf asdf asdf asdf asdf asdfasf asdfasdf asdf asdf asdf asdf asdf asdf asdfasf asdfasdf asdf
+		{{ProjectViewVM.node.nodeData.name || ProjectViewVM.node.nodeName}}</h3>
+		
+		<div gridster="gridsterOpts" class="issuesContent">
+			<div ui-view></div>
+<!-- 	    <ul> -->
+<!-- 	    		<li gridster-item row="item.position[0]" col="item.position[1]" size-x="item.size.x" size-y="item.size.y" ng-repeat="item in customItems"></li> -->
+<!-- 	        <li gridster-item="item" ng-repeat="item in standardItems"></li> -->
+<!-- 	    </ul> -->
 		</div>
-		<div>
-			101010101010101<br/>
-			101010000110000<br/>
-			010000101111110<br/>
-			101010101010101<br/>
-			101010000110000<br/>
-			010000101111110<br/>
-			101010101010101<br/>
-			101010000110000<br/>
-			010000101111110<br/>
-			101010101010101<br/>
-			101010000110000<br/>
-			010000101111110<br/>
-			101010101010101<br/>
-			101010000110000<br/>
-			010000101111110<br/>
-			101010101010101<br/>
-			101010000110000<br/>
-			010000101111110<br/>
-			101010101010101<br/>
-			101010000110000<br/>
-			010000101111110<br/>
-			101010101010101<br/>
-			101010000110000<br/>
-			010000101111110<br/>
-			101010101010101<br/>
-			101010000110000<br/>
-			010000101111110<br/>
-		</div>			
+		
+		
+<!-- 		<div> -->
+<!-- 			101010101010101<br/> -->
+<!-- 			101010000110000<br/> -->
+<!-- 			010000101111110<br/> -->
+<!-- 			101010101010101<br/> -->
+<!-- 			101010000110000<br/> -->
+<!-- 			010000101111110<br/> -->
+<!-- 			101010101010101<br/> -->
+<!-- 			101010000110000<br/> -->
+<!-- 			010000101111110<br/> -->
+<!-- 			101010101010101<br/> -->
+<!-- 			101010000110000<br/> -->
+<!-- 			010000101111110<br/> -->
+<!-- 			101010101010101<br/> -->
+<!-- 			101010000110000<br/> -->
+<!-- 			010000101111110<br/> -->
+<!-- 			101010101010101<br/> -->
+<!-- 			101010000110000<br/> -->
+<!-- 			010000101111110<br/> -->
+<!-- 			101010101010101<br/> -->
+<!-- 			101010000110000<br/> -->
+<!-- 			010000101111110<br/> -->
+<!-- 			101010101010101<br/> -->
+<!-- 			101010000110000<br/> -->
+<!-- 			010000101111110<br/> -->
+<!-- 			101010101010101<br/> -->
+<!-- 			101010000110000<br/> -->
+<!-- 			010000101111110<br/> -->
+<!-- 		</div>			 -->
 	</div>
 </div>
 

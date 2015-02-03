@@ -9,6 +9,11 @@ define(["ng"], function(ng){
 //			templateUrl: "app/widgets/project/projectTree/_projectNode/templates/projectNodeDefault.tpl.html"
 			link: function(scope, elem, attr){
 				scope.isObject=ng.isObject;
+				scope.vm={
+						onClick: function(){
+							console.debug("DefaultNode.click", attr, scope.node);
+						}
+				}
 			}
 		}
 	} 

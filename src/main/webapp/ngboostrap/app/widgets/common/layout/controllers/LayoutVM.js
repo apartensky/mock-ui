@@ -1,9 +1,7 @@
 define(["ng"], function(ng){
 	var LayoutVM = function($scope){
-		var isOpen
-		$scope.layout={				
-				helloCtrl: "heyyyyy"
-		};
+//		console.debug("LayoutVM", $scope.$id);
+		this.columns=[];
 	};
 	LayoutVM.$injcet=["$scope"];
 	return LayoutVM;

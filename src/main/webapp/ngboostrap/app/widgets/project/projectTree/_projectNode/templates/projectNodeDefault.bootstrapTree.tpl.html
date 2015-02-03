@@ -1,7 +1,8 @@
- 			
-{{node.nodenode.name || node.nodeName}}:
-<div ng-if="isObject(node.nodeData)" style="display:inline;">{{node.nodeData.name}}</div>
-<div ng-if="!isObject(node.nodeData)" style="display:inline;">{{node.nodeData}}</div>
+<div ng-if="isObject(node.nodeData) && node.nodeData.name" style="display:inline;" ng-click="vm.onClick()">{{node.nodeData.name}}
+<!-- 	<button ng-click="vm.onClick()">click</button> -->
+</div>
+<div ng-if="isObject(node.nodeData) && !node.nodeData.name" style="display:inline;">{{node.nodeName}} </div>
+<div ng-if="!isObject(node.nodeData)" style="display:inline;">{{node.nodeName}}</div>
 
 <!-- <div ng-click="$event.stopPropagation()"> -->
 <!-- <input type="text" /><input type="button" value="send" /> -->

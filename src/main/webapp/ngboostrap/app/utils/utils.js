@@ -153,30 +153,38 @@ define(["lodash"], function(_){
 	function buildNodeTree(source, schema, fnBuildNode){
 		var tree = objectToNodeTree(source, function(obj, path){
 			
-			var fnBuildNode = fnBuildNode || function(config, data, path){
+			var fnBuildNode = fnBuildNode || function(config, data, path){				
 				return {
 					nodeName: config.label || path[path.length-1].key,					
 					nodeConfig: config, 
-					nodeData: obj, 
+					nodeData: obj,
+					nodePath: _.map(path, "key").join("."),
+					nodeParent: path.length>1 ? path[path.length-2].node : undefined,
 					nodes:[]};
 			}
 			
 			var nodePath=_.map(path, "key").join(".");	
 //			console.debug("nodePath", nodePath)
-			
 			var nodeDef = _.find(schema, function(value, key){
+//				console.debug("buildNodeTree:", key, nodePath, nodePath.match(key+"$"))
 				return (nodePath.match(key+"$")!==null);	
 			});	
-			
+//			
 			if(nodeDef){
-//				console.info("path2: ", nodePath, obj);
-				var newNode = fnBuildNode(nodeDef, obj, path);
-//				var newNode = {name: path[path.length-1].key, nodes:[]};
-				
-				path[path.length-1].node.nodes.push(newNode);					
-				return newNode;
+				console.debug("nodeDef", nodeDef)
+				if(nodeDef.skip){
+					return path[path.length-1].node;
+				}else{
+					//				console.info("path2: ", nodePath, obj);
+					var newNode = fnBuildNode(nodeDef, obj, path);
+					//				var newNode = {name: path[path.length-1].key, nodes:[]};
+					
+					path[path.length-1].node.nodes.push(newNode);					
+					return newNode;
+				}
 			}
 //			console.log("notp2:", nodePath, obj);
+//			return fnBuildNode({}, obj, path);
 			return undefined;
 		});
 		console.info("NODETREE", tree);

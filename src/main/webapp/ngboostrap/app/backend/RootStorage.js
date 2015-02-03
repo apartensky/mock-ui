@@ -75,7 +75,7 @@ define(["lodash", "./NestedArrayStorageMixin"], function(_, NestedStorageMixin){
 															"MMP2",
 															"PNMA1",
 															"RPS11",
-															"ZHX3"],
+															"ELMO2"],
 														"selections": [{
 																name: "selection 1",
 																dimension: "row",
@@ -85,7 +85,7 @@ define(["lodash", "./NestedArrayStorageMixin"], function(_, NestedStorageMixin){
 																				"ELMO2",
 																				"PNMA1",
 																				"RPS11",
-																				"ZHX3"]
+																				"ELMO2"]
 																	}
 																}																
 															},
@@ -287,7 +287,7 @@ define(["lodash", "./NestedArrayStorageMixin"], function(_, NestedStorageMixin){
 														}] 
 											},
 											{
-												id: 1,
+												id: 2,
 												name: "dataset 2",
 												dataref: {
 													url: "api/dataset/1/values",
@@ -564,6 +564,7 @@ define(["lodash", "./NestedArrayStorageMixin"], function(_, NestedStorageMixin){
 										}]						
 									},
 									{
+										"id": 2,
 										"name": "limma1",
 										"timestamp": {
 											"timeInMillis": 1417507819662,
