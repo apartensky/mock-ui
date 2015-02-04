@@ -75,7 +75,7 @@ define(["lodash", "./NestedArrayStorageMixin"], function(_, NestedStorageMixin){
 															"MMP2",
 															"PNMA1",
 															"RPS11",
-															"ELMO2"],
+															"RPS11X"],
 														"selections": [{
 																name: "selection 1",
 																dimension: "row",
@@ -85,7 +85,7 @@ define(["lodash", "./NestedArrayStorageMixin"], function(_, NestedStorageMixin){
 																				"ELMO2",
 																				"PNMA1",
 																				"RPS11",
-																				"ELMO2"]
+																				"RPS11X"]
 																	}
 																}																
 															},
