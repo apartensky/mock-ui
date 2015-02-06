@@ -27,7 +27,7 @@ define([], function(){
 				state: {
 					name: ".analysis",
 					getParams: function(node){
-						return {analysisId: node.nodeData.id};
+						return {analysisId: node.nodeData.id, analysisType: node.nodeData.type};
 					}
 				}},
 //			"analysis\.[0\-9]+\.name": {label: "name"},
