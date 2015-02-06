@@ -1,22 +1,27 @@
 define(["ng", "lodash"], function(ng, _){
 	var module = ng.module("mui.views.project.analysis", []);
 	module.config(["$stateProvider", function($stateProvider){
-		$stateProvider		
+		$stateProvider				
 		.state("root.project.analysis", {			
 			url: "analysis/{analysisId:int}/{analysisType}",
-			parent: "root.project",
+			parent: "root.project",			
 //			template: "<div>" +
 //						"<project-analysis-parameters parameters=\"ProjectAnalysisVM.analysis.params\"></project-analysis-parameters>" +
 //						"<ui-view></ui-view>" +
 //					"</div>",
 			templateProvider: ["$stateParams", "$http", function($stateParams, $http){
 				console.debug("root.project.analysis templateProvider ", $stateParams.analysisType);
+				var templateUrl="app/views/project/analysis/default/analysis.default.tpl.html";
+				
 				var mapTemplateAnalysisType = {
-						"Hierarchical Clustering": "hcl", 
+//						"Hierarchical Clustering": "hcl", //using the default latyout for HCL
 						"LIMMA Differential Expression Analysis": "limma"
 				};
 				var analysisType = mapTemplateAnalysisType[$stateParams.analysisType];
-				var templateUrl="app/views/project/analysis/"+analysisType+"/analysis."+analysisType+".tpl.html";
+				
+				if(analysisType){
+					templateUrl=templateUrl.replace("default", analysisType).replace("default", analysisType);
+				}
 				console.debug("analysis templateUrl:", templateUrl);
    	     		return $http.get(templateUrl).then(function(response){
    	     			console.debug("analysis templateProvider response:", templateUrl, response);
@@ -42,12 +47,22 @@ define(["ng", "lodash"], function(ng, _){
 			url: "result/:resultId",
 			parent: "root.project.analysis",
 			template: "<div>Result: {{AnalysisResultVM.resultId}}" +
-						"<ui-view></ui-view>" +
+//						"<div>{{AnalysisResultVM.result}}</div>" +
+						"<project-analysis-result result-item=\"AnalysisResultVM.result\" result-name=\"{{AnalysisResultVM.result.name}}\"></project-analysis-result>" +
 					  "</div>",
-			controller: ["$stateParams", function($stateParams){
+			controller: ["$stateParams", "result", function($stateParams, result){
 				this.resultId=$stateParams.resultId;
+				this.result=result;
 			}],
-			controllerAs: "AnalysisResultVM"				
+			controllerAs: "AnalysisResultVM", 
+			resolve: {
+				result: ["$stateParams", "analysis", function($stateParams, analysis){
+					console.debug("root.project.analysis.result resolve", $stateParams, analysis);
+					var result = _.find(analysis.result, function(result){ return result.name===$stateParams.resultId; });					
+					console.debug("root.project.analysis.result resolved", result);
+					return result;
+				}]
+			}
 		});
 	}]);
 	
@@ -57,9 +72,23 @@ define(["ng", "lodash"], function(ng, _){
 			scope: {
 				analysis: "=mevAnalysis",				
 			},
-			template: "<div></div>",			
+			template: "<div mev-analysis-result></div>",			
 			controller: function(){},			
 			controllerAs: "MevAnalysisVM",
+			link: function(scope, elm, attr, ctrl){
+				
+			}
+		};
+	}])
+	.directive("mevAnalysisResult", ["$compile", function($compile){
+		return {
+			restrict: "AE",
+			scope: {
+				analysis: "=mevAnalysisResult",				
+			},
+			template: "<div></div>",			
+			controller: function(){},			
+			controllerAs: "MevAnalysisResultVM",
 			link: function(scope, elm, attr, ctrl){
 				
 			}
